@@ -1,0 +1,29 @@
+{
+  "name": "mxl",
+  "version": "0.1.0",
+  "description": "Tmux launcher",
+  "author": "muji <noop@xpm.io>",
+  "main": "index.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freeformsystems/mxl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freeformsystems/mxl"
+  },
+  "keywords": [
+    "tmux",
+    "launcher",
+    "husk",
+    "package",
+    "cli"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/freeformsystems/mxl",
+  "dependencies": {
+    "husk": "~0.4.2"
+  }
+}

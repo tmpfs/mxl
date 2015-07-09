@@ -1,0 +1,10 @@
+.DS_Store
+/package
+/coverage
+/target
+/node_modules
+*.log
+*.bak
+*.pid
+*.tgz
+*.swp
