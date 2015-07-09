@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var husk = require('husk')
+  .exec();
+
+husk()
+  .whoami(function(code, signal) {
+    console.log('[code: %s, signal: %s]', code, signal);
+  })
+  .once('end', console.log.bind(null, '%s'))
+  .print()
+  .run();
