@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "bin": "./bin/mxl",
@@ -48,7 +48,7 @@
     ]
   ],
   "scripts": {
-    "readme": "mdp --force -v" 
+    "readme": "mdp --force -v"
   },
   "mdp": {
     "title": "Tmux Launcher",
