@@ -12,7 +12,6 @@ var path = require('path')
   , usealias = process.env.mxl_no_autoalias === undefined
   , target = argv.unparsed[0]
   , dir = target || process.cwd()
-  , input = dir
   , rcfile = path.join(process.env.HOME, rc)
   , env = require('cli-env').env
   , config
@@ -29,33 +28,37 @@ process.on('uncaughtException', function(e) {
   process.exit(1);
 });
 
-try {
-  config = '' + fs.readFileSync(rcfile);
-}catch(e){}
-
-if(config) {
-  try {
-    config = JSON.parse(config);
-    config.alias = config.alias || {};
-  }catch(e){}
-}
-
-// lookup alias in config
-if(config && target && config.alias[target]
-  && fs.existsSync(config.alias[target])) {
-  dir = config.alias[target];
-  if(verbose) {
-    console.log('use alias %s=%s', target, dir);
-  }
-  aliased = true;
-}
-
-if(path.basename(dir) !== pkg) {
-  input = path.join(dir, pkg);
-}
-
 // enable tmux exec method
 husk.command('tmux');
+
+function rcread() {
+  var input = dir;
+  try {
+    config = '' + fs.readFileSync(rcfile);
+  }catch(e){}
+
+  if(config) {
+    try {
+      config = JSON.parse(config);
+      config.alias = config.alias || {};
+    }catch(e){}
+  }
+
+  // lookup alias in config
+  if(config && target && config.alias[target]
+    && fs.existsSync(config.alias[target])) {
+    dir = config.alias[target];
+    if(verbose) {
+      console.log('use alias %s=%s', target, dir);
+    }
+    aliased = true;
+  }
+
+  if(path.basename(dir) !== pkg) {
+    input = path.join(dir, pkg);
+  }
+  return input;
+}
 
 function rcwrite(alias, dir) {
   if(!usealias || aliased || (!aliased && config && config.alias[alias])) {
@@ -102,5 +105,6 @@ function run(file) {
     });
 }
 
-process.env.mxl_project = path.dirname(input);
-run(input);
+var src = rcread();
+process.env.mxl_project = path.dirname(src);
+run(src);
