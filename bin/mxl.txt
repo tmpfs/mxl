@@ -1,0 +1,15 @@
+mxl %s (https://github.com/freeformsystems/mxl)
+
+Usage: mxl <:profile|dir|alias>
+
+Options
+
+  -v                    Print more information.
+  -h | --help           Print help.
+  --version             Print program version.
+
+Files
+
+  <dir>/package.json    Use tmux configuration section.
+  <dir>/.mxlrc.json     Override package.json with configuration. 
+  ~/.mxlrc.json         Global alias storage and profiles.

@@ -2,6 +2,7 @@
 
 var path = require('path')
   , fs = require('fs')
+  , util = require('util')
   , descriptor = require('../package.json')
   , argparse = require('cli-argparse')
   , argv = argparse()
@@ -24,6 +25,15 @@ var path = require('path')
       require('husk-transform')
     ]);
 
+// handle --help
+if(argv.flags.h || argv.flags.help) {
+  process.stdout.write(
+    util.format(
+    '' + fs.readFileSync(path.join(__dirname, 'mxl.txt')), descriptor.version));
+  process.exit(0);
+}
+
+// handle --version
 if(argv.flags.version) {
   console.log(path.basename(__filename) + ' %s', descriptor.version);
   process.exit(0);
