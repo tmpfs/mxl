@@ -100,6 +100,9 @@ function run(file) {
           console.log('profile %s (%s)', pf, file);
         }
         run = tmux.profiles[pf];
+      // run config level profile
+      }else if(pf && config.profiles && config.profiles[pf]) {
+        run = config.profiles[pf];
       }
       if(!Array.isArray(run)) {
         return cb(); 

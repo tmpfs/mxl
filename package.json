@@ -54,9 +54,6 @@
           "C-m"
         ],
         "select-pane -L"
-      ],
-      "kill": [
-        "kill-window -t:"
       ]
     }
   },
