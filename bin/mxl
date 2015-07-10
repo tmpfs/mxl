@@ -3,8 +3,7 @@
 var husk = require('husk')
   .exec().fs()
   .plugin([
-    require('husk-parse'),
-    require('husk-stringify'),
+    require('husk-parse')
   ]);
 
 var input = 'package.json';
@@ -12,10 +11,8 @@ var input = 'package.json';
 // enable tmux exec method
 husk.command('tmux');
 
-// process input file
 husk(input)
   .read()
-  // parse as json and assign
   .parse({field: 'body'}, function(){return this.body})
   .async(function(cb) {
     var tmux = this.body.tmux;
