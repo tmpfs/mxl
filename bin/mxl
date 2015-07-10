@@ -35,12 +35,14 @@ try {
 if(config) {
   try {
     config = JSON.parse(config);
+    config.alias = config.alias || {};
   }catch(e){}
 }
 
 // lookup alias in config
-if(config && target && config[target] && fs.existsSync(config[target])) {
-  dir = config[target];
+if(config && target && config.alias[target]
+  && fs.existsSync(config.alias[target])) {
+  dir = config.alias[target];
   console.log('use alias %s=%s', target, dir);
   aliased = true;
 }
@@ -53,11 +55,11 @@ if(path.basename(dir) !== pkg) {
 husk.command('tmux');
 
 function rcwrite(alias, dir) {
-  if(!usealias || aliased || (!aliased && config[alias])) {
+  if(!usealias || aliased || (!aliased && config && config.alias[alias])) {
     return false; 
   }
-  config = config || {};
-  config[alias] = dir;
+  config = config || {alias: {}};
+  config.alias[alias] = dir;
   fs.writeFileSync(rcfile, JSON.stringify(config, undefined, 2));
   console.log('aliased %s=%s', alias, dir);
 }
