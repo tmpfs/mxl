@@ -2,6 +2,7 @@
 
 var path = require('path')
   , fs = require('fs')
+  , descriptor = require('../package.json')
   , argparse = require('cli-argparse')
   , argv = argparse()
   , verbose = argv.flags.v
@@ -22,6 +23,11 @@ var path = require('path')
       require('husk-parse'),
       require('husk-transform')
     ]);
+
+if(argv.flags.version) {
+  console.log(path.basename(__filename) + ' %s', descriptor.version);
+  process.exit(0);
+}
 
 // generic error handler
 process.on('uncaughtException', function(e) {
