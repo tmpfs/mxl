@@ -21,10 +21,12 @@
     "cli"
   ],
   "dependencies": {
+    "cli-argparse": "~1.0.0",
     "cli-env": "~1.0.10",
     "husk": "~0.4.14",
     "husk-parse": "~1.0.4",
-    "husk-transform": "~1.0.3"
+    "husk-transform": "~1.0.3",
+    "ttycolor": "~0.8.14"
   },
   "tmux": [
     "new-window -n mxl -c ${mxl_project}",

@@ -2,11 +2,14 @@
 
 var path = require('path')
   , fs = require('fs')
+  , argparse = require('cli-argparse')
+  , argv = argparse()
+  , revert = require('ttycolor').defaults()
   , pkg = 'package.json'
   , rc = '.mxlrc.json'
   , aliased = false
   , usealias = process.env.mxl_no_autoalias === undefined
-  , target = process.argv[2]
+  , target = argv.unparsed[0]
   , dir = target || process.cwd()
   , input = dir
   , rcfile = path.join(process.env.HOME, rc)
@@ -19,6 +22,12 @@ var path = require('path')
     require('husk-transform')
   ]);
 
+// generic error handler
+process.on('uncaughtException', function(e) {
+  console.error(e.stack);
+  process.exit(1);
+});
+
 try {
   config = '' + fs.readFileSync(rcfile);
 }catch(e){}
@@ -28,11 +37,6 @@ if(config) {
     config = JSON.parse(config);
   }catch(e){}
 }
-
-process.on('uncaughtException', function(e) {
-  console.error(e.stack);
-  process.exit(1);
-});
 
 // lookup alias in config
 if(config && target && config[target] && fs.existsSync(config[target])) {
