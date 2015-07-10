@@ -29,12 +29,6 @@ if(config) {
   }catch(e){}
 }
 
-// assign project variable so that launcher
-// can execute inside other working directory
-// context
-var project = path.normalize(path.join(__dirname, '..'));
-process.env.mxl_project = project;
-
 process.on('uncaughtException', function(e) {
   console.error(e.stack);
   process.exit(1);
@@ -91,4 +85,5 @@ function run(file) {
     });
 }
 
+process.env.mxl_project = path.dirname(input);
 run(input);
