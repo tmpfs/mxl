@@ -3,7 +3,9 @@
   "version": "0.4.2",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
-  "bin": "./bin/mxl",
+  "directories": {
+    "bin": "./bin"
+  },
   "license": "MIT",
   "homepage": "https://github.com/freeformsystems/mxl",
   "repository": {
