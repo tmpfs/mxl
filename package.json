@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.2.0",
+  "version": "0.1.3",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "bin": "./bin/mxl",
@@ -67,6 +67,13 @@
           "install.md",
           "usage.md"
         ]
+      },
+      {
+        "ref": "tmux"
+      },
+      {
+        "lit": "Run `mxl` in the directory containing the package descriptor."
+
       },
       {
         "inc": [

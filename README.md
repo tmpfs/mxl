@@ -23,26 +23,30 @@ npm i -g mxl
 
 ## Usage
 
-Start `tmux` and define commands in a `tmux` section of the package descriptor 
-(`package.json`):
+```
+mxl <dir|package.json>
+```
 
-```json
-"tmux": [
-  "new-window -n mxl -c #{pane_current_path}",
+Start `tmux` and define commands in a `tmux` section of the package descriptor 
+(`package.json`), for example:
+
+```
+[
+  "new-window -n mxl -c ${mxl_project}",
   [
     "send-keys",
     "-t:",
     "vim .",
     "C-m"
   ],
-  "split-window -h -t:",
+  "split-window -h -t: -c ${mxl_project}",
   [
     "send-keys",
     "-t:",
     "git status",
     "C-m"
   ],
-  "split-window -v -t:",
+  "split-window -v -t: -c ${mxl_project}",
   [
     "send-keys",
     "-t:",
