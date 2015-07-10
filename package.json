@@ -47,5 +47,31 @@
       "C-m"
     ]
   ],
-  "scripts": {}
+  "scripts": {
+    "readme": "mdp --force -v" 
+  },
+  "mdp": {
+    "title": "Tmux Launcher",
+    "pedantic": true,
+    "include": "doc/readme",
+    "require": "lib",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/freeformsystems/mxl",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md",
+          "usage.md"
+        ]
+      },
+      {
+        "inc": [
+          "developer.md",
+          "license.md"
+        ]
+      }
+    ]
+  }
 }
