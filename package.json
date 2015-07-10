@@ -5,12 +5,13 @@
   "author": "muji <noop@xpm.io>",
   "main": "index.js",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/freeformsystems/mxl/issues"
-  },
+  "homepage": "https://github.com/freeformsystems/mxl",
   "repository": {
     "type": "git",
     "url": "https://github.com/freeformsystems/mxl"
+  },
+  "bugs": {
+    "url": "https://github.com/freeformsystems/mxl/issues"
   },
   "keywords": [
     "tmux",
@@ -19,11 +20,17 @@
     "package",
     "cli"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "homepage": "https://github.com/freeformsystems/mxl",
   "dependencies": {
-    "husk": "~0.4.11"
-  }
+    "husk": "~0.4.14",
+    "husk-parse": "~1.0.4"
+  },
+  "tmux": [
+    "new-window -n mxl -c #{pane_current_path}",
+    ["send-keys", "-t:", "vim .", "C-m"],
+    "split-window -h -t:",
+    ["send-keys", "-t:", "git status", "C-m"],
+    "split-window -v -t:",
+    ["send-keys", "-t:", "npm test", "C-m"]
+  ],
+  "scripts": {}
 }

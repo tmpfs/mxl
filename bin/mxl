@@ -4,33 +4,30 @@ var husk = require('husk')
   .exec().fs()
   .plugin([
     require('husk-parse'),
-    require('husk-transform'),
     require('husk-stringify'),
   ]);
 
-var input = 'package.json'
-  , output = 'dependencies.json';
+var input = 'package.json';
 
+// enable tmux exec method
+husk.command('tmux');
+
+// process input file
 husk(input)
   .read()
   // parse as json and assign
   .parse({field: 'body'}, function(){return this.body})
-  // perform transformation
-  .transform(function() {
-    var body = this.body;
-    for(var k in body.dependencies) {
-      body.dependencies[k] = '~2.0.0';
+  .async(function(cb) {
+    var tmux = this.body.tmux;
+    if(!Array.isArray(tmux)) {
+      return cb(); 
     }
-    return this;
+    var h = husk();
+    tmux.forEach(function(cmd) {
+      var args = Array.isArray(cmd) ? cmd : (cmd || '').split(/\s+/);
+      console.log('tmux %s', cmd);
+      h = h.tmux.apply(h, args);
+    })
+    h.run(cb);
   })
-  // back to string for write
-  .stringify(
-    {indent: 2, field: 'contents'},
-    function(){return this.body.dependencies})
-  //.write(function(){return [output]})
-  // re-read and print file to verify write
-  //.cat(output)
-  .print()
-  // clean up file
-  //.unlink(output)
   .run();
