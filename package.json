@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/freeformsystems/mxl",
   "dependencies": {
-    "husk": "~0.4.2"
+    "husk": "~0.4.11"
   }
 }
