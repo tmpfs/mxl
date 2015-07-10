@@ -4,6 +4,7 @@ var path = require('path')
   , fs = require('fs')
   , argparse = require('cli-argparse')
   , argv = argparse()
+  , verbose = argv.flags.v
   , revert = require('ttycolor').defaults()
   , pkg = 'package.json'
   , rc = '.mxlrc.json'
@@ -43,7 +44,9 @@ if(config) {
 if(config && target && config.alias[target]
   && fs.existsSync(config.alias[target])) {
   dir = config.alias[target];
-  console.log('use alias %s=%s', target, dir);
+  if(verbose) {
+    console.log('use alias %s=%s', target, dir);
+  }
   aliased = true;
 }
 
@@ -61,7 +64,9 @@ function rcwrite(alias, dir) {
   config = config || {alias: {}};
   config.alias[alias] = dir;
   fs.writeFileSync(rcfile, JSON.stringify(config, undefined, 2));
-  console.log('aliased %s=%s', alias, dir);
+  if(verbose) {
+    console.log('aliased %s=%s', alias, dir);
+  }
 }
 
 function run(file) {
@@ -81,7 +86,9 @@ function run(file) {
       var h = husk();
       tmux.forEach(function(cmd) {
         var args = Array.isArray(cmd) ? cmd : (cmd || '').split(/\s+/);
-        console.log('tmux %s', cmd);
+        if(verbose) {
+          console.log('tmux %s', cmd);
+        }
         h = h.tmux.apply(h, args);
       })
       h.run(cb);
