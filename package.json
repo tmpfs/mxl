@@ -69,7 +69,9 @@
         ]
       },
       {
-        "ref": "tmux"
+        "ref": "tmux",
+        "type": "code",
+        "language": "json"
       },
       {
         "lit": "Run `mxl` in the directory containing the package descriptor."
