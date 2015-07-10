@@ -1,12 +1,32 @@
 #!/usr/bin/env node
 
-var husk = require('husk')
+var path = require('path')
+  , pkg = 'package.json'
+  , env = require('cli-env').env
+  , husk = require('husk')
   .exec().fs()
   .plugin([
-    require('husk-parse')
+    require('husk-parse'),
+    require('husk-transform')
   ]);
 
-var input = 'package.json';
+// assign project variable so that launcher
+// can execute inside other working directory
+// context
+var project = path.normalize(path.join(__dirname, '..'));
+process.env.mxl_project = project;
+
+process.on('uncaughtException', function(e) {
+  console.error(e.stack);
+  process.exit(1);
+});
+
+var dir = process.argv[2] || process.cwd()
+  , input = dir;
+
+if(path.basename(dir) !== pkg) {
+  input = path.join(dir, pkg);
+}
 
 // enable tmux exec method
 husk.command('tmux');
@@ -14,6 +34,11 @@ husk.command('tmux');
 husk(input)
   .read()
   .parse({field: 'body'}, function(){return this.body})
+  .transform(function() {
+    // allow environment variable replacement
+    env(this.body.tmux)
+    return this;
+  })
   .async(function(cb) {
     var tmux = this.body.tmux;
     if(!Array.isArray(tmux)) {

@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.1.4",
+  "version": "0.1.3",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "bin": "./bin/mxl",
@@ -21,25 +21,27 @@
     "cli"
   ],
   "dependencies": {
+    "cli-env": "~1.0.10",
     "husk": "~0.4.14",
-    "husk-parse": "~1.0.4"
+    "husk-parse": "~1.0.4",
+    "husk-transform": "~1.0.3"
   },
   "tmux": [
-    "new-window -n mxl -c #{pane_current_path}",
+    "new-window -n mxl -c ${mxl_project}",
     [
       "send-keys",
       "-t:",
       "vim .",
       "C-m"
     ],
-    "split-window -h -t:",
+    "split-window -h -t: -c ${mxl_project}",
     [
       "send-keys",
       "-t:",
       "git status",
       "C-m"
     ],
-    "split-window -v -t:",
+    "split-window -v -t: -c ${mxl_project}",
     [
       "send-keys",
       "-t:",
