@@ -8,10 +8,10 @@ var path = require('path')
   , revert = require('ttycolor').defaults()
   , pkg = 'package.json'
   , rc = '.mxlrc.json'
+  , profile = ':'
   , aliased = false
   , usealias = process.env.mxl_no_autoalias === undefined
   , target = argv.unparsed[0]
-  , dir = target || process.cwd()
   , rcfile = path.join(process.env.HOME, rc)
   , env = require('cli-env').env
   , config
@@ -32,6 +32,11 @@ process.on('uncaughtException', function(e) {
 husk.command('tmux');
 
 function rcread() {
+  var dir = target || process.cwd();
+  // got profile reference
+  if(dir.indexOf(profile) === 0) {
+    dir = process.cwd(); 
+  }
   var input = dir;
   try {
     config = '' + fs.readFileSync(rcfile);
@@ -73,6 +78,7 @@ function rcwrite(alias, dir) {
 }
 
 function run(file) {
+  var dir = path.dirname(file);
   husk(file)
     .read()
     .parse({field: 'body'}, function(){return this.body})
@@ -84,8 +90,16 @@ function run(file) {
     .async(function(cb) {
       var tmux = this.body.tmux;
       var run = tmux.run || [];
+      var arg = target || argv.unparsed[1] || '';
+      var pf = arg.indexOf(profile) === 0 ? arg.substr(1) : null;
       if(typeof run === 'string' && tmux.profiles && tmux.profiles[run]) {
         run = tmux.profiles[run];
+      }
+      if(pf && tmux.profiles && tmux.profiles[pf]) {
+        if(verbose) {
+          console.log('profile %s (%s)', pf, file);
+        }
+        run = tmux.profiles[pf];
       }
       if(!Array.isArray(run)) {
         return cb(); 
