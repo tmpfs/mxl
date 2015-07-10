@@ -80,11 +80,15 @@ function run(file) {
     })
     .async(function(cb) {
       var tmux = this.body.tmux;
-      if(!Array.isArray(tmux)) {
+      var run = tmux.run || [];
+      if(typeof run === 'string' && tmux.profiles && tmux.profiles[run]) {
+        run = tmux.profiles[run];
+      }
+      if(!Array.isArray(run)) {
         return cb(); 
       }
       var h = husk();
-      tmux.forEach(function(cmd) {
+      run.forEach(function(cmd) {
         var args = Array.isArray(cmd) ? cmd : (cmd || '').split(/\s+/);
         if(verbose) {
           console.log('tmux %s', cmd);

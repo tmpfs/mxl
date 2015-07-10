@@ -28,29 +28,34 @@
     "husk-transform": "~1.0.3",
     "ttycolor": "~0.8.14"
   },
-  "tmux": [
-    "new-window -n mxl -c ${mxl_project}",
-    [
-      "send-keys",
-      "-t:",
-      "vim .",
-      "C-m"
-    ],
-    "split-window -h -t: -c ${mxl_project}",
-    [
-      "send-keys",
-      "-t:",
-      "git status",
-      "C-m"
-    ],
-    "split-window -v -t: -c ${mxl_project}",
-    [
-      "send-keys",
-      "-t:",
-      "npm test",
-      "C-m"
-    ]
-  ],
+  "tmux": {
+    "run": "open",
+    "profiles": {
+      "open": [
+        "new-window -n mxl -c ${mxl_project}",
+        [
+          "send-keys",
+          "-t:",
+          "vim .",
+          "C-m"
+        ],
+        "split-window -h -t: -c ${mxl_project}",
+        [
+          "send-keys",
+          "-t:",
+          "git status",
+          "C-m"
+        ],
+        "split-window -v -t: -c ${mxl_project}",
+        [
+          "send-keys",
+          "-t:",
+          "npm test",
+          "C-m"
+        ]
+      ]
+    }
+  },
   "scripts": {
     "readme": "mdp --force -v"
   },
