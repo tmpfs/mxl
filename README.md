@@ -33,29 +33,38 @@ Start `tmux` and define commands in a `tmux` section of the package descriptor
 (`package.json`), for example:
 
 ```json
-[
-  "new-window -n mxl -c ${mxl_project}",
-  [
-    "send-keys",
-    "-t:",
-    "vim .",
-    "C-m"
-  ],
-  "split-window -h -t: -c ${mxl_project}",
-  [
-    "send-keys",
-    "-t:",
-    "git status",
-    "C-m"
-  ],
-  "split-window -v -t: -c ${mxl_project}",
-  [
-    "send-keys",
-    "-t:",
-    "npm test",
-    "C-m"
-  ]
-]
+{
+  "run": "open",
+  "profiles": {
+    "open": [
+      "new-window -n mxl -c ${mxl_project}",
+      [
+        "send-keys",
+        "-t:",
+        "vim .",
+        "C-m"
+      ],
+      "split-window -h -t: -c ${mxl_project}",
+      [
+        "send-keys",
+        "-t:",
+        "git status",
+        "C-m"
+      ],
+      "split-window -v -t: -c ${mxl_project}",
+      [
+        "send-keys",
+        "-t:",
+        "npm test",
+        "C-m"
+      ],
+      "select-pane -L"
+    ],
+    "kill": [
+      "kill-window -t:"
+    ]
+  }
+}
 ```
 
 Run `mxl` in the directory containing the package descriptor or pass 
