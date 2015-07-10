@@ -5,6 +5,7 @@ Table of Contents
   * [Install](#install)
   * [Usage](#usage)
   * [Environment](#environment)
+  * [Alias](#alias)
   * [Developer](#developer)
     * [Readme](#readme)
   * [License](#license)
@@ -72,6 +73,16 @@ Environment variables are parsed within the `tmux` configuration section.
 The program exposes the following variables:
 
 * `mxl_project`: The path to the directory containing the package descriptor.
+* `mxl_no_autoalias`: Set to disable the default auto alias management.
+
+## Alias
+
+The program wil automatically manage aliases in `~/.mxlrc.json` as a map of 
+directory names to directory paths. If the first argument passed to `mxl` is a 
+recognised alias that path is used.
+
+You can disable automatic creation of aliases by setting the `mxl_no_autoalias` 
+variable.
 
 ## Developer
 

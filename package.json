@@ -76,7 +76,8 @@
       {
         "inc": [
           "run.md",
-          "environment.md"
+          "environment.md",
+          "alias.md"
         ]
       },
       {

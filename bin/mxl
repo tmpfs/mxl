@@ -1,14 +1,33 @@
 #!/usr/bin/env node
 
 var path = require('path')
+  , fs = require('fs')
   , pkg = 'package.json'
+  , rc = '.mxlrc.json'
+  , aliased = false
+  , usealias = process.env.mxl_no_autoalias === undefined
+  , target = process.argv[2]
+  , dir = target || process.cwd()
+  , input = dir
+  , rcfile = path.join(process.env.HOME, rc)
   , env = require('cli-env').env
+  , config
   , husk = require('husk')
   .exec().fs()
   .plugin([
     require('husk-parse'),
     require('husk-transform')
   ]);
+
+try {
+  config = '' + fs.readFileSync(rcfile);
+}catch(e){}
+
+if(config) {
+  try {
+    config = JSON.parse(config);
+  }catch(e){}
+}
 
 // assign project variable so that launcher
 // can execute inside other working directory
@@ -21,8 +40,12 @@ process.on('uncaughtException', function(e) {
   process.exit(1);
 });
 
-var dir = process.argv[2] || process.cwd()
-  , input = dir;
+// lookup alias in config
+if(config && target && config[target] && fs.existsSync(config[target])) {
+  dir = config[target];
+  console.log('use alias %s=%s', target, dir);
+  aliased = true;
+}
 
 if(path.basename(dir) !== pkg) {
   input = path.join(dir, pkg);
@@ -31,25 +54,41 @@ if(path.basename(dir) !== pkg) {
 // enable tmux exec method
 husk.command('tmux');
 
-husk(input)
-  .read()
-  .parse({field: 'body'}, function(){return this.body})
-  .transform(function() {
-    // allow environment variable replacement
-    env(this.body.tmux)
-    return this;
-  })
-  .async(function(cb) {
-    var tmux = this.body.tmux;
-    if(!Array.isArray(tmux)) {
-      return cb(); 
-    }
-    var h = husk();
-    tmux.forEach(function(cmd) {
-      var args = Array.isArray(cmd) ? cmd : (cmd || '').split(/\s+/);
-      console.log('tmux %s', cmd);
-      h = h.tmux.apply(h, args);
+function rcwrite(alias, dir) {
+  if(!usealias || aliased || (!aliased && config[alias])) {
+    return false; 
+  }
+  config = config || {};
+  config[alias] = dir;
+  fs.writeFileSync(rcfile, JSON.stringify(config, undefined, 2));
+  console.log('aliased %s=%s', alias, dir);
+}
+
+function run(file) {
+  husk(file)
+    .read()
+    .parse({field: 'body'}, function(){return this.body})
+    .transform(function() {
+      // allow environment variable replacement
+      env(this.body.tmux)
+      return this;
     })
-    h.run(cb);
-  })
-  .run();
+    .async(function(cb) {
+      var tmux = this.body.tmux;
+      if(!Array.isArray(tmux)) {
+        return cb(); 
+      }
+      var h = husk();
+      tmux.forEach(function(cmd) {
+        var args = Array.isArray(cmd) ? cmd : (cmd || '').split(/\s+/);
+        console.log('tmux %s', cmd);
+        h = h.tmux.apply(h, args);
+      })
+      h.run(cb);
+    })
+    .run(function() {
+      rcwrite(path.basename(dir), dir);
+    });
+}
+
+run(input);
