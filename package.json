@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "bin": "./bin/mxl",
@@ -78,7 +78,6 @@
           "run.md",
           "environment.md"
         ]
-
       },
       {
         "inc": [
