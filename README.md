@@ -26,7 +26,7 @@ npm i -g mxl
 ## Usage
 
 ```
-mxl <dir|alias>
+mxl <:profile> <dir|alias>
 ```
 
 Start `tmux` and define commands in a `tmux` section of the package descriptor 
@@ -59,9 +59,6 @@ Start `tmux` and define commands in a `tmux` section of the package descriptor
         "C-m"
       ],
       "select-pane -L"
-    ],
-    "kill": [
-      "kill-window -t:"
     ]
   }
 }
@@ -70,9 +67,22 @@ Start `tmux` and define commands in a `tmux` section of the package descriptor
 Run `mxl` in the directory containing the package descriptor or pass 
 the directory containing tmux commands to run:
 
+Run with the current working directory:
+
+```
+mxl
+```
+
+Run with another project directory:
+
 ```
 mxl ~/project
-mxl ~/project/package.json
+```
+
+Run a particular profile:
+
+```
+mxl :kill
 ```
 
 ## Environment
