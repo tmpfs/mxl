@@ -7,7 +7,8 @@ var path = require('path')
   , verbose = argv.flags.v
   , revert = require('ttycolor').defaults()
   , pkg = 'package.json'
-  , rc = '.mxlrc.json'
+  , rcname = 'mxlrc.json'
+  , rc = '.' + rcname
   , profile = ':'
   , aliased = false
   , usealias = process.env.mxl_no_autoalias === undefined
@@ -78,17 +79,25 @@ function rcwrite(alias, dir) {
 }
 
 function run(file) {
-  var dir = path.dirname(file);
+  var dir = path.dirname(file)
+    , hasrc = fs.existsSync(path.join(dir, rc));
+  if(hasrc) {
+    file = path.join(dir, rc); 
+  }
+  if(verbose) {
+    console.log('file %s', file);
+  }
   husk(file)
     .read()
     .parse({field: 'body'}, function(){return this.body})
     .transform(function() {
       // allow environment variable replacement
-      env(this.body.tmux)
+      var tmux = hasrc ? this.body : this.body.tmux || {};
+      env(tmux)
       return this;
     })
     .async(function(cb) {
-      var tmux = this.body.tmux;
+      var tmux = hasrc ? this.body : this.body.tmux || {};
       var run = tmux.run || [];
       var arg = target || argv.unparsed[1] || '';
       var pf = arg.indexOf(profile) === 0 ? arg.substr(1) : null;
