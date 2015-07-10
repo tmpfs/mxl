@@ -4,6 +4,7 @@ Table of Contents
 * [Tmux Launcher](#tmux-launcher)
   * [Install](#install)
   * [Usage](#usage)
+  * [Environment](#environment)
   * [Developer](#developer)
     * [Readme](#readme)
   * [License](#license)
@@ -56,7 +57,21 @@ Start `tmux` and define commands in a `tmux` section of the package descriptor
 ]
 ```
 
-Run `mxl` in the directory containing the package descriptor.
+Run `mxl` in the directory containing the package descriptor or pass 
+the directory containing tmux commands to run:
+
+```
+mxl ~/project
+mxl ~/project/package.json
+```
+
+## Environment
+
+Environment variables are parsed within the `tmux` configuration section.
+
+The program exposes the following variables:
+
+* `mxl_project`: The path to the directory containing the package descriptor.
 
 ## Developer
 

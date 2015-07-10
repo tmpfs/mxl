@@ -74,7 +74,10 @@
         "language": "json"
       },
       {
-        "lit": "Run `mxl` in the directory containing the package descriptor."
+        "inc": [
+          "run.md",
+          "environment.md"
+        ]
 
       },
       {
