@@ -10,7 +10,13 @@ mxl
 Run with another project directory:
 
 ```
-mxl ~/project
+mxl /usr/local/project
+```
+
+Subsequently you can use `project` as the alias:
+
+```
+mxl project
 ```
 
 Run a particular profile:
