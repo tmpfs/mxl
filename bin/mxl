@@ -17,11 +17,11 @@ var path = require('path')
   , env = require('cli-env').env
   , config
   , husk = require('husk')
-  .exec().fs()
-  .plugin([
-    require('husk-parse'),
-    require('husk-transform')
-  ]);
+    .exec().fs()
+    .plugin([
+      require('husk-parse'),
+      require('husk-transform')
+    ]);
 
 // generic error handler
 process.on('uncaughtException', function(e) {
