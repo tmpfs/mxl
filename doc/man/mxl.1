@@ -1,9 +1,12 @@
-.TH "MXL" "1" "July 2015" "mxl 0.4.3" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.4.4" "User Commands"
 .SH "NAME"
 mxl
 .SH "USAGE"
 
-mxl <command> [\-h] [\-\-color|\-\-no\-color] [\-h|\-\-help] [\-\-version] <args>
+.SP
+mxl <command> [\-vh] [\-\-color|\-\-no\-color] [\-v] [\-h|\-\-help] [\-\-version]
+.br
+    [\-c=<dir>] <args>
 .SH "DESCRIPTION"
 .PP
 Tmux launcher.
@@ -11,6 +14,8 @@ Tmux launcher.
 .BL
 .IP "\[ci]" 4
 \fBrun, r\fR: Source a command configuration.
+.IP "\[ci]" 4
+\fBls\fR: List command files.
 .IP "\[ci]" 4
 \fBhelp\fR: Show help for commands.
 .EL
@@ -20,6 +25,10 @@ Tmux launcher.
 \fB\-h, \-\-help\fR: Display this help and exit.
 .IP "\[ci]" 4
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
+.IP "\[ci]" 4
+\fB\-c=[dir]\fR: Working directory used for source\-file.
+.IP "\[ci]" 4
+\fB\-v\fR: Print more information.
 .IP "\[ci]" 4
 \fB\-\-version\fR: Print version and exit.
 .EL

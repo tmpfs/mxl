@@ -4,8 +4,6 @@ Table of Contents
 * [Tmux Launcher](#tmux-launcher)
   * [Install](#install)
   * [Usage](#usage)
-  * [Environment](#environment)
-  * [Alias](#alias)
   * [Developer](#developer)
     * [Readme](#readme)
   * [License](#license)
@@ -26,42 +24,26 @@ npm i -g mxl
 ## Usage
 
 ```
-mxl <:profile> <dir|alias>
+mxl -h
+mxl help
+mxl help <cmd>
 ```
 
-Start `tmux` and define commands in a `tmux` section of the package descriptor 
-(`package.json`), for example:
+Start `tmux` and define commands in a `tmux.conf` file within a project, 
+add additional profiles by using the `.tmux.conf` suffix.
 
-```json
-{
-  "run": "open",
-  "profiles": {
-    "open": [
-      "new-window -n mxl -c ${mxl_project}",
-      [
-        "send-keys",
-        "-t:",
-        "vim .",
-        "C-m"
-      ],
-      "split-window -h -t: -c ${mxl_project}",
-      [
-        "send-keys",
-        "-t:",
-        "git status",
-        "C-m"
-      ],
-      "split-window -v -t: -c ${mxl_project}",
-      [
-        "send-keys",
-        "-t:",
-        "npm test",
-        "C-m"
-      ],
-      "select-pane -L"
-    ]
-  }
-}
+```conf
+# vim: set ft=conf:
+#new-window -n mxl -c ${mxl_project}
+new-window -n mxl
+send-keys -t: 'vim .' C-m
+#split-window -h -t: -c ${mxl_project}
+split-window -h -t:
+send-keys -t: 'git status' C-m
+#split-window -v -t: -c ${mxl_project}
+split-window -v -t:
+send-keys -t: 'npm test' C-m
+select-pane -L
 ```
 
 Run `mxl` in the directory containing the package descriptor or pass 
@@ -90,24 +72,6 @@ Run a particular profile:
 ```
 mxl :kill
 ```
-
-## Environment
-
-Environment variables are parsed within the `tmux` configuration section.
-
-The program exposes the following variables:
-
-* `mxl_project`: The path to the directory containing the package descriptor.
-* `mxl_no_autoalias`: Set to disable the default auto alias management.
-
-## Alias
-
-The program wil automatically manage aliases in `~/.mxlrc.json` as a map of 
-directory names to directory paths. If the first argument passed to `mxl` is a 
-recognised alias that path is used.
-
-You can disable automatic creation of aliases by setting the `mxl_no_autoalias` 
-variable.
 
 ## Developer
 

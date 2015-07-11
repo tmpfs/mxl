@@ -10,3 +10,5 @@ Tmux launcher.
 
 ## Options
 
+* `dir: -c [dir]`: Working directory used for source-file.
+* `verbose: -v`: Print more information.

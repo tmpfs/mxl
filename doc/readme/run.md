@@ -1,27 +1,17 @@
-Run `mxl` in the directory containing the package descriptor or pass 
-the directory containing tmux commands to run:
-
-Run with the current working directory:
+Run all profiles in the current working directory:
 
 ```
 mxl
 ```
 
-Run with another project directory:
+Run profile(s) in current working directory with another target directory:
 
 ```
-mxl /usr/local/project
+mxl -c /usr/local/project
 ```
 
-Subsequently you can use `project` as the alias:
+List files:
 
 ```
-mxl project
-```
-
-Run a particular profile:
-
-
-```
-mxl :kill
+mxl ls
 ```

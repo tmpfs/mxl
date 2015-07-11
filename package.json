@@ -59,15 +59,13 @@
         ]
       },
       {
-        "req": "../mxlrc.json",
+        "inc": "../../tmux.conf",
         "type": "code",
-        "language": "json"
+        "language": "conf"
       },
       {
         "inc": [
-          "run.md",
-          "environment.md",
-          "alias.md"
+          "run.md"
         ]
       },
       {
