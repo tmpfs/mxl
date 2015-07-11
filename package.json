@@ -39,7 +39,7 @@
   "scripts": {
     "docs": "npm run manual && npm run readme",
     "clean-man": "rm -fv ./doc/man/*.1",
-    "manual": "npm run clean-man && manpage --output ./doc/man ./bin/mxl",
+    "manual": "npm run clean-man && NODE_ENV=devel manpage --output ./doc/man ./bin/mxl",
     "readme": "mdp --force -v"
   },
   "mdp": {
