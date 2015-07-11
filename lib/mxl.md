@@ -9,4 +9,3 @@ Tmux launcher.
 
 ## Options
 
-<!--- command definitions -->
