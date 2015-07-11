@@ -1,0 +1,7 @@
+[
+  {
+    "key": "EHOME",
+    "description": "Could not determine home directory",
+    "message": "home directory unavailable, please set HOME, HOMEPATH or USERPROFILE"
+  }
+]
