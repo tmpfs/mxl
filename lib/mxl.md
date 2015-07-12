@@ -14,5 +14,5 @@ When no command is specified the `run` command is invoked.
 
 * `dir: -c [dir]`: Working directory used for source-file.
 * `all: -a`: Launch all matched files.
-* `path: -p [dir ...]`: Add directory as search path.
+* `dirs: -d [dir ...]`: Add directory as search path.
 * `verbose: -v`: Print more information.
