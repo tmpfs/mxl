@@ -11,9 +11,12 @@ Table of Contents
 Tmux Launcher
 =============
 
-Tmux launcher binary.
+Tmux launcher.
 
-Requires [node](http://nodejs.org) >= 0.12 (you may wish to use [nvm](https://github.com/creationix/nvm)) and [npm](http://www.npmjs.org).
+Launches tmux profiles by invoking `source-file` ensuring your tmux 
+configurations are completely portable, see [tmux.conf](https://github.com/freeformsystems/mxl/blob/master/tmux.conf).
+
+Requires [node](http://nodejs.org) >= 0.12 (you may wish to use [nvm](https://github.com/creationix/nvm)).
 
 ## Install
 
