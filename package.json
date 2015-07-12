@@ -56,7 +56,8 @@
         "inc": [
           "introduction.md",
           "install.md",
-          "usage.md"
+          "usage.md",
+          "configuration.md"
         ]
       },
       {
@@ -66,7 +67,7 @@
       },
       {
         "inc": [
-          "run.md"
+          "examples.md"
         ]
       },
       {
