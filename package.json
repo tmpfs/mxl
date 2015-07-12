@@ -56,7 +56,15 @@
         "inc": [
           "introduction.md",
           "install.md",
-          "usage.md",
+          "usage.md"
+        ]
+      },
+      {
+        "bin": "./bin/mxl -h",
+        "type": "code"
+      },
+      {
+        "inc": [
           "configuration.md"
         ]
       },

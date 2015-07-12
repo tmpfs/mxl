@@ -43,6 +43,30 @@ mxl help
 mxl help <cmd>
 ```
 
+```
+Usage: mxl <command> [-arnvh] [--color|--no-color] [-a] [-r]
+           [-n|--noop] [-v] [-h|--help] [--version] [-c=<dir>] <args>
+
+Tmux launcher.
+
+Commands:
+ run, r                   Run tmux commands (source-file).
+ ls                       List command files.
+ help                     Show help for commands.
+
+Options:
+ -n, --noop               Print matched files, do not call source-file.
+ -h, --help               Display this help and exit.
+     --[no]-color         Enable or disable terminal colors.
+     -c=[dir]             Working directory used for source-file.
+     -a                   Launch all matched files.
+     -r                   Recursive file search.
+     -v                   Print more information.
+     --version            Print version and exit.
+
+Report bugs to https://github.com/freeformsystems/mxl/issues.
+```
+
 ## Configuration
 
 Start `tmux` and define commands in a `tmux.conf` file within a project,  add 

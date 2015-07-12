@@ -4,7 +4,7 @@ mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-arvh] [\-\-color|\-\-no\-color] [\-a] [\-r] [\-\-noop] [\-v]
+mxl <command> [\-arnvh] [\-\-color|\-\-no\-color] [\-a] [\-r] [\-n|\-\-noop] [\-v]
 .br
     [\-h|\-\-help] [\-\-version] [\-c=<dir>] <args>
 .SH "DESCRIPTION"
@@ -30,6 +30,8 @@ When no command is specified the \fBrun\fR command is invoked.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
+\fB\-n, \-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
+.IP "\[ci]" 4
 \fB\-h, \-\-help\fR: Display this help and exit.
 .IP "\[ci]" 4
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
@@ -39,8 +41,6 @@ When no command is specified the \fBrun\fR command is invoked.
 \fB\-a\fR: Launch all matched files.
 .IP "\[ci]" 4
 \fB\-r\fR: Recursive file search.
-.IP "\[ci]" 4
-\fB\-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-v\fR: Print more information.
 .IP "\[ci]" 4
