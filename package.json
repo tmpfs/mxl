@@ -34,6 +34,7 @@
     "cli-property": "0.0.8",
     "cli-rc": "~1.0.11",
     "cli-util": "~1.1.27",
+    "recursive-readdir": "~1.2.1",
     "ttycolor": "~0.8.14"
   },
   "scripts": {
