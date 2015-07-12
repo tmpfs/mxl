@@ -34,43 +34,29 @@ add additional profiles by using the `.tmux.conf` suffix.
 
 ```conf
 # vim: set ft=conf:
-#new-window -n mxl -c ${mxl_project}
 new-window -n mxl
 send-keys -t: 'vim .' C-m
-#split-window -h -t: -c ${mxl_project}
 split-window -h -t:
 send-keys -t: 'git status' C-m
-#split-window -v -t: -c ${mxl_project}
-split-window -v -t:
-send-keys -t: 'npm test' C-m
 select-pane -L
 ```
 
-Run `mxl` in the directory containing the package descriptor or pass 
-the directory containing tmux commands to run:
-
-Run with the current working directory:
+Run all profiles in the current working directory:
 
 ```
 mxl
 ```
 
-Run with another project directory:
+Run profile(s) in current working directory with another target directory:
 
 ```
-mxl /usr/local/project
+mxl -c /usr/local/project
 ```
 
-Subsequently you can use `project` as the alias:
+List files:
 
 ```
-mxl project
-```
-
-Run a particular profile:
-
-```
-mxl :kill
+mxl ls
 ```
 
 ## Developer
