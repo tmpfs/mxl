@@ -1,12 +1,12 @@
-.TH "MXL" "1" "July 2015" "mxl 0.4.6" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.4.7" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-avh] [\-\-color|\-\-no\-color] [\-a] [\-v] [\-h|\-\-help]
+mxl <command> [\-avh] [\-\-color|\-\-no\-color] [\-a] [\-\-noop] [\-v]
 .br
-    [\-\-version] [\-c=<dir>] [\-p=<dir...>] <args>
+    [\-h|\-\-help] [\-\-version] [\-c=<dir>] [\-d=<dir...>] <args>
 .SH "DESCRIPTION"
 .PP
 When no command is specified the \fBrun\fR command is invoked.
@@ -26,11 +26,13 @@ When no command is specified the \fBrun\fR command is invoked.
 .IP "\[ci]" 4
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
 .IP "\[ci]" 4
-\fB\-c=[dir]\fR: Working directory used for source\-file.
+\fB\-c=[dir]\fR: Working directory used for \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-a\fR: Launch all matched files.
 .IP "\[ci]" 4
-\fB\-p=[dir ...]\fR: Add directory as search path.
+\fB\-d=[dir ...]\fR: Add directory as search path.
+.IP "\[ci]" 4
+\fB\-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-v\fR: Print more information.
 .IP "\[ci]" 4

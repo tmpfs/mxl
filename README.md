@@ -16,7 +16,7 @@ Tmux launcher.
 Launches tmux profiles by invoking `source-file` ensuring your tmux 
 configurations are completely portable, see [tmux.conf](https://github.com/freeformsystems/mxl/blob/master/tmux.conf).
 
-Requires [node](http://nodejs.org) >= 0.12 (you may wish to use [nvm](https://github.com/creationix/nvm)).
+Requires [node](http://nodejs.org) and [npm](http://www.npmjs.org).
 
 ## Install
 
@@ -49,7 +49,11 @@ Use the `ls` command to see matching configuration files:
 ```
 mxl ls
 mxl ls -a
+mxl ls :test
 ```
+
+Prefix an argument with `:` to treat the argument as a profile pattern matching 
+regular expression, matches are performed on the file name.
 
 Launch `tmux.conf` in the current working directory:
 
@@ -62,6 +66,12 @@ directory:
 
 ```
 mxl -a
+```
+
+Perform file name regular expression matching using a `:profile` reference:
+
+```
+mxl :test
 ```
 
 Launch `tmux.conf` in current working directory with another target directory:
