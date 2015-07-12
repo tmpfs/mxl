@@ -109,8 +109,6 @@ mxl -a
 Prefix an argument with `:` to treat the argument as a profile pattern matching 
 regular expression, matches are performed on the file name.
 
-Perform file name regular expression matching using a `:profile` reference:
-
 ```
 mxl :test
 ```
