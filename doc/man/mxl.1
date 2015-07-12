@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.4.7" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.4.8" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -8,6 +8,14 @@ mxl <command> [\-arvh] [\-\-color|\-\-no\-color] [\-a] [\-r] [\-\-noop] [\-v]
 .br
     [\-h|\-\-help] [\-\-version] [\-c=<dir>] <args>
 .SH "DESCRIPTION"
+.PP
+Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
+.br
+executes using \fBtmux source\-file\fR.
+.PP
+To inspect matched files use the \fBls\fR command to test which files would be run 
+.br
+use the \fB\-\-noop\fR option: \fBmxl \-a \-\-noop\fR.
 .PP
 When no command is specified the \fBrun\fR command is invoked.
 .SH "COMMANDS"
