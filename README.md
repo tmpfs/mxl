@@ -38,12 +38,6 @@ npm i -g mxl
 ## Usage
 
 ```
-mxl -h
-mxl help
-mxl help <cmd>
-```
-
-```
 Usage: mxl <command> [-arnvh] [--color|--no-color] [-a] [-r]
            [-n|--noop] [-v] [-h|--help] [--version] [-c=<dir>] <args>
 
