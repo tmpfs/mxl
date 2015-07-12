@@ -6,7 +6,7 @@ mxl -- Tmux launcher.
 .SP
 mxl <command> [\-avh] [\-\-color|\-\-no\-color] [\-a] [\-\-noop] [\-v]
 .br
-    [\-h|\-\-help] [\-\-version] [\-c=<dir>] [\-d=<dir...>] <args>
+    [\-h|\-\-help] [\-\-version] [\-c=<dir>] <args>
 .SH "DESCRIPTION"
 .PP
 When no command is specified the \fBrun\fR command is invoked.
@@ -29,8 +29,6 @@ When no command is specified the \fBrun\fR command is invoked.
 \fB\-c=[dir]\fR: Working directory used for \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-a\fR: Launch all matched files.
-.IP "\[ci]" 4
-\fB\-d=[dir ...]\fR: Add directory as search path.
 .IP "\[ci]" 4
 \fB\-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
 .IP "\[ci]" 4
