@@ -3,7 +3,11 @@ Use the `ls` command to see matching configuration files:
 ```
 mxl ls
 mxl ls -a
+mxl ls :test
 ```
+
+Prefix an argument with `:` to treat the argument as a profile pattern matching 
+regular expression, matches are performed on the file name.
 
 Launch `tmux.conf` in the current working directory:
 
@@ -16,6 +20,12 @@ directory:
 
 ```
 mxl -a
+```
+
+Perform file name regular expression matching using a `:profile` reference:
+
+```
+mxl :test
 ```
 
 Launch `tmux.conf` in current working directory with another target directory:
