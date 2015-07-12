@@ -83,6 +83,12 @@ mxl -c /usr/local/project
 This is particularly useful when you have a common configuration file that you 
 wish to share across multiple projects.
 
+Launch `tmux.conf` in a target directory:
+
+```
+mxl /usr/local/project
+```
+
 ## Developer
 
 ### Readme
