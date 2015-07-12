@@ -12,7 +12,8 @@ When no command is specified the `run` command is invoked.
 
 ## Options
 
-* `dir: -c [dir]`: Working directory used for source-file.
+* `dir: -c [dir]`: Working directory used for `source-file`.
 * `all: -a`: Launch all matched files.
 * `dirs: -d [dir ...]`: Add directory as search path.
+* `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `verbose: -v`: Print more information.
