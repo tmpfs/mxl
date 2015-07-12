@@ -29,8 +29,8 @@ mxl help
 mxl help <cmd>
 ```
 
-Start `tmux` and define commands in a `tmux.conf` file within a project, 
-add additional profiles by using the `.tmux.conf` suffix.
+Start `tmux` and define commands in a `tmux.conf` file within a project,  add 
+additional profiles by using the `.tmux.conf` suffix.
 
 ```conf
 # vim: set ft=conf:
@@ -41,23 +41,34 @@ send-keys -t: 'git status' C-m
 select-pane -L
 ```
 
-Run all profiles in the current working directory:
+Use the `ls` command to see matching configuration files:
+
+```
+mxl ls
+mxl ls -a
+```
+
+Launch `tmux.conf` in the current working directory:
 
 ```
 mxl
 ```
 
-Run profile(s) in current working directory with another target directory:
+Launch all profiles (`tmux.conf` and `*.tmux.conf`) in the current working 
+directory:
+
+```
+mxl -a
+```
+
+Launch `tmux.conf` in current working directory with another target directory:
 
 ```
 mxl -c /usr/local/project
 ```
 
-List files:
-
-```
-mxl ls
-```
+This is particularly useful when you have a common configuration file that you 
+wish to share across multiple projects.
 
 ## Developer
 
