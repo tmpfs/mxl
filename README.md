@@ -45,6 +45,7 @@ Tmux launcher.
 
 Commands:
  run, r                   Run tmux commands (source-file).
+ alias, as                Manage file aliases.
  ls                       List command files.
  help                     Show help for commands.
 
