@@ -20,6 +20,10 @@ Table of Contents
     * [Get Alias](#get-alias)
     * [Delete Alias](#delete-alias)
     * [Batch Alias](#batch-alias)
+  * [Configuration Examples](#configuration-examples)
+    * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
+    * [git-status.tmux.conf](#git-statustmuxconf)
+    * [home.tmux.conf](#hometmuxconf)
   * [Developer](#developer)
     * [Docs](#docs)
     * [Manual](#manual)
@@ -205,6 +209,45 @@ the `--noop` option to see what would be done without re-writing the rc file:
 
 ```
 mxl as @foo @bar=baz @baz= --noop
+```
+
+## Configuration Examples
+
+### git-status-npm-test.tmux.conf
+
+```
+# vim: set ft=conf:
+new-window -n project-test
+send-keys -t: 'vim .' C-m
+split-window -h -t:
+send-keys -t: 'git status' C-m
+split-window -v -t:
+send-keys -t: 'npm test' C-m
+select-pane -L
+```
+
+### git-status.tmux.conf
+
+```
+# vim: set ft=conf:
+new-window -n project
+send-keys -t: 'vim .' C-m
+split-window -h -t:
+send-keys -t: 'git status' C-m
+select-pane -L
+```
+
+### home.tmux.conf
+
+```
+# vim: set ft=conf:
+rename-session launch
+rename-window '~'
+kill-session -t cmus
+new-session -d -s cmus -n cmus 'cmus'
+attach -t cmus
+send-keys -t: ':tqueue 10' C-m
+send-keys -t: ':player-play' C-m
 ```
 
 ## Developer
