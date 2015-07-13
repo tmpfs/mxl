@@ -75,7 +75,8 @@
       },
       {
         "inc": [
-          "examples.md"
+          "examples.md",
+          "alias.md"
         ]
       },
       {
