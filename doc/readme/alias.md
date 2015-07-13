@@ -28,7 +28,6 @@ Will launch the configuration file referenced by the alias `alias-name`.
 mxl as
 ```
 
-
 ### Set Alias
 
 ```
