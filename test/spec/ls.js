@@ -6,7 +6,7 @@ var expect = require('chai').expect
 describe('mxl:', function() {
 
   it('should list files', function(done) {
-    var args = ['ls'];
+    var args = ['ls', '--no-color'];
     var def = program(require(pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -15,7 +15,7 @@ describe('mxl:', function() {
   });
 
   it('should list all files (-a)', function(done) {
-    var args = ['ls', '-a'];
+    var args = ['ls', '-a', '--no-color'];
     var def = program(require(pkg), config.name)
     def.program.on('complete', function(req) {
       done();

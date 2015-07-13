@@ -6,7 +6,7 @@ var expect = require('chai').expect
 describe('mxl:', function() {
 
   it('should list aliases', function(done) {
-    var args = ['alias'];
+    var args = ['alias', '--no-color'];
     var def = program(require(pkg), config.name)
     def.program.on('complete', function(req) {
       done();
