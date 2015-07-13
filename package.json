@@ -18,8 +18,6 @@
   "keywords": [
     "tmux",
     "launcher",
-    "husk",
-    "package",
     "cli"
   ],
   "dependencies": {
@@ -36,6 +34,12 @@
     "cli-util": "~1.1.27",
     "recursive-readdir": "~1.2.1",
     "ttycolor": "~0.8.14"
+  },
+  "devDependencies": {
+    "async": "~1.3.0",
+    "chai": "~3.0.0",
+    "istanbul": "~0.3.17",
+    "mocha": "~2.2.5"
   },
   "scripts": {
     "docs": "npm run manual && npm run readme",
@@ -92,11 +96,5 @@
         ]
       }
     ]
-  },
-  "devDependencies": {
-    "async": "~1.3.0",
-    "chai": "~3.0.0",
-    "istanbul": "~0.3.17",
-    "mocha": "~2.2.5"
   }
 }
