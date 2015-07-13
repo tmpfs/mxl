@@ -43,6 +43,7 @@
   },
   "scripts": {
     "docs": "npm run manual && npm run readme",
+    "clean": "rm -rf coverage",
     "clean-man": "rm -fv ./doc/man/*.1",
     "manual": "npm run clean-man && NODE_ENV=devel manpage --output ./doc/man ./bin/mxl",
     "readme": "mdp --force -v",
