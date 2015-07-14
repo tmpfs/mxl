@@ -1,13 +1,12 @@
 var expect = require('chai').expect
-  , config = {name: 'mxl'}
-  , pkg = '../../package.json'
+  , config = require('../config')
   , program = require('../../lib/mxl');
 
 describe('mxl:', function() {
 
   it('should error on missing source file', function(done) {
     var args = ['--no-color', '../missing.tmux.conf'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.eql(1);
       function fn() {
@@ -22,7 +21,7 @@ describe('mxl:', function() {
 
   it('should error on missing source file w/ run command', function(done) {
     var args = ['run', '--no-color', '../missing.tmux.conf'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.eql(1);
       function fn() {
@@ -37,7 +36,7 @@ describe('mxl:', function() {
 
   it('should error on no files found', function(done) {
     var args = ['run', '--no-color', '../empty'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
         throw err;

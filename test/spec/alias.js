@@ -1,13 +1,12 @@
 var expect = require('chai').expect
-  , config = {name: 'mxl'}
-  , pkg = '../../package.json'
+  , config = require('../config')
   , program = require('../../lib/mxl');
 
 describe('mxl:', function() {
 
   it('should list aliases', function(done) {
     var args = ['alias', '--no-color'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
     })
@@ -16,7 +15,7 @@ describe('mxl:', function() {
 
   it('should add alias', function(done) {
     var args = ['alias', '--no-color', '--noop', '@foo=bar'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql('bar');
       done();
@@ -26,7 +25,7 @@ describe('mxl:', function() {
 
   it('should update alias', function(done) {
     var args = ['alias', '--no-color', '--noop', '@foo=baz'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql('baz');
       done();
@@ -36,7 +35,7 @@ describe('mxl:', function() {
 
   it('should get alias', function(done) {
     var args = ['alias', '--no-color', '--noop', '@foo'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
     })
@@ -45,7 +44,7 @@ describe('mxl:', function() {
 
   it('should delete alias', function(done) {
     var args = ['alias', '--no-color', '--noop', '@foo=', '../'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql(undefined);
       done();

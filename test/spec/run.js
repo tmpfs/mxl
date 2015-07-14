@@ -1,14 +1,13 @@
 var expect = require('chai').expect
   , path = require('path')
-  , config = {name: 'mxl'}
-  , pkg = '../../package.json'
+  , config = require('../config')
   , program = require('../../lib/mxl');
 
 describe('mxl:', function() {
 
   it('should run index file (no command)', function(done) {
     var args = ['--no-color', '--noop'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       //console.dir(req.launch)
       expect(req.launch.list.length).to.eql(1);
@@ -21,7 +20,7 @@ describe('mxl:', function() {
 
   it('should select file (:alt)', function(done) {
     var args = ['--no-color', '--noop', ':alt'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       //console.dir(req.launch)
       //expect(req.launch.list.length).to.eql(1);
@@ -34,7 +33,7 @@ describe('mxl:', function() {
 
   it('should run index file (w/ command)', function(done) {
     var args = ['run', '--no-color', '--noop'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
@@ -47,7 +46,7 @@ describe('mxl:', function() {
   it('should run specific file', function(done) {
     var args = [
       '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
@@ -60,7 +59,7 @@ describe('mxl:', function() {
   it('should run specific file (w/ command)', function(done) {
     var args = [
       'run', '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
@@ -72,7 +71,7 @@ describe('mxl:', function() {
 
   it('should run files (w/ cwd)', function(done) {
     var args = ['run', '--no-color', '--noop', '-c=.'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
@@ -84,7 +83,7 @@ describe('mxl:', function() {
 
   it('should run all files (-a)', function(done) {
     var args = ['run', '-a', '--no-color', '--noop'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
       expect(req.launch.map['conf-mock']).to.be.a('string');
@@ -96,7 +95,7 @@ describe('mxl:', function() {
 
   it('should run all files (-a) w/ directory arg', function(done) {
     var args = ['run', '-a', '--no-color', '--noop', '.'];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
       expect(req.launch.map['conf-mock']).to.be.a('string');
@@ -109,7 +108,7 @@ describe('mxl:', function() {
   it('should run w/ specific absolute working directory', function(done) {
     var args = [
       '--no-color', '--noop', '-c', process.cwd()];
-    var def = program(require(pkg), config.name)
+    var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
@@ -118,6 +117,5 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
-
 
 });
