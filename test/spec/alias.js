@@ -44,7 +44,7 @@ describe('mxl:', function() {
   });
 
   it('should delete alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo=', '~/dir'];
+    var args = ['alias', '--no-color', '--noop', '@foo=', '../'];
     var def = program(require(pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql(undefined);
