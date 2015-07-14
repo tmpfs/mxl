@@ -129,4 +129,16 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run using index file (no command)', function(done) {
+    var args = ['--no-color', '../index'];
+    var def = program(require(config.pkg), config.name)
+    // NOTE: different event!
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(path.dirname(req.launch.list[0]))).to.eql('index');
+      done();
+    })
+    def.parse(args);
+  });
+
 });

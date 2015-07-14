@@ -33,4 +33,20 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should list files in multiple directories', function(done) {
+    var args = ['ls', '-a', '--no-color', '.', '../', '../empty'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      //console.dir(req.launch)
+      expect(req.launch.map['conf']).to.be.a('string');
+      expect(req.launch.map['conf-empty']).to.be.a('string');
+      expect(req.launch.map['conf-alt']).to.be.a('string');
+      expect(req.launch.map['conf-mock']).to.be.a('string');
+      expect(req.launch.map['fixtures-error']).to.be.a('string');
+      done();
+    })
+    def.parse(args);
+  });
+
+
 });

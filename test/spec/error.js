@@ -121,6 +121,20 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should find no files w/ ls command', function(done) {
+    var args = ['ls', '-a', '--no-color', '../empty'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/no files found/i);
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should error on bad profile regexp', function(done) {
     var args = ['run', '--no-color', ':+'];
     var def = program(require(config.pkg), config.name)
