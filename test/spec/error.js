@@ -166,4 +166,22 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error on no files found (index file search)', function(done) {
+    process.chdir('..');
+    var args = ['ls', '--no-color'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      process.chdir('conf');
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/no files found/i);
+      expect(fn).throws(/try -a/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+
 });
