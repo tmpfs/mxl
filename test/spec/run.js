@@ -44,6 +44,32 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run specific file', function(done) {
+    var args = [
+      '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
+    var def = program(require(pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should run specific file (w/ command)', function(done) {
+    var args = [
+      'run', '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
+    var def = program(require(pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should run files (w/ cwd)', function(done) {
     var args = ['run', '--no-color', '--noop', '-c=.'];
     var def = program(require(pkg), config.name)
@@ -79,5 +105,19 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
+
+  it('should run w/ specific absolute working directory', function(done) {
+    var args = [
+      '--no-color', '--noop', '-c', process.cwd()];
+    var def = program(require(pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
 
 });
