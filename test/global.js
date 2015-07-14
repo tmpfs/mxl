@@ -12,7 +12,7 @@ function clean() {
     'index',
     'foo'
   ];
-  var file = path.join(process.env.HOME, '.mxlrc.json');
+  var file = path.join(process.env.HOME, '.mxlrc.json'), rc;
   if(fs.existsSync(file)) {
     try {
       rc = require(file);
