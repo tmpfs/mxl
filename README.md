@@ -25,6 +25,8 @@ Table of Contents
     * [git-status.tmux.conf](#git-statustmuxconf)
     * [home.tmux.conf](#hometmuxconf)
   * [Developer](#developer)
+    * [Test](#test)
+    * [Cover](#cover)
     * [Docs](#docs)
     * [Manual](#manual)
     * [Readme](#readme)
@@ -50,7 +52,8 @@ npm i -g mxl
 
 ```
 Usage: mxl <command> [-arnvh] [--color|--no-color] [-a] [-r]
-           [-n|--noop] [-v] [-h|--help] [--version] [-c=<dir>] <args>
+           [-n|--noop] [-v] [-h|--help] [--version]
+           [-c|--directory=<dir>] <args>
 
 Tmux launcher.
 
@@ -61,10 +64,10 @@ Commands:
  help                     Show help for commands.
 
 Options:
+ -c, --directory=[dir]    Working directory used for source-file.
  -n, --noop               Print matched files, do not call source-file.
  -h, --help               Display this help and exit.
      --[no]-color         Enable or disable terminal colors.
-     -c=[dir]             Working directory used for source-file.
      -a                   Launch all matched files.
      -r                   Recursive file search.
      -v                   Print more information.
@@ -84,6 +87,8 @@ new-window -n mxl
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
+split-window -v -t:
+send-keys -t: 'npm test' C-m
 select-pane -L
 ```
 
@@ -251,6 +256,25 @@ send-keys -t: ':player-play' C-m
 ```
 
 ## Developer
+
+### Test
+
+To run the test suite:
+
+```
+npm test
+```
+
+Note that the working directory for test execution is set to 
+[fixtures/conf](https://github.com/freeformsystems/mxl/blob/master/test/fixtures/conf).
+
+### Cover
+
+To generate code coverage:
+
+```
+npm run cover
+```
 
 ### Docs
 

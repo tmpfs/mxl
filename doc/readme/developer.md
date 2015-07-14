@@ -1,5 +1,24 @@
 ## Developer
 
+### Test
+
+To run the test suite:
+
+```
+npm test
+```
+
+Note that the working directory for test execution is set to 
+[fixtures/conf](/test/fixtures/conf).
+
+### Cover
+
+To generate code coverage:
+
+```
+npm run cover
+```
+
 ### Docs
 
 To build all documentation:
