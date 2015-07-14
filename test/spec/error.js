@@ -1,4 +1,5 @@
 var expect = require('chai').expect
+  , path = require('path')
   , config = require('../config')
   , program = require('../../lib/mxl');
 
@@ -144,6 +145,22 @@ describe('mxl:', function() {
       }
       expect(fn).throws(Error);
       expect(fn).throws(/nothing to repeat/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should error on non-conf file', function(done) {
+    var args = [
+      '--no-color', '--noop', path.join(process.cwd(), '../alt-file.txt')];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/bad filename/i);
+      expect(fn).throws(/should end with/i);
       done();
     })
     def.parse(args);
