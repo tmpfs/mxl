@@ -35,6 +35,38 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error on bad commands (duplicate session)', function(done) {
+    var args = ['--no-color', '../error.tmux.conf'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      expect(err.code).to.eql(1);
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/command failed/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should error on bad commands w/ run command (duplicate session)',
+    function(done) {
+      var args = ['run', '--no-color', '../error.tmux.conf'];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('error', function(err) {
+        expect(err.code).to.eql(1);
+        function fn() {
+          throw err;
+        }
+        expect(fn).throws(Error);
+        expect(fn).throws(/command failed/i);
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
   it('should error on profile match', function(done) {
     var args = ['--no-color', ':missing'];
     var def = program(require(config.pkg), config.name)
