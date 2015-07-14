@@ -149,48 +149,4 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  //it('should error on bad alias file name', function(done) {
-    //var args = ['alias', '--no-color', '@foo=bar'];
-    //var def = program(require(config.pkg), config.name)
-    //def.program.once('complete', function(req) {
-      //def = program(require(config.pkg), config.name);
-      //expect(req.rc.alias.foo).to.eql('bar');
-      //args = ['ls', '@foo'];
-      //def.program.once('error', function(err) {
-        //function fn() {
-          //throw err;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/missing alias file/i);
-        //done();
-      //}) 
-      //def.parse(args);
-    //})
-    //def.parse(args);
-  //});
-
-  //it('should error on missing alias file', function(done) {
-    //var args = ['alias', '--no-color', '@foo=missing.tmux.conf'];
-    //var def = program(require(config.pkg), config.name)
-    //def.program.once('complete', function(req) {
-      //console.dir(req.rc.alias)
-      //def = program(require(config.pkg), config.name);
-      //console.dir(req.rc.alias)
-      //expect(req.rc.alias.foo).to.eql('missing.tmux.conf');
-      //args = ['ls', '@foo'];
-      //def.program.once('error', function(err) {
-        //function fn() {
-          //throw err;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/missing alias file/i);
-        //done();
-      //}) 
-      //def.parse(args);
-    //})
-    //console.dir(args)
-    //def.parse(args);
-  //});
-
-
 });
