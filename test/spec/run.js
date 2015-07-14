@@ -9,7 +9,6 @@ describe('mxl:', function() {
     var args = ['--no-color', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      //console.dir(req.launch)
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
@@ -21,11 +20,10 @@ describe('mxl:', function() {
   it('should select file (:alt)', function(done) {
     var args = ['--no-color', '--noop', ':alt'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
-      //console.dir(req.launch)
-      //expect(req.launch.list.length).to.eql(1);
-      //expect(path.basename(req.launch.map.conf))
-        //.to.eql('tmux.conf');
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map['conf-alt']))
+        .to.eql('alt.tmux.conf');
       done();
     })
     def.parse(args);
@@ -113,6 +111,19 @@ describe('mxl:', function() {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should run empty file by profile (no command)', function(done) {
+    var args = ['--no-color', ':empty'];
+    var def = program(require(config.pkg), config.name)
+    // NOTE: different event!
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map['conf-empty']))
+        .to.eql('empty.tmux.conf');
       done();
     })
     def.parse(args);
