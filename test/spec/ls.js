@@ -37,7 +37,6 @@ describe('mxl:', function() {
     var args = ['ls', '-a', '--no-color', '.', '../', '../empty'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      //console.dir(req.launch)
       expect(req.launch.map['conf']).to.be.a('string');
       expect(req.launch.map['conf-empty']).to.be.a('string');
       expect(req.launch.map['conf-alt']).to.be.a('string');
