@@ -35,6 +35,21 @@ describe('mxl:', function() {
   });
 
   it('should error on no files found', function(done) {
+    var args = ['--no-color', '../empty'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/no files found/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+
+  it('should error on no files found w/ run command', function(done) {
     var args = ['run', '--no-color', '../empty'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
@@ -61,6 +76,5 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
-
 
 });
