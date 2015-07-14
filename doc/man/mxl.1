@@ -1,12 +1,12 @@
-.TH "MXL" "1" "July 2015" "mxl 0.4.13" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.4.16" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-anvh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop] [\-v]
+mxl <command> [\-anh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop] [\-h|\-\-help]
 .br
-    [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir>] <args>
+    [\-\-version] [\-c|\-\-directory=<dir>] <args>
 .SH "DESCRIPTION"
 .PP
 Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
@@ -41,8 +41,6 @@ When no command is specified the \fBrun\fR command is invoked.
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
 .IP "\[ci]" 4
 \fB\-a\fR: Match all configuration files.
-.IP "\[ci]" 4
-\fB\-v\fR: Print more information.
 .IP "\[ci]" 4
 \fB\-\-version\fR: Print version and exit.
 .EL

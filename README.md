@@ -51,8 +51,8 @@ npm i -g mxl
 ## Usage
 
 ```
-Usage: mxl <command> [-anvh] [--color|--no-color] [-a] [-n|--noop]
-           [-v] [-h|--help] [--version] [-c|--directory=<dir>] <args>
+Usage: mxl <command> [-anh] [--color|--no-color] [-a] [-n|--noop]
+           [-h|--help] [--version] [-c|--directory=<dir>] <args>
 
 Tmux launcher.
 
@@ -68,7 +68,6 @@ Options:
  -h, --help               Display this help and exit.
      --[no]-color         Enable or disable terminal colors.
      -a                   Match all configuration files.
-     -v                   Print more information.
      --version            Print version and exit.
 
 Report bugs to https://github.com/freeformsystems/mxl/issues.
