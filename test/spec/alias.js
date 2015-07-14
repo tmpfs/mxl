@@ -20,7 +20,7 @@ describe('mxl:', function() {
     var args = ['alias', '--no-color', '--noop', '@foo=bar'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.foo).to.eql('bar');
+      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);
@@ -30,7 +30,7 @@ describe('mxl:', function() {
     var args = ['alias', '--no-color', '--noop', '@foo=baz'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.foo).to.eql('baz');
+      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'baz'));
       done();
     })
     def.parse(args);
@@ -55,6 +55,24 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should add valid alias reference and run alias', function(done) {
+    var args = ['alias', '--no-color', '@foo=./alt.tmux.conf'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.rc.alias.foo).to.eql(
+        path.join(process.cwd(), 'alt.tmux.conf'));
+      args = ['run', '--noop', '@foo'];
+      def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        expect(req.rc.alias.foo).to.eql(
+          path.join(process.cwd(), 'alt.tmux.conf'));
+        done();
+      });
+      def.parse(args);
+    })
+    def.parse(args);
+  });
+
   it('should write alias file', function(done) {
     var args = ['ls', '--no-color'];
     var def = program(require(config.pkg), config.name)
@@ -66,7 +84,7 @@ describe('mxl:', function() {
       alias.write(file);
       expect(fs.existsSync(file)).to.eql(true);
       var rc = alias.read(file);
-      expect(rc.alias.foo).to.eql('bar');
+      expect(rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);
