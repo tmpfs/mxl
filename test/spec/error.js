@@ -64,6 +64,34 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error on ambiguous profile match', function(done) {
+    var args = ['--no-color', ':(empty|alt)'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/ambiguous profile/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should error on ambiguous profile match w/ run command', function(done) {
+    var args = ['run', '--no-color', ':(empty|alt)'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/ambiguous profile/i);
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should error on no files found', function(done) {
     var args = ['--no-color', '../empty'];
     var def = program(require(config.pkg), config.name)
