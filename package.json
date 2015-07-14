@@ -47,8 +47,10 @@
     "clean-man": "rm -fv ./doc/man/*.1",
     "manual": "npm run clean-man && NODE_ENV=devel manpage --output ./doc/man ./bin/mxl",
     "readme": "mdp --force -v",
+    "pretest": "npm run posttest && mkdir target",
+    "posttest": "rm -rf target",
     "test": "NODE_ENV=test mocha test/global.js test/spec",
-    "cover": "NODE_ENV=test istanbul cover --root ./lib _mocha -- test/global.js test/spec"
+    "cover": "npm run pretest && NODE_ENV=test istanbul cover --root ./lib _mocha -- test/global.js test/spec; npm run posttest"
   },
   "mdp": {
     "title": "Tmux Launcher",

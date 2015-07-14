@@ -1,6 +1,9 @@
 var expect = require('chai').expect
+  , fs = require('fs')
+  , path = require('path')
   , config = require('../config')
-  , program = require('../../lib/mxl');
+  , program = require('../../lib/mxl')
+  , Alias = require('../../lib/alias');
 
 describe('mxl:', function() {
 
@@ -47,6 +50,23 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql(undefined);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should write alias file', function(done) {
+    var args = ['ls', '--no-color'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      var alias = new Alias(this.configure(), req)
+        , file = path.join(
+            process.cwd(), '..', '..', '..', 'target', 'mock-mxlrc.json');
+      alias.set('foo', 'bar');
+      alias.write(file);
+      expect(fs.existsSync(file)).to.eql(true);
+      var rc = alias.read(file);
+      expect(rc.alias.foo).to.eql('bar');
       done();
     })
     def.parse(args);
