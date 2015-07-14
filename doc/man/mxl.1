@@ -1,12 +1,12 @@
-.TH "MXL" "1" "July 2015" "mxl 0.4.8" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.4.13" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-arnvh] [\-\-color|\-\-no\-color] [\-a] [\-r] [\-n|\-\-noop] [\-v]
+mxl <command> [\-anvh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop] [\-v]
 .br
-    [\-h|\-\-help] [\-\-version] [\-c=<dir>] <args>
+    [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir>] <args>
 .SH "DESCRIPTION"
 .PP
 Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
@@ -23,6 +23,8 @@ When no command is specified the \fBrun\fR command is invoked.
 .IP "\[ci]" 4
 \fBrun, r\fR: Run tmux commands (source\-file).
 .IP "\[ci]" 4
+\fBalias, as\fR: Manage file aliases.
+.IP "\[ci]" 4
 \fBls\fR: List command files.
 .IP "\[ci]" 4
 \fBhelp\fR: Show help for commands.
@@ -30,17 +32,15 @@ When no command is specified the \fBrun\fR command is invoked.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
+\fB\-c, \-\-directory=[dir]\fR: Working directory used for \fBsource\-file\fR.
+.IP "\[ci]" 4
 \fB\-n, \-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-h, \-\-help\fR: Display this help and exit.
 .IP "\[ci]" 4
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
 .IP "\[ci]" 4
-\fB\-c=[dir]\fR: Working directory used for \fBsource\-file\fR.
-.IP "\[ci]" 4
-\fB\-a\fR: Launch all matched files.
-.IP "\[ci]" 4
-\fB\-r\fR: Recursive file search.
+\fB\-a\fR: Match all configuration files.
 .IP "\[ci]" 4
 \fB\-v\fR: Print more information.
 .IP "\[ci]" 4
