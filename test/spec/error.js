@@ -34,6 +34,36 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error on profile match', function(done) {
+    var args = ['--no-color', ':missing'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/profile/i);
+      expect(fn).throws(/does not match/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should error on profile match w/ run command', function(done) {
+    var args = ['run', '--no-color', ':missing'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/profile/i);
+      expect(fn).throws(/does not match/i);
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should error on no files found', function(done) {
     var args = ['--no-color', '../empty'];
     var def = program(require(config.pkg), config.name)
