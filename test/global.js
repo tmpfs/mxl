@@ -1,6 +1,8 @@
 var path = require('path')
   , fs = require('fs')
   , info = console.info;
+
+process.env.MXL_RC_HOME = path.join(process.cwd(), 'target');
 process.chdir('test/fixtures/conf');
 
 function clean() {
@@ -29,12 +31,12 @@ function clean() {
 
 before(function(done) {
   console.info = function(){};
-  clean();
+  //clean();
   done();
 });
 
 after(function(done) {
   console.info = info;
-  clean();
+  //clean();
   done();
 });
