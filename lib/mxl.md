@@ -13,9 +13,10 @@ When no command is specified the `run` command is invoked.
 
 ## Commands
 
+* `ls: ls`: List command files.
 * `run: run, r`: Run tmux commands (source-file).
 * `alias: alias, as`: Manage file aliases.
-* `ls: ls`: List command files.
+* `prune: prune, pr`: Remove stale aliases.
 
 ## Options
 

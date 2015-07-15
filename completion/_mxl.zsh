@@ -18,9 +18,10 @@
 
 local -a commands
 commands=(
+  'ls:List configuration files'
   'run:Launch configuration files (source-file)'
   'alias:Manage aliases'
-  'ls:List configuration files'
+  'prune:Remove stale aliases'
   'help:Show man pages'
 )
 

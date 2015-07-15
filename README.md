@@ -57,9 +57,10 @@ Usage: mxl <command> [-anh] [--color|--no-color] [-a] [-n|--noop]
 Tmux launcher.
 
 Commands:
+ ls                       List command files.
  run, r                   Run tmux commands (source-file).
  alias, as                Manage file aliases.
- ls                       List command files.
+ prune, pr                Remove stale aliases.
  help                     Show help for commands.
 
 Options:
@@ -85,7 +86,7 @@ send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
 split-window -v -t:
-send-keys -t: 'npm test' C-m
+send-keys -t: 'npm run cover' C-m
 select-pane -L
 ```
 
