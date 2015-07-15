@@ -1,4 +1,5 @@
 {
   "autoalias": true,
+  "timeout": 25,
   "alias": {}
 }
