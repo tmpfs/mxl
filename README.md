@@ -82,7 +82,8 @@ additional profiles by using the `.tmux.conf` suffix.
 
 ```conf
 # vim: set ft=conf:
-new-window -n mxl
+if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
+new-window -k -n ${mxl_cwdname}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
@@ -221,6 +222,7 @@ mxl as @foo @bar=baz @baz= --noop
 
 ```
 # vim: set ft=conf:
+if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
 new-window -n ${mxl_cwdname}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
@@ -234,6 +236,7 @@ select-pane -L
 
 ```
 # vim: set ft=conf:
+if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
 new-window -n ${mxl_cwdname}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
@@ -249,8 +252,13 @@ if-shell 'tmux has-session -t launch' 'select-pane' 'rename-session launch'
 rename-window -t:1 '~'
 if-shell 'tmux has-session -t cmus' 'kill-session -t cmus' 'select-pane'
 new-session -A -d -s cmus -n cmus 'cmus'
-send-keys -t: ':tqueue 10' C-m
+send-keys -t: '4' C-m
+send-keys -t: ':tqueue 64' C-m
 send-keys -t: ':player-play' C-m
+# required so that subsequent calls to source-file
+# that do not create sessions are invoked in the context 
+# of the launch session
+switch-client -t launch
 ```
 
 ## Developer
