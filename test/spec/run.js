@@ -30,7 +30,7 @@ describe('mxl:', function() {
   });
 
   it('should select file (:alt)', function(done) {
-    var args = ['--no-color', '--noop', ':alt'];
+    var args = ['--no-color', ':alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -40,6 +40,31 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
+
+  it('should select profile (@conf-alt)', function(done) {
+    var args = ['--no-color', '@conf-alt'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map['conf-alt']))
+        .to.eql('alt.tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should select profile (@conf-alt)', function(done) {
+    var args = ['--no-color', '@conf-alt'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map['conf-alt']))
+        .to.eql('alt.tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
 
   it('should run specific file', function(done) {
     var args = [

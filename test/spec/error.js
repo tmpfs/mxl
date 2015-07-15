@@ -20,6 +20,21 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error on missing alias', function(done) {
+    var args = ['--no-color', '@non-existent-alias'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      expect(err.code).to.be.gt(0);
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/alias not found/i);
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should error on missing source file w/ run command', function(done) {
     var args = ['run', '--no-color', '../missing.tmux.conf'];
     var def = program(require(config.pkg), config.name)
