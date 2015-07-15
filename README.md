@@ -61,6 +61,7 @@ Commands:
  run, r                   Run tmux commands (source-file).
  alias, as                Manage file aliases.
  prune, pr                Remove stale aliases.
+ index, in                Generate alias index.
  help                     Show help for commands.
 
 Options:

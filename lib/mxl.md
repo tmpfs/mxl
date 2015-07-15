@@ -17,6 +17,7 @@ When no command is specified the `run` command is invoked.
 * `run: run, r`: Run tmux commands (source-file).
 * `alias: alias, as`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
+* `generate: index, in`: Generate alias index.
 
 ## Options
 
