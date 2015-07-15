@@ -21,6 +21,6 @@ When no command is specified the `run` command is invoked.
 
 ## Options
 
-* `dir: -c | --directory [dir]`: Working directory used for `source-file`.
+* `dir: -c | --directory [dir]`: Working directory used for `tmux` process.
 * `all: -a`: Match all configuration files.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.

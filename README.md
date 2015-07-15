@@ -65,7 +65,7 @@ Commands:
  help                     Show help for commands.
 
 Options:
- -c, --directory=[dir]    Working directory used for source-file.
+ -c, --directory=[dir]    Working directory used for tmux process.
  -n, --noop               Print matched files, do not call source-file.
  -h, --help               Display this help and exit.
      --[no]-color         Enable or disable terminal colors.
