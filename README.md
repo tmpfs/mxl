@@ -221,7 +221,7 @@ mxl as @foo @bar=baz @baz= --noop
 
 ```
 # vim: set ft=conf:
-new-window -n project-test
+new-window -n ${mxl_cwdname}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
@@ -234,7 +234,7 @@ select-pane -L
 
 ```
 # vim: set ft=conf:
-new-window -n project
+new-window -n ${mxl_cwdname}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
