@@ -33,6 +33,16 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should list files in directory w/ --recursive', function(done) {
+    var args = ['ls', '-r', '--no-color', '.'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.map['deep-mock']).to.be.a('string');
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should list files in multiple directories', function(done) {
     var args = ['ls', '-a', '--no-color', '.', '../', '../empty'];
     var def = program(require(config.pkg), config.name)
