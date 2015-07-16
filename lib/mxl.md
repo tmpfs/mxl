@@ -24,3 +24,4 @@ When no command is specified the `run` command is invoked.
 * `dir: -c | --directory [dir]`: Working directory used for `tmux` process.
 * `all: -a`: Match all configuration files.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
+* `recursive: -r | --recursive`: Match files recursively.
