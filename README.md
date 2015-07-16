@@ -163,22 +163,6 @@ wish to share across multiple projects.
 
 ## Alias
 
-When a configuration file is launched an alias is created if it does not exist 
-and added to the `~/.mxlrc.json` file.
-
-The rules for alias names created automatically are:
-
-1. When the file is `tmux.conf` use the name of the parent directory.
-2. When the file has a `.tmux.conf` extension concatenate the parent directory 
-name with the name of the file after the extension has been removed.
-
-You may disable automatically adding aliases by modifying the `autoalias` 
-rc option.
-
-Note that if you run a file that kills the current window, for example `mxl` 
-with a configuration file that calls `unlink-window` aliases will not be added 
-automatically, to workaround this run from another window, eg: `mxl ~/project`.
-
 ### Launch Alias
 
 To reference an alias when launching use an `@` prefix, for example:

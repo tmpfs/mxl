@@ -18,6 +18,21 @@ Arguments can be directories, files, alias references and file pattern matching
 expressions.
 .PP
 See mxl\-alias(1) for more information on aliases.
+.SH "ENVIRONMENT"
+.PP
+Before calls to \fBsource\-file\fR the following environment variables are set 
+.br
+using \fBset\-environment \-g\fR:
+.BL
+.IP "\[ci]" 4
+\fBmxl_file\fR: The path to the configuration file.
+.IP "\[ci]" 4
+\fBmxl_filename\fR: The name of the configuration file.
+.IP "\[ci]" 4
+\fBmxl_cwd\fR: The working directory for the \fBtmux\fR process.
+.IP "\[ci]" 4
+\fBmxl_cwdname\fR: The name of the working directory.
+.EL
 .SH "EXAMPLES"
 .PP
 Source \fBtmux.conf\fR in the current working directory:
@@ -39,6 +54,10 @@ Use a pattern match on the filename to filter results returned with \fB\-a\fR us
 a \fB:\fR prefix:
 
   mxl \-a ':^test'
+.PP
+If a pattern matches multiple files and the \fB\-a\fR option is not given an 
+.br
+ambiguous match error is returned.
 .PP
 Source a file by alias reference:
 

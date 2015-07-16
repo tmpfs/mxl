@@ -8,8 +8,8 @@ executes using `tmux source-file`.
 
 When no command is specified the `run` command is invoked.
 
-To inspect matched files use the `ls` command to test which files would be run 
-use the `--noop` option: `$0 -a --noop`.
+The `--noop` option applies to all commands except `ls` and `help`, in the case 
+of operations on aliases the rc file is not written.
 
 ## Commands
 
@@ -37,14 +37,31 @@ perform a recursive search.
 Manage aliases using an @ notation.
 
 Aliases are automatically added if they do not already exist the first time a 
-call to `source-file` succeeds for the file.
+call to `source-file` succeeds and are re-written to `~/.mxlrc.json`. The rc 
+file is created if it does not exist.
+
+#### Automatic
+
+The rules for alias names created automatically are:
+
+* When the file is `tmux.conf` use the name of the parent directory.
+* When the file has a `.tmux.conf` extension concatenate the parent directory 
+name with the name of the file after the extension has been removed.
+
+You may disable automatically adding aliases by modifying the `autoalias` 
+rc option.
+
+Note that if you run a file that kills the current window (`unlink-window` etc) 
+aliases will not be added automatically as the process will have been killed 
+before the success handler returns. To workaround this run from another window, 
+eg: `mxl ~/project`.
 
 #### Launch
 
 You may pass an alias reference to the `run` command:
 
 ```
-$0 @alias-name
+$0 @project
 ```
 
 #### List
@@ -90,6 +107,16 @@ expressions.
 
 See mxl-alias(1) for more information on aliases.
 
+#### Environment
+
+Before calls to `source-file` the following environment variables are set 
+using `set-environment -g`:
+
+* `mxl_file`: The path to the configuration file.
+* `mxl_filename`: The name of the configuration file.
+* `mxl_cwd`: The working directory for the `tmux` process.
+* `mxl_cwdname`: The name of the working directory.
+
 #### Examples
 
 Source `tmux.conf` in the current working directory:
@@ -117,6 +144,9 @@ a `:` prefix:
 ```
 $0 -a ':^test'
 ```
+
+If a pattern matches multiple files and the `-a` option is not given an 
+ambiguous match error is returned.
 
 Source a file by alias reference:
 

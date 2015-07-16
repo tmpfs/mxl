@@ -13,12 +13,37 @@ Manage aliases using an @ notation.
 .PP
 Aliases are automatically added if they do not already exist the first time a 
 .br
-call to \fBsource\-file\fR succeeds for the file.
+call to \fBsource\-file\fR succeeds and are re\-written to \fB~/.mxlrc.json\fR. The rc 
+.br
+file is created if it does not exist.
+.SH "AUTOMATIC"
+.PP
+The rules for alias names created automatically are:
+.BL
+.IP "\[ci]" 4
+When the file is \fBtmux.conf\fR use the name of the parent directory.
+.IP "\[ci]" 4
+When the file has a \fB.tmux.conf\fR extension concatenate the parent directory 
+.br
+name with the name of the file after the extension has been removed.
+.EL
+.PP
+You may disable automatically adding aliases by modifying the \fBautoalias\fR 
+.br
+rc option.
+.PP
+Note that if you run a file that kills the current window (\fBunlink\-window\fR etc) 
+.br
+aliases will not be added automatically as the process will have been killed 
+.br
+before the success handler returns. To workaround this run from another window, 
+.br
+eg: \fBmxl ~/project\fR.
 .SH "LAUNCH"
 .PP
 You may pass an alias reference to the \fBrun\fR command:
 
-  mxl @alias\-name
+  mxl @project
 .SH "LIST"
 .PP
 List aliases:
