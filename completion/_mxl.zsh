@@ -22,6 +22,7 @@ commands=(
   'run:Launch configuration files (source-file)'
   'alias:Manage aliases'
   'prune:Remove stale aliases'
+  'index:Generate alias index'
   'help:Show man pages'
 )
 

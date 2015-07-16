@@ -24,7 +24,7 @@ describe('mxl:', function() {
   it('should index directory w/ noop', function(done) {
     var args = [
       'index', '--no-color', '--noop',
-      '../conf', '../index', '../empty', '../'];
+      '../conf', '../index', '../empty'];
 
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {

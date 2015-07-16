@@ -56,3 +56,20 @@ the `--noop` option to see what would be done without re-writing the rc file:
 ```
 mxl as @foo @bar=baz @baz= --noop
 ```
+
+### Prune Aliases
+
+To remove aliases for files that no longer exist run:
+
+```
+mxl prune
+```
+
+### Index Aliases
+
+Run the `index` command to generate and save aliases recursively in 
+target directories:
+
+```
+mxl index /usr/local/project
+```
