@@ -1,6 +1,6 @@
 .TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.2" "User Commands"
 .SH "NAME"
-mxl-run
+mxl-run -- Run tmux commands (source-file).
 .SH "USAGE"
 
 .SP
@@ -9,7 +9,9 @@ mxl run <args>
 mxl r <args>
 .SH "DESCRIPTION"
 .PP
-Run tmux commands (source\-file).
+The default command when no command is specified, invokes \fBtmux source\-file\fR 
+.br
+with the configuration files found by evaluating the arguments.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

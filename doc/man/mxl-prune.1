@@ -1,6 +1,6 @@
 .TH "MXL-PRUNE" "1" "July 2015" "mxl-prune 0.5.2" "User Commands"
 .SH "NAME"
-mxl-prune
+mxl-prune -- Remove stale aliases.
 .SH "USAGE"
 
 .SP
@@ -9,7 +9,9 @@ mxl prune <args>
 mxl pr <args>
 .SH "DESCRIPTION"
 .PP
-Remove stale aliases.
+As files are moved or deleted aliases may get out of date, run the \fBprune\fR 
+.br
+command to remove alias entries for files that no longer exist.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

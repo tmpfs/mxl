@@ -4,9 +4,9 @@ mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-anh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop] [\-h|\-\-help]
+mxl <command> [\-anrh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop]
 .br
-    [\-\-version] [\-c|\-\-directory=<dir>] <args>
+    [\-r|\-\-recursive] [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir>] <args>
 .SH "DESCRIPTION"
 .PP
 Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
@@ -39,6 +39,8 @@ When no command is specified the \fBrun\fR command is invoked.
 \fB\-c, \-\-directory=[dir]\fR: Working directory used for \fBtmux\fR process.
 .IP "\[ci]" 4
 \fB\-n, \-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
+.IP "\[ci]" 4
+\fB\-r, \-\-recursive\fR: Match files recursively.
 .IP "\[ci]" 4
 \fB\-h, \-\-help\fR: Display this help and exit.
 .IP "\[ci]" 4

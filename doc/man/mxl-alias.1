@@ -1,15 +1,33 @@
 .TH "MXL-ALIAS" "1" "July 2015" "mxl-alias 0.5.2" "User Commands"
 .SH "NAME"
-mxl-alias
+mxl-alias -- Manage file aliases.
 .SH "USAGE"
 
 .SP
-mxl alias <args>
+mxl alias <args> <@alias=file>
 .br
-mxl as <args>
+mxl as <args> <@alias=file>
 .SH "DESCRIPTION"
 .PP
-Manage file aliases.
+Manage aliases using an \fB@\fR notation.
+.PP
+When called with no alias references the command will print the current alias 
+.br
+list \fBmxl alias\fR.
+.PP
+Aliases are automatically added if they do not already exist the first time a 
+.br
+call to \fBsource\-file\fR succeeds for the file.
+.SH "ADD"
+.PP
+To add or update an alias manually assign to the alias:
+
+  mxl alias @project=/usr/local/project
+.SH "DELETE"
+.PP
+Assign the empty string to delete an alias.
+
+  mxl alias @project=
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
