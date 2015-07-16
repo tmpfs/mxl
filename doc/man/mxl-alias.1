@@ -9,15 +9,21 @@ mxl alias <args> <@alias=file>
 mxl as <args> <@alias=file>
 .SH "DESCRIPTION"
 .PP
-Manage aliases using an \fB@\fR notation.
-.PP
-When called with no alias references the command will print the current alias 
-.br
-list \fBmxl alias\fR.
+Manage aliases using an @ notation.
 .PP
 Aliases are automatically added if they do not already exist the first time a 
 .br
 call to \fBsource\-file\fR succeeds for the file.
+.SH "LAUNCH"
+.PP
+You may pass an alias reference to the \fBrun\fR command:
+
+  mxl @alias\-name
+.SH "LIST"
+.PP
+List aliases:
+
+  mxl alias
 .SH "ADD"
 .PP
 To add or update an alias manually assign to the alias:

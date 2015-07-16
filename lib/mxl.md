@@ -6,10 +6,10 @@ Tmux launcher.
 Finds files named either `tmux.conf` or with a `.tmux.conf` extension and 
 executes using `tmux source-file`.
 
+When no command is specified the `run` command is invoked.
+
 To inspect matched files use the `ls` command to test which files would be run 
 use the `--noop` option: `$0 -a --noop`.
-
-When no command is specified the `run` command is invoked.
 
 ## Commands
 
@@ -34,13 +34,26 @@ perform a recursive search.
 
 ### Alias
 
-Manage aliases using an `@` notation.
-
-When called with no alias references the command will print the current alias 
-list `$0 alias`.
+Manage aliases using an @ notation.
 
 Aliases are automatically added if they do not already exist the first time a 
 call to `source-file` succeeds for the file.
+
+#### Launch
+
+You may pass an alias reference to the `run` command:
+
+```
+$0 @alias-name
+```
+
+#### List
+
+List aliases:
+
+```
+$0 alias
+```
 
 #### Add
 
@@ -70,4 +83,5 @@ with the configuration files found by evaluating the arguments.
 
 ### Generate
 
-Recursively searches the specified directories for 
+Recursively searches the specified directories for configuration files and adds 
+them as aliases unless the `--noop` option is specified.

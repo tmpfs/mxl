@@ -53,13 +53,14 @@ npm i -g mxl
 ## Usage
 
 ```
-Usage: mxl <command> [-anh] [--color|--no-color] [-a] [-n|--noop]
-           [-h|--help] [--version] [-c|--directory=<dir>] <args>
+Usage: mxl <command> [-anrh] [--color|--no-color] [-a] [-n|--noop]
+           [-r|--recursive] [-h|--help] [--version]
+           [-c|--directory=<dir>] <args>
 
 Tmux launcher.
 
 Commands:
- ls                       List configration files.
+ list, ls                 List configration files.
  run, r                   Run tmux commands (source-file).
  alias, as                Manage file aliases.
  prune, pr                Remove stale aliases.
@@ -69,6 +70,7 @@ Commands:
 Options:
  -c, --directory=[dir]    Working directory used for tmux process.
  -n, --noop               Print matched files, do not call source-file.
+ -r, --recursive          Match files recursively.
  -h, --help               Display this help and exit.
      --[no]-color         Enable or disable terminal colors.
      -a                   Match all configuration files.

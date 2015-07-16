@@ -13,15 +13,15 @@ Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension an
 .br
 executes using \fBtmux source\-file\fR.
 .PP
+When no command is specified the \fBrun\fR command is invoked.
+.PP
 To inspect matched files use the \fBls\fR command to test which files would be run 
 .br
 use the \fB\-\-noop\fR option: \fBmxl \-a \-\-noop\fR.
-.PP
-When no command is specified the \fBrun\fR command is invoked.
 .SH "COMMANDS"
 .BL
 .IP "\[ci]" 4
-\fBls\fR: List configration files.
+\fBlist, ls\fR: List configration files.
 .IP "\[ci]" 4
 \fBrun, r\fR: Run tmux commands (source\-file).
 .IP "\[ci]" 4
