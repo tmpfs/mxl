@@ -4,14 +4,52 @@ mxl-run -- Run tmux commands (source-file).
 .SH "USAGE"
 
 .SP
-mxl run <args>
+mxl run <args> <file> <dir> <:pattern> <@alias>
 .br
-mxl r <args>
+mxl r <args> <file> <dir> <:pattern> <@alias>
 .SH "DESCRIPTION"
 .PP
-The default command when no command is specified, invokes \fBtmux source\-file\fR 
+Invokes \fBtmux source\-file\fR with the configuration files found by evaluating 
 .br
-with the configuration files found by evaluating the arguments.
+the arguments, use the \fB\-\-noop\fR option to inspect what would be executed.
+.PP
+Arguments can be directories, files, alias references and file pattern matching 
+.br
+expressions.
+.PP
+See mxl\-alias(1) for more information on aliases.
+.SH "EXAMPLES"
+.PP
+Source \fBtmux.conf\fR in the current working directory:
+
+  mxl
+.PP
+Source a file by directory:
+
+  mxl /usr/local/project
+.PP
+Source all \fB*.tmux.conf\fR files in the current working directory (and \fBtmux.conf\fR 
+.br
+if present):
+
+  mxl \-a
+.PP
+Use a pattern match on the filename to filter results returned with \fB\-a\fR using 
+.br
+a \fB:\fR prefix:
+
+  mxl \-a ':^test'
+.PP
+Source a file by alias reference:
+
+  mxl @project
+.PP
+Source with multiple arguments:
+
+  mxl @project @alt\-project /usr/local/project
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
+.SH "SEE ALSO"
+.PP
+mxl\-alias(1), mxl\-list(1)

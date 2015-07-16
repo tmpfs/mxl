@@ -13,8 +13,8 @@ use the `--noop` option: `$0 -a --noop`.
 
 ## Commands
 
-* `list: list, ls`: List configration files.
-* `run: run, r`: Run tmux commands (source-file).
+* `list: list, ls`: List configuration files.
+* `run: run, r <file> <dir> <:pattern> <@alias>`: Run tmux commands (source-file).
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index, in <dir...>`: Generate alias index.
@@ -76,12 +76,73 @@ $0 alias @project=
 As files are moved or deleted aliases may get out of date, run the `prune` 
 command to remove alias entries for files that no longer exist.
 
+#### See
+
+mxl-alias(1)
+
 ### Run
 
-The default command when no command is specified, invokes `tmux source-file` 
-with the configuration files found by evaluating the arguments.
+Invokes `tmux source-file` with the configuration files found by evaluating 
+the arguments, use the `--noop` option to inspect what would be executed.
+
+Arguments can be directories, files, alias references and file pattern matching 
+expressions.
+
+See mxl-alias(1) for more information on aliases.
+
+#### Examples
+
+Source `tmux.conf` in the current working directory:
+
+```
+$0
+```
+
+Source a file by directory:
+
+```
+$0 /usr/local/project
+```
+
+Source all `*.tmux.conf` files in the current working directory (and `tmux.conf` 
+if present):
+
+```
+$0 -a
+```
+
+Use a pattern match on the filename to filter results returned with `-a` using 
+a `:` prefix:
+
+```
+$0 -a ':^test'
+```
+
+Source a file by alias reference:
+
+```
+$0 @project
+```
+
+Source with multiple arguments:
+
+```
+$0 @project @alt-project /usr/local/project 
+```
+
+#### See
+
+mxl-alias(1), mxl-list(1)
 
 ### Generate
 
 Recursively searches the specified directories for configuration files and adds 
 them as aliases unless the `--noop` option is specified.
+
+#### See
+
+mxl-alias(1)
+
+## See
+
+tmux(1)
