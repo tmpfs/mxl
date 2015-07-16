@@ -20,6 +20,8 @@ Table of Contents
     * [Get Alias](#get-alias)
     * [Delete Alias](#delete-alias)
     * [Batch Alias](#batch-alias)
+    * [Prune Aliases](#prune-aliases)
+    * [Index Aliases](#index-aliases)
   * [Configuration Examples](#configuration-examples)
     * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
     * [git-status.tmux.conf](#git-statustmuxconf)
@@ -171,6 +173,10 @@ name with the name of the file after the extension has been removed.
 You may disable automatically adding aliases by modifying the `autoalias` 
 rc option.
 
+Note that if you run a file that kills the current window, for example `mxl` 
+with a configuration file that calls `unlink-window` aliases will not be added 
+automatically, to workaround this run from another window, eg: `mxl ~/project`.
+
 ### Launch Alias
 
 To reference an alias when launching use an `@` prefix, for example:
@@ -214,6 +220,23 @@ the `--noop` option to see what would be done without re-writing the rc file:
 
 ```
 mxl as @foo @bar=baz @baz= --noop
+```
+
+### Prune Aliases
+
+To remove aliases for files that no longer exist run:
+
+```
+mxl prune
+```
+
+### Index Aliases
+
+Run the `index` command to generate and save aliases recursively in 
+target directories:
+
+```
+mxl index /usr/local/project
 ```
 
 ## Configuration Examples
