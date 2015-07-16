@@ -59,7 +59,7 @@ Usage: mxl <command> [-anh] [--color|--no-color] [-a] [-n|--noop]
 Tmux launcher.
 
 Commands:
- ls                       List command files.
+ ls                       List configration files.
  run, r                   Run tmux commands (source-file).
  alias, as                Manage file aliases.
  prune, pr                Remove stale aliases.

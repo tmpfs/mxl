@@ -19,8 +19,8 @@
 local -a commands
 commands=(
   'ls:List configuration files'
-  'run:Launch configuration files (source-file)'
-  'alias:Manage aliases'
+  'run:Run tmux commands (source-file)'
+  'alias:Manage file aliases'
   'prune:Remove stale aliases'
   'index:Generate alias index'
   'help:Show man pages'
@@ -30,6 +30,6 @@ _arguments -C -- \
 	'*:: :->args' \
   && return 0;
 
-_describe -t commands "mxl subcommand" commands && return 0;
+_describe -t commands "mxl commands" commands && return 0;
 _files && return 0;
 
