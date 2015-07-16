@@ -7,20 +7,20 @@ var expect = require('chai').expect
 
 describe('mxl:', function() {
 
-  it('should list aliases', function(done) {
-    var args = ['alias', '--no-color'];
+  it('should add alias', function(done) {
+    var args = ['alias', '--no-color', '@foo=bar'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
+      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);
   });
 
-  it('should add alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo=bar'];
+  it('should list aliases', function(done) {
+    var args = ['alias', '--no-color'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);
@@ -37,7 +37,7 @@ describe('mxl:', function() {
   });
 
   it('should get alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo'];
+    var args = ['alias', '--no-color', '--noop', '@foo', '@missing'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
