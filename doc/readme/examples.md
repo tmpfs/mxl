@@ -20,20 +20,20 @@ mxl
 
 ### Launch All
 
-Launch all profiles (`tmux.conf` and `*.tmux.conf`) in the current working 
+Launch all files (`tmux.conf` and `*.tmux.conf`) in the current working 
 directory:
 
 ```
 mxl -a
 ```
 
-### Launch Profile
+### Launch Filter
 
-Prefix an argument with `:` to treat the argument as a profile pattern matching 
-regular expression, matches are performed on the file name.
+Use the `-p | --pattern` option to filter by regular expression pattern, 
+matches are performed on the file name.
 
 ```
-mxl :test
+mxl -a -p test
 ```
 
 ### Launch Project

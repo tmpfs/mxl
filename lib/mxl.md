@@ -144,10 +144,10 @@ $0 -a
 ```
 
 Use a pattern match on the filename to filter results returned with `-a` using 
-a `:` prefix:
+the `-p` option:
 
 ```
-$0 -a ':^test'
+$0 -a -p '^test'
 ```
 
 If a pattern matches multiple files and the `-a` option is not given an 
