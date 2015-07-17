@@ -42,6 +42,9 @@ Tmux launcher.
 Launches tmux profiles by invoking `source-file` ensuring your tmux 
 configurations are completely portable, see [tmux.conf](https://github.com/freeformsystems/mxl/blob/master/tmux.conf).
 
+This document is a brief introduction and guide, see `mxl help` 
+and `mxl help <cmd>` for the man pages.
+
 Requires [node](http://nodejs.org) and [npm](http://www.npmjs.org).
 
 ## Install
@@ -106,7 +109,7 @@ Use the `ls` command to see matching configuration files:
 ```
 mxl ls
 mxl ls -a
-mxl ls :test
+mxl ls -a -p '^test'
 ```
 
 ### Launch
@@ -129,7 +132,7 @@ mxl -a
 ### Launch Filter
 
 Use the `-p | --pattern` option to filter by regular expression pattern, 
-matches are performed on the file name.
+matches are performed on the full file path.
 
 ```
 mxl -a -p test

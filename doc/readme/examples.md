@@ -30,7 +30,7 @@ mxl -a
 ### Launch Filter
 
 Use the `-p | --pattern` option to filter by regular expression pattern, 
-matches are performed on the file name.
+matches are performed on the full file path.
 
 ```
 mxl -a -p test
