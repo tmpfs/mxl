@@ -20,10 +20,31 @@ describe('mxl:', function() {
   it('should run with --recursive option (no command)', function(done) {
     var args = ['-r', '--no-color', '--noop'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
-      expect(req.launch.list.length).to.eql(1);
+    // NOTE: different event
+    def.program.on('run:complete', function(req) {
+      expect(req.launch.list.length).to.be.gt(4);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
+      expect(path.basename(req.launch.map['conf-alt']))
+        .to.eql('alt.tmux.conf');
+      expect(path.basename(req.launch.map['deep-mock']))
+        .to.eql('mock.tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should run with --recursive option (w/ command)', function(done) {
+    var args = ['run', '-r', '--no-color', '--noop'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.be.gt(4);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      expect(path.basename(req.launch.map['conf-alt']))
+        .to.eql('alt.tmux.conf');
+      expect(path.basename(req.launch.map['deep-mock']))
+        .to.eql('mock.tmux.conf');
       done();
     })
     def.parse(args);
