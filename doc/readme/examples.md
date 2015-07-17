@@ -7,7 +7,7 @@ Use the `ls` command to see matching configuration files:
 ```
 mxl ls
 mxl ls -a
-mxl ls :test
+mxl ls -a -p '^test'
 ```
 
 ### Launch
