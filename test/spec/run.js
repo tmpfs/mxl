@@ -62,8 +62,8 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should select file (:alt)', function(done) {
-    var args = ['--no-color', ':alt'];
+  it('should filter result (-p alt)', function(done) {
+    var args = ['--no-color', '-a', '-p', 'alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -74,7 +74,7 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should select profile (@conf-alt)', function(done) {
+  it('should select alias (@conf-alt)', function(done) {
     var args = ['--no-color', '@conf-alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
