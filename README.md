@@ -9,7 +9,7 @@ Table of Contents
     * [List files](#list-files)
     * [Launch](#launch)
     * [Launch All](#launch-all)
-    * [Launch Profile](#launch-profile)
+    * [Launch Filter](#launch-filter)
     * [Launch Project](#launch-project)
     * [Launch All Project](#launch-all-project)
     * [Launch Target](#launch-target)
@@ -55,7 +55,7 @@ npm i -g mxl
 ```
 Usage: mxl <command> [-anrh] [--color|--no-color] [-a] [-n|--noop]
            [-r|--recursive] [-h|--help] [--version]
-           [-c|--directory=<dir>] <args>
+           [-c|--directory=<dir>] [-p|--pattern=<regexp...>] <args>
 
 Tmux launcher.
 
@@ -69,6 +69,8 @@ Commands:
 
 Options:
  -c, --directory=[dir]    Working directory used for tmux process.
+ -p, --pattern=[regexp...]
+                          Filter files by patterns.
  -n, --noop               Print matched files, do not call source-file.
  -r, --recursive          Match files recursively.
  -h, --help               Display this help and exit.
@@ -118,20 +120,20 @@ mxl
 
 ### Launch All
 
-Launch all profiles (`tmux.conf` and `*.tmux.conf`) in the current working 
+Launch all files (`tmux.conf` and `*.tmux.conf`) in the current working 
 directory:
 
 ```
 mxl -a
 ```
 
-### Launch Profile
+### Launch Filter
 
-Prefix an argument with `:` to treat the argument as a profile pattern matching 
-regular expression, matches are performed on the file name.
+Use the `-p | --pattern` option to filter by regular expression pattern, 
+matches are performed on the file name.
 
 ```
-mxl :test
+mxl -a -p test
 ```
 
 ### Launch Project
