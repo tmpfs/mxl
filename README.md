@@ -55,28 +55,27 @@ npm i -g mxl
 ```
 Usage: mxl <command> [-anrh] [--color|--no-color] [-a] [-n|--noop]
            [-r|--recursive] [-h|--help] [--version]
-           [-c|--directory=<dir>] [-p|--pattern=<regexp...>] <args>
+           [-c|--directory=<dir>] [-p|--pattern=<ptn...>] <args>
 
 Tmux launcher.
 
 Commands:
- list, ls                 List configuration files.
- run, r                   Run tmux commands (source-file).
- alias, as                Manage file aliases.
- prune, pr                Remove stale aliases.
- index, in                Generate alias index.
- help                     Show help for commands.
+ list, ls                   List configuration files.
+ run, r                     Run tmux commands (source-file).
+ alias, as                  Manage file aliases.
+ prune, pr                  Remove stale aliases.
+ index, in                  Generate alias index.
+ help                       Show help for commands.
 
 Options:
- -c, --directory=[dir]    Working directory used for tmux process.
- -p, --pattern=[regexp...]
-                          Filter files by patterns.
- -n, --noop               Print matched files, do not call source-file.
- -r, --recursive          Match files recursively.
- -h, --help               Display this help and exit.
-     --[no]-color         Enable or disable terminal colors.
-     -a                   Match all configuration files.
-     --version            Print version and exit.
+ -c, --directory=[dir]      Working directory used for tmux process.
+ -p, --pattern=[ptn ...]    Filter files by regexp pattern(s).
+ -n, --noop                 Print matched files, do not call source-file.
+ -r, --recursive            Match files recursively.
+ -h, --help                 Display this help and exit.
+     --[no]-color           Enable or disable terminal colors.
+     -a                     Match all configuration files.
+     --version              Print version and exit.
 
 Report bugs to https://github.com/freeformsystems/mxl/issues.
 ```

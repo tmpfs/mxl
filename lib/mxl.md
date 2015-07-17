@@ -22,7 +22,7 @@ of operations on aliases the rc file is not written.
 ## Options
 
 * `dir: -c | --directory [dir]`: Working directory used for `tmux` process.
-* `pattern: -p | --pattern [regexp...]`: Filter files by patterns.
+* `pattern: -p | --pattern [ptn ...]`: Filter files by regexp pattern(s).
 * `all: -a`: Match all configuration files.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
