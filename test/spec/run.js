@@ -175,7 +175,7 @@ describe('mxl:', function() {
   });
 
   it('should run empty file by pattern (no command)', function(done) {
-    var args = ['--no-color', '-p', 'empty'];
+    var args = ['--no-color', '-a', '-p', 'empty'];
     var def = program(require(config.pkg), config.name)
     // NOTE: different event!
     def.program.on('run:complete', function(req) {
