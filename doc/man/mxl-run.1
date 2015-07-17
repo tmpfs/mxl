@@ -1,12 +1,12 @@
-.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.2" "User Commands"
+.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.3" "User Commands"
 .SH "NAME"
 mxl-run -- Run tmux commands (source-file).
 .SH "USAGE"
 
 .SP
-mxl run <args> <file> <dir> <:pattern> <@alias>
+mxl run [\-e] [\-e|\-\-each] <args> <file> <dir> <:pattern> <@alias>
 .br
-mxl r <args> <file> <dir> <:pattern> <@alias>
+mxl r [\-e] [\-e|\-\-each] <args> <file> <dir> <:pattern> <@alias>
 .SH "DESCRIPTION"
 .PP
 Invokes \fBtmux source\-file\fR with the configuration files found by evaluating 
@@ -18,6 +18,11 @@ Arguments can be directories, files, alias references and file pattern matching
 expressions.
 .PP
 See mxl\-alias(1) for more information on aliases.
+.SH "OPTIONS"
+.BL
+.IP "\[ci]" 4
+\fB\-e, \-\-each\fR: Iterate child directories and set \fB\-c\fR for each directory.
+.EL
 .SH "ENVIRONMENT"
 .PP
 Before calls to \fBsource\-file\fR the following environment variables are set 

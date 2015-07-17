@@ -107,6 +107,10 @@ expressions.
 
 See mxl-alias(1) for more information on aliases.
 
+#### Options
+
+* `each: -e | --each`: Iterate child directories and set `-c` for each directory.
+
 #### Environment
 
 Before calls to `source-file` the following environment variables are set 

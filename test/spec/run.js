@@ -17,6 +17,18 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run with --recursive option (no command)', function(done) {
+    var args = ['-r', '--no-color', '--noop'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should run index file (w/ command)', function(done) {
     var args = ['run', '--no-color', '--noop'];
     var def = program(require(config.pkg), config.name)
