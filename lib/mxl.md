@@ -111,6 +111,7 @@ See mxl-alias(1) for more information on aliases.
 #### Options
 
 * `each: -e | --each`: Iterate child directories and set `-c` for each directory.
+* `session: -s | --session <name>`: Create session before source file(s).
 
 #### Environment
 
