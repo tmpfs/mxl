@@ -1,12 +1,12 @@
-.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.5" "User Commands"
+.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.9" "User Commands"
 .SH "NAME"
 mxl-run -- Run tmux commands (source-file).
 .SH "USAGE"
 
 .SP
-mxl run [\-e] [\-e|\-\-each] <args> <file> <dir> <:pattern> <@alias>
+mxl run [\-e] [\-e|\-\-each] [\-s|\-\-session=<name>] <args> <file> <dir>
 .br
-mxl r [\-e] [\-e|\-\-each] <args> <file> <dir> <:pattern> <@alias>
+    <:pattern> <@alias>
 .SH "DESCRIPTION"
 .PP
 Invokes \fBtmux source\-file\fR with the configuration files found by evaluating 
@@ -22,7 +22,49 @@ See mxl\-alias(1) for more information on aliases.
 .BL
 .IP "\[ci]" 4
 \fB\-e, \-\-each\fR: Iterate child directories and set \fB\-c\fR for each directory.
+.IP "\[ci]" 4
+\fB\-s, \-\-session=<name>\fR: Create session before source file(s).
 .EL
+.SH "EACH"
+.PP
+The \fB\-\-each\fR switch changes the behaviour of execution to take the value of 
+.br
+\fB\-c | \-\-directory\fR (which will be the working directory if not specified) 
+.br
+find all direct child directories and iterate the result executing 
+.br
+all matched configuration files for each directory found.
+.PP
+This feature is designed for a project comprising of modules:
+
+.SP
+  project
+.br
+  ├── client
+.br
+  ├── db
+.br
+  ├── server
+.br
+  └── tmux.conf
+.PP
+You can execute the commands in \fBtmux.conf\fR for each module with:
+
+  cd project && mxl \-\-each
+.PP
+Typically used to open a window and pane set for all modules of a project from 
+.br
+a single configuration file.
+.PP
+When the \fB\-\-each\fR flag is used the behaviour of \fB\-\-pattern\fR changes to 
+.br
+match the child working directory path rather than the configuration file 
+.br
+path(s) so that it may be used as a filter.
+.PP
+Combining the \fB\-\-each\fR and \fB\-\-pattern\fR options enables \fB\-\-all\fR for ambiguous 
+.br
+pattern matching.
 .SH "ENVIRONMENT"
 .PP
 Before calls to \fBsource\-file\fR the following environment variables are set 

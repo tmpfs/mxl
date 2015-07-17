@@ -1,10 +1,10 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.5" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.9" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-anrh] [\-\-color|\-\-no\-color] [\-a] [\-n|\-\-noop]
+mxl <command> [\-anrh] [\-\-color|\-\-no\-color] [\-a|\-\-all] [\-n|\-\-noop]
 .br
     [\-r|\-\-recursive] [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir>]
 .br
@@ -25,7 +25,7 @@ of operations on aliases the rc file is not written.
 .IP "\[ci]" 4
 \fBlist, ls\fR: List configuration files.
 .IP "\[ci]" 4
-\fBrun, r\fR: Run tmux commands (source\-file).
+\fBrun\fR: Run tmux commands (source\-file).
 .IP "\[ci]" 4
 \fBalias, as\fR: Manage file aliases.
 .IP "\[ci]" 4
@@ -42,18 +42,31 @@ of operations on aliases the rc file is not written.
 .IP "\[ci]" 4
 \fB\-p, \-\-pattern=[ptn ...]\fR: Filter files by regexp pattern(s).
 .IP "\[ci]" 4
+\fB\-a, \-\-all\fR: Match all configuration files.
+.IP "\[ci]" 4
 \fB\-n, \-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
 .IP "\[ci]" 4
 \fB\-r, \-\-recursive\fR: Match files recursively.
 .IP "\[ci]" 4
-\fB\-h, \-\-help\fR: Display this help and exit.
+\fB\-h, \-\-help\fR: Print help and exit.
 .IP "\[ci]" 4
 \fB\-\-[no]\-color\fR: Enable or disable terminal colors.
 .IP "\[ci]" 4
-\fB\-a\fR: Match all configuration files.
-.IP "\[ci]" 4
 \fB\-\-version\fR: Print version and exit.
 .EL
+.SH "PATTERNS"
+.PP
+When the \fB\-p | \-\-pattern\fR option is specified it is applied to the results of 
+.br
+searching for configuration files except in the case of \fB\-e | \-\-each\fR when the 
+.br
+behaviour changes to match on the current working directory context, see 
+.br
+mxl\-run(1) for more information on \fB\-\-each\fR.
+.PP
+Patterns are compiled to regular expressions and are matched against the full 
+.br
+file system path.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

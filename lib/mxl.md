@@ -14,7 +14,7 @@ of operations on aliases the rc file is not written.
 ## Commands
 
 * `list: list, ls`: List configuration files.
-* `run: run, r <file> <dir> <:pattern> <@alias>`: Run tmux commands (source-file).
+* `run: run <file> <dir> <:pattern> <@alias>`: Run tmux commands (source-file).
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index, in <dir...>`: Generate alias index.
@@ -23,7 +23,7 @@ of operations on aliases the rc file is not written.
 
 * `dir: -c | --directory [dir]`: Working directory used for `tmux` process.
 * `pattern: -p | --pattern [ptn ...]`: Filter files by regexp pattern(s).
-* `all: -a`: Match all configuration files.
+* `all: -a, --all`: Match all configuration files.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
 
@@ -123,6 +123,39 @@ using `set-environment -g`:
 * `mxl_cwd`: The working directory for the `tmux` process.
 * `mxl_cwdname`: The name of the working directory.
 
+#### Each
+
+The `--each` switch changes the behaviour of execution to take the value of 
+`-c | --directory` (which will be the working directory if not specified) 
+find all direct child directories and iterate the result executing 
+all matched configuration files for each directory found.
+
+This feature is designed for a project comprising of modules:
+
+```
+project
+├── client
+├── db
+├── server
+└── tmux.conf
+```
+
+You can execute the commands in `tmux.conf` for each module with:
+
+```
+cd project && mxl --each
+```
+
+Typically used to open a window and pane set for all modules of a project from 
+a single configuration file.
+
+When the `--each` flag is used the behaviour of `--pattern` changes to 
+match the child working directory path rather than the configuration file 
+path(s) so that it may be used as a filter.
+
+Combining the `--each` and `--pattern` options enables `--all` for ambiguous 
+pattern matching.
+
 #### Examples
 
 Source `tmux.conf` in the current working directory:
@@ -178,6 +211,16 @@ them as aliases unless the `--noop` option is specified.
 #### See
 
 mxl-alias(1)
+
+## Patterns
+
+When the `-p | --pattern` option is specified it is applied to the results of 
+searching for configuration files except in the case of `-e | --each` when the 
+behaviour changes to match on the current working directory context, see 
+mxl-run(1) for more information on `--each`.
+
+Patterns are compiled to regular expressions and are matched against the full 
+file system path.
 
 ## See
 

@@ -26,6 +26,7 @@ Table of Contents
     * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
     * [git-status.tmux.conf](#git-statustmuxconf)
     * [home.tmux.conf](#hometmuxconf)
+    * [npm-debug.log](#npm-debuglog)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -56,15 +57,15 @@ npm i -g mxl
 ## Usage
 
 ```
-Usage: mxl <command> [-anrh] [--color|--no-color] [-a] [-n|--noop]
-           [-r|--recursive] [-h|--help] [--version]
+Usage: mxl <command> [-anrh] [--color|--no-color] [-a|--all]
+           [-n|--noop] [-r|--recursive] [-h|--help] [--version]
            [-c|--directory=<dir>] [-p|--pattern=<ptn...>] <args>
 
 Tmux launcher.
 
 Commands:
  list, ls                   List configuration files.
- run, r                     Run tmux commands (source-file).
+ run                        Run tmux commands (source-file).
  alias, as                  Manage file aliases.
  prune, pr                  Remove stale aliases.
  index, in                  Generate alias index.
@@ -73,11 +74,11 @@ Commands:
 Options:
  -c, --directory=[dir]      Working directory used for tmux process.
  -p, --pattern=[ptn ...]    Filter files by regexp pattern(s).
+ -a, --all                  Match all configuration files.
  -n, --noop                 Print matched files, do not call source-file.
  -r, --recursive            Match files recursively.
- -h, --help                 Display this help and exit.
+ -h, --help                 Print help and exit.
      --[no]-color           Enable or disable terminal colors.
-     -a                     Match all configuration files.
      --version              Print version and exit.
 
 Report bugs to https://github.com/freeformsystems/mxl/issues.
@@ -235,8 +236,8 @@ mxl index /usr/local/project
 
 ```
 # vim: set ft=conf:
-if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
-new-window -n ${mxl_cwdname}
+if-shell 'tmux find-window -N ${mxl_key}' 'unlink-window -k -t ${mxl_key}' 'select-pane'
+new-window -n ${mxl_key}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
@@ -249,8 +250,8 @@ select-pane -L
 
 ```
 # vim: set ft=conf:
-if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
-new-window -n ${mxl_cwdname}
+if-shell 'tmux find-window -N ${mxl_key}' 'unlink-window -k -t ${mxl_key}' 'select-pane'
+new-window -n ${mxl_key}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
@@ -272,6 +273,32 @@ send-keys -t: ':player-play' C-m
 # that do not create sessions are invoked in the context 
 # of the launch session
 switch-client -t launch
+```
+
+### npm-debug.log
+
+```
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/muji/.nvm/v0.10.29/bin/node',
+1 verbose cli   '/home/muji/.nvm/v0.10.29/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'cover' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose node symlink /home/muji/.nvm/v0.10.29/bin/node
+5 error Error: ENOENT, open '/home/muji/git/mxl/conf/package.json'
+6 error If you need help, you may report this *entire* log,
+6 error including the npm and node versions, at:
+6 error     <http://github.com/npm/npm/issues>
+7 error System Linux 3.16.0-30-generic
+8 error command "/home/muji/.nvm/v0.10.29/bin/node" "/home/muji/.nvm/v0.10.29/bin/npm" "run" "cover"
+9 error cwd /home/muji/git/mxl/conf
+10 error node -v v0.10.29
+11 error npm -v 1.4.14
+12 error path /home/muji/git/mxl/conf/package.json
+13 error code ENOENT
+14 error errno 34
+15 verbose exit [ 34, true ]
 ```
 
 ## Developer
