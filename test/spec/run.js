@@ -86,7 +86,7 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should select profile (@conf-alt)', function(done) {
+  it('should select alias (@conf-alt)', function(done) {
     var args = ['--no-color', '@conf-alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
@@ -174,8 +174,8 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should run empty file by profile (no command)', function(done) {
-    var args = ['--no-color', ':empty'];
+  it('should run empty file by pattern (no command)', function(done) {
+    var args = ['--no-color', '-p', 'empty'];
     var def = program(require(config.pkg), config.name)
     // NOTE: different event!
     def.program.on('run:complete', function(req) {

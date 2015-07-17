@@ -82,59 +82,59 @@ describe('mxl:', function() {
     }
   );
 
-  it('should error on profile match', function(done) {
-    var args = ['--no-color', ':missing'];
+  it('should error on pattern match', function(done) {
+    var args = ['--no-color', '-p', 'missing'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/profile/i);
+      expect(fn).throws(/pattern/i);
       expect(fn).throws(/does not match/i);
       done();
     })
     def.parse(args);
   });
 
-  it('should error on profile match w/ run command', function(done) {
-    var args = ['run', '--no-color', ':missing'];
+  it('should error on pattern match w/ run command', function(done) {
+    var args = ['run', '--no-color', '-p', 'missing'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/profile/i);
+      expect(fn).throws(/pattern/i);
       expect(fn).throws(/does not match/i);
       done();
     })
     def.parse(args);
   });
 
-  it('should error on ambiguous profile match', function(done) {
-    var args = ['--no-color', ':(empty|alt)'];
+  it('should error on ambiguous pattern match', function(done) {
+    var args = ['--no-color', '-p', '(empty|alt)'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/ambiguous profile/i);
+      expect(fn).throws(/ambiguous pattern/i);
       done();
     })
     def.parse(args);
   });
 
-  it('should error on ambiguous profile match w/ run command', function(done) {
-    var args = ['run', '--no-color', ':(empty|alt)'];
+  it('should error on ambiguous pattern match w/ run command', function(done) {
+    var args = ['run', '--no-color', '-p', '(empty|alt)'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/ambiguous profile/i);
+      expect(fn).throws(/ambiguous pattern/i);
       done();
     })
     def.parse(args);
@@ -183,8 +183,8 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should error on bad profile regexp', function(done) {
-    var args = ['run', '--no-color', ':+'];
+  it('should error on bad pattern regexp', function(done) {
+    var args = ['run', '--no-color', '-p', '+'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
