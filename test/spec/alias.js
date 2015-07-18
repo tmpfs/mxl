@@ -11,7 +11,7 @@ describe('mxl:', function() {
     var args = ['alias', '--no-color', '@foo=bar'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
+      expect(req.rc.alias.foo.file).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);
@@ -30,7 +30,7 @@ describe('mxl:', function() {
     var args = ['alias', '--no-color', '--noop', '@foo=baz'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.foo).to.eql(path.join(process.cwd(), 'baz'));
+      expect(req.rc.alias.foo.file).to.eql(path.join(process.cwd(), 'baz'));
       done();
     })
     def.parse(args);
@@ -60,12 +60,12 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       //console.dir(req.rc.alias);
-      expect(req.rc.alias.foo).to.eql(
+      expect(req.rc.alias.foo.file).to.eql(
         path.join(process.cwd(), 'alt.tmux.conf'));
       args = ['run', '--noop', '@foo'];
       def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
-        expect(req.rc.alias.foo).to.eql(
+        expect(req.rc.alias.foo.file).to.eql(
           path.join(process.cwd(), 'alt.tmux.conf'));
         done();
       });
@@ -85,7 +85,7 @@ describe('mxl:', function() {
       alias.write(file);
       expect(fs.existsSync(file)).to.eql(true);
       var rc = alias.read(file);
-      expect(rc.alias.foo).to.eql(path.join(process.cwd(), 'bar'));
+      expect(rc.alias.foo.file).to.eql(path.join(process.cwd(), 'bar'));
       done();
     })
     def.parse(args);

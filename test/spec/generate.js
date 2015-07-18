@@ -10,12 +10,12 @@ describe('mxl:', function() {
 
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.index).to.be.a('string');
-      expect(req.rc.alias.conf).to.be.a('string');
-      expect(req.rc.alias['conf/alt']).to.be.a('string');
-      expect(req.rc.alias['conf/empty']).to.be.a('string');
-      expect(req.rc.alias['conf/mock']).to.be.a('string');
-      expect(req.rc.alias['fixtures/error']).to.be.a('string');
+      expect(req.rc.alias.index.file).to.be.a('string');
+      expect(req.rc.alias.conf.file).to.be.a('string');
+      expect(req.rc.alias['conf/alt'].file).to.be.a('string');
+      expect(req.rc.alias['conf/empty'].file).to.be.a('string');
+      expect(req.rc.alias['conf/mock'].file).to.be.a('string');
+      expect(req.rc.alias['fixtures/error'].file).to.be.a('string');
       done();
     })
     def.parse(args);
@@ -28,12 +28,12 @@ describe('mxl:', function() {
 
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.rc.alias.index).to.be.a('string');
-      expect(req.rc.alias.conf).to.be.a('string');
-      expect(req.rc.alias['conf/alt']).to.be.a('string');
-      expect(req.rc.alias['conf/empty']).to.be.a('string');
-      expect(req.rc.alias['conf/mock']).to.be.a('string');
-      expect(req.rc.alias['fixtures/error']).to.be.a('string');
+      expect(req.rc.alias.index.file).to.be.a('string');
+      expect(req.rc.alias.conf.file).to.be.a('string');
+      expect(req.rc.alias['conf/alt'].file).to.be.a('string');
+      expect(req.rc.alias['conf/empty'].file).to.be.a('string');
+      expect(req.rc.alias['conf/mock'].file).to.be.a('string');
+      expect(req.rc.alias['fixtures/error'].file).to.be.a('string');
       done();
     })
     def.parse(args);
