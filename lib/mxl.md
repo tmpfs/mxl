@@ -47,7 +47,8 @@ The rules for alias names created automatically are:
 
 * When the file is `tmux.conf` use the name of the parent directory.
 * When the file has a `.tmux.conf` extension concatenate the parent directory 
-name with the name of the file after the extension has been removed.
+name with the name of the file after the extension has been removed. The 
+delimiter for concatenation is `/`.
 
 You may disable automatically adding aliases by modifying the `autoalias` 
 rc option.

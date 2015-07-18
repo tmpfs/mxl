@@ -25,9 +25,9 @@ describe('mxl:', function() {
       expect(req.launch.list.length).to.be.gt(4);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
-      expect(path.basename(req.launch.map['conf-alt']))
+      expect(path.basename(req.launch.map['conf/alt']))
         .to.eql('alt.tmux.conf');
-      expect(path.basename(req.launch.map['deep-mock']))
+      expect(path.basename(req.launch.map['deep/mock']))
         .to.eql('mock.tmux.conf');
       done();
     })
@@ -41,9 +41,9 @@ describe('mxl:', function() {
       expect(req.launch.list.length).to.be.gt(4);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
-      expect(path.basename(req.launch.map['conf-alt']))
+      expect(path.basename(req.launch.map['conf/alt']))
         .to.eql('alt.tmux.conf');
-      expect(path.basename(req.launch.map['deep-mock']))
+      expect(path.basename(req.launch.map['deep/mock']))
         .to.eql('mock.tmux.conf');
       done();
     })
@@ -67,31 +67,31 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf-alt']))
+      expect(path.basename(req.launch.map['conf/alt']))
         .to.eql('alt.tmux.conf');
       done();
     })
     def.parse(args);
   });
 
-  it('should select alias (@conf-alt)', function(done) {
-    var args = ['--no-color', '@conf-alt'];
+  it('should select alias (@conf/alt)', function(done) {
+    var args = ['--no-color', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf-alt']))
+      expect(path.basename(req.launch.map['conf/alt']))
         .to.eql('alt.tmux.conf');
       done();
     })
     def.parse(args);
   });
 
-  it('should select alias (@conf-alt)', function(done) {
-    var args = ['--no-color', '@conf-alt'];
+  it('should select alias (@conf/alt)', function(done) {
+    var args = ['--no-color', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf-alt']))
+      expect(path.basename(req.launch.map['conf/alt']))
         .to.eql('alt.tmux.conf');
       done();
     })
@@ -142,8 +142,8 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
-      expect(req.launch.map['conf-mock']).to.be.a('string');
-      expect(req.launch.map['conf-mock']).to.be.a('string');
+      expect(req.launch.map['conf/alt']).to.be.a('string');
+      expect(req.launch.map['conf/mock']).to.be.a('string');
       done();
     })
     def.parse(args);
@@ -154,8 +154,8 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
-      expect(req.launch.map['conf-mock']).to.be.a('string');
-      expect(req.launch.map['conf-mock']).to.be.a('string');
+      expect(req.launch.map['conf/alt']).to.be.a('string');
+      expect(req.launch.map['conf/mock']).to.be.a('string');
       done();
     })
     def.parse(args);
@@ -180,7 +180,7 @@ describe('mxl:', function() {
     // NOTE: different event!
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf-empty']))
+      expect(path.basename(req.launch.map['conf/empty']))
         .to.eql('empty.tmux.conf');
       done();
     })

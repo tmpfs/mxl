@@ -26,7 +26,7 @@ Table of Contents
     * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
     * [git-status.tmux.conf](#git-statustmuxconf)
     * [home.tmux.conf](#hometmuxconf)
-    * [npm-debug.log](#npm-debuglog)
+    * [session.tmux.conf](#sessiontmuxconf)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -91,8 +91,8 @@ additional profiles by using the `.tmux.conf` suffix.
 
 ```conf
 # vim: set ft=conf:
-if-shell 'tmux find-window -N ${mxl_cwdname}' 'unlink-window -k -t ${mxl_cwdname}' 'select-pane'
-new-window -k -n ${mxl_cwdname}
+if-shell "tmux find-window -N ${mxl_key} && test #{session_windows} -gt 1" "unlink-window -k -t ${mxl_key}" "select-pane"
+new-window -k -n ${mxl_key}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
@@ -275,30 +275,12 @@ send-keys -t: ':player-play' C-m
 switch-client -t launch
 ```
 
-### npm-debug.log
+### session.tmux.conf
 
 ```
-0 info it worked if it ends with ok
-1 verbose cli [ '/home/muji/.nvm/v0.10.29/bin/node',
-1 verbose cli   '/home/muji/.nvm/v0.10.29/bin/npm',
-1 verbose cli   'run',
-1 verbose cli   'cover' ]
-2 info using npm@1.4.14
-3 info using node@v0.10.29
-4 verbose node symlink /home/muji/.nvm/v0.10.29/bin/node
-5 error Error: ENOENT, open '/home/muji/git/mxl/conf/package.json'
-6 error If you need help, you may report this *entire* log,
-6 error including the npm and node versions, at:
-6 error     <http://github.com/npm/npm/issues>
-7 error System Linux 3.16.0-30-generic
-8 error command "/home/muji/.nvm/v0.10.29/bin/node" "/home/muji/.nvm/v0.10.29/bin/npm" "run" "cover"
-9 error cwd /home/muji/git/mxl/conf
-10 error node -v v0.10.29
-11 error npm -v 1.4.14
-12 error path /home/muji/git/mxl/conf/package.json
-13 error code ENOENT
-14 error errno 34
-15 verbose exit [ 34, true ]
+# vim: set ft=conf:
+if-shell 'tmux has-session -t ${mxl_key}' 'kill-session -t ${mxl_key}' 'select-pane'
+new-session -A -d -s ${mxl_key} -n ${mxl_key}
 ```
 
 ## Developer
