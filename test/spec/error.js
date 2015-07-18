@@ -112,34 +112,6 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should error on ambiguous pattern match', function(done) {
-    var args = ['--no-color', '-p', '(empty|alt)'];
-    var def = program(require(config.pkg), config.name)
-    def.program.on('error', function(err) {
-      function fn() {
-        throw err;
-      }
-      expect(fn).throws(Error);
-      expect(fn).throws(/ambiguous pattern/i);
-      done();
-    })
-    def.parse(args);
-  });
-
-  it('should error on ambiguous pattern match w/ run command', function(done) {
-    var args = ['run', '--no-color', '-p', '(empty|alt)'];
-    var def = program(require(config.pkg), config.name)
-    def.program.on('error', function(err) {
-      function fn() {
-        throw err;
-      }
-      expect(fn).throws(Error);
-      expect(fn).throws(/ambiguous pattern/i);
-      done();
-    })
-    def.parse(args);
-  });
-
   it('should error on no files found', function(done) {
     var args = ['--no-color', '../empty'];
     var def = program(require(config.pkg), config.name)
@@ -153,7 +125,6 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
-
 
   it('should error on no files found w/ run command', function(done) {
     var args = ['run', '--no-color', '../empty'];
