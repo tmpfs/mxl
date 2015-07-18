@@ -5,44 +5,14 @@ var fs = require('fs')
   , path = require('path')
   , util = require('util')
   , async = require('async')
-  , files = fs.readdirSync('conf');
+  , files = fs.readdirSync('conf/tpl');
 
 async.mapSeries(files, function(nm, cb) {
   console.log('### %s\n', nm);
   console.log(
-  '```\n' + fs.readFileSync(path.join(__dirname, '..', 'conf', nm)) + '```\n');
+  '```\n' + fs.readFileSync(
+    path.join(__dirname, '..', 'conf', 'tpl', nm)) + '```\n');
   cb();
-  //var 
-    //, cmd = item.cmd
-    //, args
-    //, opts = {stdio: 'inherit'};
-
-  //console.log('%s\n', commands[nm].description);
-  //console.log('```\n%s\n```\n', cmd);
-
-  //console.log('**Source**\n');
-  //console.log('```javascript\n%s```\n', fs.readFileSync('ebin/' + nm));
-
-  //console.log('**Result**\n');
-
-  //if(item.spawn) {
-    //console.log('```');
-    //cmd = cmd.split(/\s+/);
-    //args = cmd.slice(1);
-    //cmd = cmd[0];
-    //var ps = spawn(cmd, args, opts);
-    //ps.once('close', function() {
-      //process.stdout.write('```\n\n');
-      //cb();
-    //});
-  //}else{
-    //exec(cmd, function(err, stdout, stderr) {
-      //if(stdout) {
-        //console.log('```\n%s```\n', stdout);
-      //}
-      //cb(err, cmd);
-    //})
-  //}
 }, function(err, results) {
   if(err) {
     console.error(err);

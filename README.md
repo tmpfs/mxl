@@ -26,7 +26,6 @@ Table of Contents
     * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
     * [git-status.tmux.conf](#git-statustmuxconf)
     * [home.tmux.conf](#hometmuxconf)
-    * [session.tmux.conf](#sessiontmuxconf)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -273,14 +272,6 @@ send-keys -t: ':player-play' C-m
 # that do not create sessions are invoked in the context 
 # of the launch session
 switch-client -t launch
-```
-
-### session.tmux.conf
-
-```
-# vim: set ft=conf:
-if-shell 'tmux has-session -t ${mxl_key}' 'kill-session -t ${mxl_key}' 'select-pane'
-new-session -A -d -s ${mxl_key} -n ${mxl_key}
 ```
 
 ## Developer
