@@ -206,7 +206,7 @@ describe('mxl:', function() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/bad filename/i);
+      expect(fn).throws(/bad file name/i);
       expect(fn).throws(/should end with/i);
       done();
     })
