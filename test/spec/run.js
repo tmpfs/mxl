@@ -210,4 +210,16 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+
+  it('should run using pattern with each', function(done) {
+    var args = [
+      'run', '--no-color', 'project', '-c', 'project', '--each',
+      '-p', 'client', '-p', 'server'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
+  });
+
 });

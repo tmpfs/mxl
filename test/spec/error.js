@@ -201,4 +201,20 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should error using bad pattern with each', function(done) {
+    var args = [
+      'run', '--no-color', 'project', '-c', 'project', '--each',
+      '-p', '+'];
+    var def = program(require(config.pkg), config.name);
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/nothing to repeat/i);
+      done();
+    })
+    def.parse(args);
+  });
+
 });
