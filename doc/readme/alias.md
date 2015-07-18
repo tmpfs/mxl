@@ -5,10 +5,10 @@
 To reference an alias when launching use an `@` prefix, for example:
 
 ```
-mxl @alias-name
+mxl @project
 ```
 
-Will launch the configuration file referenced by the alias `alias-name`.
+Will launch the configuration file referenced by the alias `project`.
 
 ### List Aliases
 
