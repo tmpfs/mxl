@@ -74,30 +74,29 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should select alias (@conf/alt)', function(done) {
+  it('should run alias (@conf/alt)', function(done) {
     var args = ['--no-color', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
-      expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf/alt']))
+      expect(req.launch.alias.length).to.eql(1);
+      expect(path.basename(req.launch.aliases['conf/alt'].file))
         .to.eql('alt.tmux.conf');
       done();
     })
     def.parse(args);
   });
 
-  it('should select alias (@conf/alt)', function(done) {
-    var args = ['--no-color', '@conf/alt'];
+  it('should run alias (@conf/alt) w/ run command', function(done) {
+    var args = ['run', '--no-color', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('run:complete', function(req) {
-      expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(req.launch.map['conf/alt']))
+    def.program.on('complete', function(req) {
+      expect(req.launch.alias.length).to.eql(1);
+      expect(path.basename(req.launch.aliases['conf/alt'].file))
         .to.eql('alt.tmux.conf');
       done();
     })
     def.parse(args);
   });
-
 
   it('should run specific file', function(done) {
     var args = [
