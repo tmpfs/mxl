@@ -198,4 +198,16 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run with --session option (no command)', function(done) {
+    var args = ['--no-color', '--noop', '--session', 'mock'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
 });
