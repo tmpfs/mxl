@@ -35,6 +35,7 @@ List, copy, link, show and edit templates.
 #### Commands
 
 * `list: list, ls`: List template files.
+* `copy: copy, cp`: Copy template files.
 
 ### List
 
