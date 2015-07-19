@@ -22,7 +22,6 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     // NOTE: different event
     def.program.on('run:complete', function(req) {
-      console.dir(req.launch)
       expect(req.launch.list.length).to.be.gt(4);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
@@ -103,7 +102,7 @@ describe('mxl:', function() {
     var args = [
       '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
@@ -165,7 +164,7 @@ describe('mxl:', function() {
     var args = [
       '--no-color', '--noop', '-c', process.cwd()];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
@@ -193,7 +192,8 @@ describe('mxl:', function() {
     // NOTE: different event!
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
-      expect(path.basename(path.dirname(req.launch.list[0]))).to.eql('index');
+      expect(path.basename(
+        path.dirname(req.launch.list[0].file))).to.eql('index');
       done();
     })
     def.parse(args);
@@ -202,7 +202,7 @@ describe('mxl:', function() {
   it('should run with --session option (no command)', function(done) {
     var args = ['--no-color', '--noop', '--session', 'mock'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
