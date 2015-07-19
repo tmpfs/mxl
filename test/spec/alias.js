@@ -37,7 +37,7 @@ describe('mxl:', function() {
   });
 
   it('should get alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo', '@missing'];
+    var args = ['alias', '--no-color', '--noop', '@foo'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();

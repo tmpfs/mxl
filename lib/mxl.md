@@ -43,6 +43,9 @@ List configuration files, preferring an index file `tmux.conf` by default. Use
 the `-a` option to list all configuration files in a given directory and `-r` to
 perform a recursive search.
 
+When the `-a` and `-r` options are combined the search is recursive, `-r` takes 
+precedence.
+
 ### Alias
 
 Manage aliases using an @ notation.
