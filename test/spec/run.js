@@ -8,7 +8,7 @@ describe('mxl:', function() {
   it('should run index file (no command)', function(done) {
     var args = ['--no-color', '--noop'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
@@ -22,6 +22,7 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     // NOTE: different event
     def.program.on('run:complete', function(req) {
+      console.dir(req.launch)
       expect(req.launch.list.length).to.be.gt(4);
       expect(path.basename(req.launch.map.conf))
         .to.eql('tmux.conf');
