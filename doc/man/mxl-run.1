@@ -1,12 +1,12 @@
-.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.13" "User Commands"
+.TH "MXL-RUN" "1" "July 2015" "mxl-run 0.5.18" "User Commands"
 .SH "NAME"
-mxl-run -- Run tmux commands (source-file).
+mxl-run -- Source tmux configuration files.
 .SH "USAGE"
 
 .SP
 mxl run [\-e] [\-e|\-\-each] [\-s|\-\-session=<name>] <args> <file> <dir>
 .br
-    <:pattern> <@alias>
+    <@alias>
 .SH "DESCRIPTION"
 .PP
 Invokes \fBtmux source\-file\fR with the configuration files found by evaluating 
@@ -61,16 +61,14 @@ When the \fB\-\-each\fR flag is used the behaviour of \fB\-\-pattern\fR changes 
 match the child working directory path rather than the configuration file 
 .br
 path(s) so that it may be used as a filter.
-.PP
-Combining the \fB\-\-each\fR and \fB\-\-pattern\fR options enables \fB\-\-all\fR for ambiguous 
-.br
-pattern matching.
 .SH "ENVIRONMENT"
 .PP
 Before calls to \fBsource\-file\fR the following environment variables are set 
 .br
 using \fBset\-environment \-g\fR:
 .BL
+.IP "\[ci]" 4
+\fBmxl_key\fR: An identifier for a session or window.
 .IP "\[ci]" 4
 \fBmxl_file\fR: The path to the configuration file.
 .IP "\[ci]" 4
@@ -96,15 +94,11 @@ if present):
 
   mxl \-a
 .PP
-Use a pattern match on the filename to filter results returned with \fB\-a\fR using 
+Use a pattern match on the file path to filter results returned with \fB\-a\fR using 
 .br
 the \fB\-p\fR option:
 
-  mxl \-a \-p '^test'
-.PP
-If a pattern matches multiple files and the \fB\-a\fR option is not given an 
-.br
-ambiguous match error is returned.
+  mxl \-a \-p 'test'
 .PP
 Source a file by alias reference:
 

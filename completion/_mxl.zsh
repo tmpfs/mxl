@@ -19,7 +19,7 @@
 local -a commands
 commands=(
   'ls:List configuration files'
-  'run:Run tmux commands (source-file)'
+  'run:Source tmux configuration files'
   'alias:Manage file aliases'
   'prune:Remove stale aliases'
   'index:Generate alias index'

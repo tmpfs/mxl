@@ -14,7 +14,7 @@ of operations on aliases the rc file is not written.
 ## Commands
 
 * `list: list, ls`: List configuration files.
-* `run: run <file> <dir> <:pattern> <@alias>`: Run tmux commands (source-file).
+* `run: run <file> <dir> <@alias>`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index, in <dir...>`: Generate alias index.
@@ -128,6 +128,7 @@ See mxl-alias(1) for more information on aliases.
 Before calls to `source-file` the following environment variables are set 
 using `set-environment -g`:
 
+* `mxl_key`: An identifier for a session or window.
 * `mxl_file`: The path to the configuration file.
 * `mxl_filename`: The name of the configuration file.
 * `mxl_cwd`: The working directory for the `tmux` process.
@@ -163,9 +164,6 @@ When the `--each` flag is used the behaviour of `--pattern` changes to
 match the child working directory path rather than the configuration file 
 path(s) so that it may be used as a filter.
 
-Combining the `--each` and `--pattern` options enables `--all` for ambiguous 
-pattern matching.
-
 #### Examples
 
 Source `tmux.conf` in the current working directory:
@@ -187,15 +185,12 @@ if present):
 $0 -a
 ```
 
-Use a pattern match on the filename to filter results returned with `-a` using 
+Use a pattern match on the file path to filter results returned with `-a` using 
 the `-p` option:
 
 ```
-$0 -a -p '^test'
+$0 -a -p 'test'
 ```
-
-If a pattern matches multiple files and the `-a` option is not given an 
-ambiguous match error is returned.
 
 Source a file by alias reference:
 
@@ -231,6 +226,8 @@ mxl-run(1) for more information on `--each`.
 
 Patterns are compiled to regular expressions and are matched against the full 
 file system path.
+
+If any of the patterns match the file is included (logical OR).
 
 ## See
 

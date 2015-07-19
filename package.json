@@ -32,7 +32,7 @@
     "cli-property": "0.0.8",
     "cli-rc": "~1.0.11",
     "cli-util": "~1.1.27",
-    "fs-find": "~0.3.0",
+    "fs-find": "~0.3.1",
     "ttycolor": "~0.8.14"
   },
   "devDependencies": {

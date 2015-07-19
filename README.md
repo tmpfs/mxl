@@ -61,7 +61,7 @@ Tmux launcher.
 
 Commands:
  list, ls                   List configuration files.
- run                        Run tmux commands (source-file).
+ run                        Source tmux configuration files.
  alias, as                  Manage file aliases.
  prune, pr                  Remove stale aliases.
  index, in                  Generate alias index.
