@@ -23,9 +23,6 @@ Table of Contents
     * [Prune Aliases](#prune-aliases)
     * [Index Aliases](#index-aliases)
   * [Configuration Examples](#configuration-examples)
-    * [git-status-npm-test.tmux.conf](#git-status-npm-testtmuxconf)
-    * [git-status.tmux.conf](#git-statustmuxconf)
-    * [home.tmux.conf](#hometmuxconf)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -68,6 +65,7 @@ Commands:
  alias, as                  Manage file aliases.
  prune, pr                  Remove stale aliases.
  index, in                  Generate alias index.
+ template, tpl              Manage file templates.
  help                       Show help for commands.
 
 Options:
@@ -231,48 +229,7 @@ mxl index /usr/local/project
 
 ## Configuration Examples
 
-### git-status-npm-test.tmux.conf
-
-```
-# vim: set ft=conf:
-if-shell 'tmux find-window -N ${mxl_key}' 'unlink-window -k -t ${mxl_key}' 'select-pane'
-new-window -n ${mxl_key}
-send-keys -t: 'vim .' C-m
-split-window -h -t:
-send-keys -t: 'git status' C-m
-split-window -v -t:
-send-keys -t: 'npm test' C-m
-select-pane -L
-```
-
-### git-status.tmux.conf
-
-```
-# vim: set ft=conf:
-if-shell 'tmux find-window -N ${mxl_key}' 'unlink-window -k -t ${mxl_key}' 'select-pane'
-new-window -n ${mxl_key}
-send-keys -t: 'vim .' C-m
-split-window -h -t:
-send-keys -t: 'git status' C-m
-select-pane -L
-```
-
-### home.tmux.conf
-
-```
-# vim: set ft=conf:
-if-shell 'tmux has-session -t launch' 'select-pane' 'rename-session launch'
-rename-window -t:1 '~'
-if-shell 'tmux has-session -t cmus' 'kill-session -t cmus' 'select-pane'
-new-session -A -d -s cmus -n cmus 'cmus'
-send-keys -t: '4' C-m
-send-keys -t: ':tqueue 64' C-m
-send-keys -t: ':player-play' C-m
-# required so that subsequent calls to source-file
-# that do not create sessions are invoked in the context 
-# of the launch session
-switch-client -t launch
-```
+See the [templates](https://github.com/freeformsystems/mxl/blob/master/conf/tpl) for example `tmux` configuration files.
 
 ## Developer
 

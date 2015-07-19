@@ -85,12 +85,9 @@
       {
         "inc": [
           "examples.md",
-          "alias.md"
+          "alias.md",
+          "configuration-examples.md"
         ]
-      },
-      {
-        "title": "Configuration Examples",
-        "bin": "sbin/example"
       },
       {
         "inc": [
