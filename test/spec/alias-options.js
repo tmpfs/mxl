@@ -75,7 +75,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --session option (@opt)', function(done) {
-    var args = ['run', '--no-color', '@opt'];
+    var args = ['run', '--no-color', '@opt', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');
