@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "directories": {
@@ -47,7 +47,7 @@
     "clean-man": "rm -fv ./doc/man/*.1",
     "manual": "npm run clean-man && NODE_ENV=devel manpage --output ./doc/man ./bin/mxl",
     "readme": "mdp --force -v",
-    "alias": "./sbin alias",
+    "alias": "./sbin/alias",
     "prepublish": "npm run alias",
     "pretest": "npm run posttest && mkdir target",
     "posttest": "rm -rf target",
