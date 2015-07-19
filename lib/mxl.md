@@ -28,6 +28,14 @@ of operations on aliases the rc file is not written.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
 
+### Template
+
+List, copy, link, show and edit templates.
+
+#### Commands
+
+* `list: list, ls`: List template files.
+
 ### List
 
 List configuration files, preferring an index file `tmux.conf` by default. Use 
