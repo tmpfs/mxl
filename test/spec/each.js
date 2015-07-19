@@ -11,9 +11,12 @@ describe('mxl:', function() {
       var def = program(require(config.pkg), config.name)
       def.program.on('run:complete', function(req) {
         var files = req.launch.find.files;
-        expect(Boolean(~files.indexOf('project/client'))).to.eql(true);
-        expect(Boolean(~files.indexOf('project/db'))).to.eql(true);
-        expect(Boolean(~files.indexOf('project/server'))).to.eql(true);
+        expect(Boolean(
+          ~files.indexOf(process.cwd() + '/project/client'))).to.eql(true);
+        expect(Boolean(
+          ~files.indexOf(process.cwd() + '/project/db'))).to.eql(true);
+        expect(Boolean(
+          ~files.indexOf(process.cwd() + '/project/server'))).to.eql(true);
         done();
       })
       def.parse(args);
