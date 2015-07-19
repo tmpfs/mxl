@@ -18,6 +18,7 @@ of operations on aliases the rc file is not written.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index, in <dir...>`: Generate alias index.
+* `template: template, tpl`: Manage file templates.
 
 ## Options
 
