@@ -1,6 +1,6 @@
 -u bdd
 --recursive
 --bail
--t 250
+-t 300
 --reporter list 
 -A

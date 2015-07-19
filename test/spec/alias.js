@@ -59,7 +59,6 @@ describe('mxl:', function() {
     var args = ['alias', '--no-color', '@foo=./alt.tmux.conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      //console.dir(req.rc.alias);
       expect(req.rc.alias.foo.file).to.eql(
         path.join(process.cwd(), 'alt.tmux.conf'));
       args = ['run', '--noop', '@foo'];

@@ -28,8 +28,6 @@ tpl.find(function onFind(err, results) {
     }
   })
 
-  //console.dir(rc)
-
   try {
     fs.writeFileSync(rcfile, JSON.stringify(rc, undefined, 2));
   }catch(err) {
