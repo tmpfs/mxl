@@ -1,5 +1,25 @@
 {
   "autoalias": true,
   "timeout": 25,
-  "alias": {}
+  "template": {
+    "default": "vim"
+  },
+  "alias": {
+    "home": {
+      "file": "/home/muji/git/mxl/conf/tpl/home/tmux.conf",
+      "key": "home"
+    },
+    "vim/git-status-npm-test": {
+      "file": "/home/muji/git/mxl/conf/tpl/vim/git-status-npm-test.tmux.conf",
+      "key": "vim/git-status-npm-test"
+    },
+    "vim/git-status": {
+      "file": "/home/muji/git/mxl/conf/tpl/vim/git-status.tmux.conf",
+      "key": "vim/git-status"
+    },
+    "vim": {
+      "file": "/home/muji/git/mxl/conf/tpl/vim/tmux.conf",
+      "key": "vim"
+    }
+  }
 }

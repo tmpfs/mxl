@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var tpl = require('../lib/tpl')
+  , fs = require('fs')
+  , path = require('path')
+  , utils = require('../lib/util')
+  , key = utils.key
+  , rcfile = path.normalize(path.join(__dirname, '..', '.mxlrc.json'))
+  , rc = require(rcfile);
+
+function error(err) {
+  console.error(err.stack);
+  process.exit(1)
+}
+
+tpl.find(function onFind(err, results) {
+  if(err) {
+    return error(err);
+  }
+  var id;
+  rc.alias = rc.alias || {};
+
+  results.forEach(function(info) {
+    id = key(info.file);
+    rc.alias[id] = {
+      file: info.file, 
+      key: id 
+    }
+  })
+
+  //console.dir(rc)
+
+  try {
+    fs.writeFileSync(rcfile, JSON.stringify(rc, undefined, 2));
+  }catch(err) {
+    return error(err);
+  }
+
+  console.log('wrote %d aliases to %s', results.length, rcfile);
+});

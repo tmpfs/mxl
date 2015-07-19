@@ -47,6 +47,8 @@
     "clean-man": "rm -fv ./doc/man/*.1",
     "manual": "npm run clean-man && NODE_ENV=devel manpage --output ./doc/man ./bin/mxl",
     "readme": "mdp --force -v",
+    "alias": "./sbin alias",
+    "prepublish": "npm run alias",
     "pretest": "npm run posttest && mkdir target",
     "posttest": "rm -rf target",
     "test": "NODE_ENV=test mocha test/global.js test/spec",
