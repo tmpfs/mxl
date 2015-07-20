@@ -1,6 +1,7 @@
 {
   "autoalias": true,
   "timeout": 25,
+  "ignores": "^(\\.git|node_modules)$",
   "template": {
     "default": "vim"
   },

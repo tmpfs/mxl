@@ -8,5 +8,15 @@
     "key": "EALIAS_NOT_FOUND",
     "description": "Alias reference not found",
     "message": "alias not found %s%s"
+  },
+  {
+    "key": "ENAME_CONFLICT",
+    "description": "Alias install file path conflict",
+    "message": "destination file conflict on %s, be more specific @alias=file.tmux.conf"
+  },
+  {
+    "key": "EFILE_EXISTS",
+    "description": "File exists and cannot be overwritten",
+    "message": "file %s exists, use -f to overwrite"
   }
 ]

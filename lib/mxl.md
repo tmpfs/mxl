@@ -28,6 +28,12 @@ of operations on aliases the rc file is not written.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
 
+### Install
+
+#### Options
+
+* `force: -f | --force`: Force overwrite existing files.
+
 ### List
 
 List configuration files, preferring an index file `tmux.conf` by default. Use 
