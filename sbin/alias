@@ -4,16 +4,30 @@ var tpl = require('../lib/tpl')
   , fs = require('fs')
   , path = require('path')
   , utils = require('../lib/util')
+  , file = utils.file
+  , folder = utils.folder
+  , find = require('fs-find')
+  , base = path.normalize(path.join(__dirname, '..', 'conf', 'tpl'))
   , key = utils.key
   , rcfile = path.normalize(path.join(__dirname, '..', '.mxlrc.json'))
   , rc = require(rcfile);
+
+function finder(next) {
+  var opts = {file: file, folder: folder};
+  find(base, opts, function onFind(err, results) {
+    if(err) {
+      return next(err) ;
+    } 
+    next(null, results);
+  });
+}
 
 function error(err) {
   console.error(err.stack);
   process.exit(1)
 }
 
-tpl.find(function onFind(err, results) {
+finder(function onFind(err, results) {
   if(err) {
     return error(err);
   }
