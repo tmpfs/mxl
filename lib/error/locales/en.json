@@ -10,6 +10,11 @@
     "message": "alias not found %s%s"
   },
   {
+    "key": "EALIAS_SOURCE",
+    "description": "Alias file does not exist",
+    "message": "alias %s has stale file %s, run %s"
+  },
+  {
     "key": "ENAME_CONFLICT",
     "description": "Alias install file path conflict",
     "message": "destination file conflict on %s, be more specific @alias=file.tmux.conf"
