@@ -37,6 +37,44 @@ and optionally set the filename for each destination file.
 
 * `force: -f | --force`: Force overwrite existing files.
 
+#### FILES
+
+To reference the alias file and use the basename of the alias file for the 
+destination just specify the alias: `@project`.
+
+To explicitly set the destination file name assign to the alias:
+
+```
+@project=profile
+```
+
+Uses the file name `profile.tmux.conf` - the extension is added automatically.
+
+Files are copied to all of the directories referenced by the `-c` options or 
+the current working directory if none are specified.
+
+Destination files may overlap, for example, if both aliases share the same file 
+name:
+
+```
+@git @vim
+```
+
+Would result in an error as the destination file names conflict. To resolve this 
+use explicit file names:
+
+```
+@git=git-profile @vim=vim-profile
+```
+
+If an alias reference is stale (the file has been moved or deleted) then an 
+error is reported, you should invoke `prune` and try again checking against the 
+alias list: `$0 alias`.
+
+See `mxl-prune(1)` for more information.
+
+If any of the destination files exist you must specify `--force` to overwrite.
+
 #### Examples
 
 Copy the file referenced by the alias `@home` to the current working 

@@ -1,4 +1,4 @@
-.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.5.32" "User Commands"
+.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.5.33" "User Commands"
 .SH "NAME"
 mxl-install -- Install alias files.
 .SH "USAGE"
@@ -17,6 +17,43 @@ and optionally set the filename for each destination file.
 .IP "\[ci]" 4
 \fB\-f, \-\-force\fR: Force overwrite existing files.
 .EL
+.SH "FILES"
+.PP
+To reference the alias file and use the basename of the alias file for the 
+.br
+destination just specify the alias: \fB@project\fR.
+.PP
+To explicitly set the destination file name assign to the alias:
+
+  @project=profile
+.PP
+Uses the file name \fBprofile.tmux.conf\fR \- the extension is added automatically.
+.PP
+Files are copied to all of the directories referenced by the \fB\-c\fR options or 
+.br
+the current working directory if none are specified.
+.PP
+Destination files may overlap, for example, if both aliases share the same file 
+.br
+name:
+
+  @git @vim
+.PP
+Would result in an error as the destination file names conflict. To resolve this 
+.br
+use explicit file names:
+
+  @git=git\-profile @vim=vim\-profile
+.PP
+If an alias reference is stale (the file has been moved or deleted) then an 
+.br
+error is reported, you should invoke \fBprune\fR and try again checking against the 
+.br
+alias list: \fBmxl alias\fR.
+.PP
+See \fBmxl\-prune(1)\fR for more information.
+.PP
+If any of the destination files exist you must specify \fB\-\-force\fR to overwrite.
 .SH "EXAMPLES"
 .PP
 Copy the file referenced by the alias \fB@home\fR to the current working 
