@@ -13,6 +13,9 @@ describe('mxl:', function() {
       'alias', '--no-color',
       '@opt=./project/tmux.conf', '-e', '-c', './project'];
     var def = program(require(config.pkg), config.name)
+      def.program.on('error', function(e) {
+        console.dir(e)
+      })
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
       expect(req.rc.alias.opt.key).to.eql('opt');
@@ -20,8 +23,7 @@ describe('mxl:', function() {
         path.join(process.cwd(), 'project', constants.FILENAME));
       expect(req.rc.alias.opt.options).to.be.an('object');
       expect(req.rc.alias.opt.options.each).to.eql(true);
-      expect(req.rc.alias.opt.cwd).to.eql(
-        path.join(process.cwd(), 'project'));
+      expect(req.rc.alias.opt.cwd).to.be.an('array');
       done();
     })
     def.parse(args);
@@ -36,8 +38,7 @@ describe('mxl:', function() {
       // TODO: multiple targets
 
       expect(req.rc.alias.opt.options.each).to.eql(true);
-      expect(req.launch.aliases.opt.cwd).to.eql(
-        path.join(process.cwd(), 'project'));
+      expect(req.launch.aliases.opt.cwd).to.be.an('array');
       done();
     })
     def.parse(args);
@@ -48,8 +49,7 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.each).to.eql(true);
-      expect(req.launch.aliases.opt.cwd).to.eql(
-        path.join(process.cwd(), 'project'));
+      expect(req.launch.aliases.opt.cwd).to.be.an('array');
       done();
     })
     def.parse(args);
@@ -67,8 +67,9 @@ describe('mxl:', function() {
         path.join(process.cwd(), 'project', constants.FILENAME));
       expect(req.rc.alias.opt.options).to.be.an('object');
       expect(req.rc.alias.opt.options.session).to.eql('mock');
+      //expect(req.launch.aliases.opt.cwd).to.be.an('array');
       expect(req.rc.alias.opt.cwd).to.eql(
-        path.join(process.cwd(), 'project'));
+        [path.join(process.cwd(), 'project')]);
       done();
     })
     def.parse(args);
@@ -80,7 +81,7 @@ describe('mxl:', function() {
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');
       expect(req.launch.aliases.opt.cwd).to.eql(
-        path.join(process.cwd(), 'project'));
+        [path.join(process.cwd(), 'project')]);
       done();
     })
     def.parse(args);
