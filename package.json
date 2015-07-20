@@ -1,6 +1,6 @@
 {
   "name": "mxl",
-  "version": "0.5.32",
+  "version": "0.5.33",
   "description": "Tmux launcher",
   "author": "muji <noop@xpm.io>",
   "directories": {
