@@ -35,6 +35,8 @@ describe('mxl:', function() {
       // TODO: fix exec key collision when executing same file against
       // TODO: multiple targets
 
+      //console.dir(req.launch)
+
       expect(req.rc.alias.opt.options.each).to.eql(true);
       expect(req.launch.aliases.opt.cwd).to.eql(
         path.join(process.cwd(), 'project'));
