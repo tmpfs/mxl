@@ -1,0 +1,12 @@
+#!/bin/sh
+
+error() {
+  echo $1;
+  exit 1;
+}
+
+#mxl ls . || error;
+#mxl ls . -a || error;
+#mxl ls . -r || error;
+#mxl ls ~/git/rlx -s rlx || error;
+mxl ls -c ~/git/rlx -e || error;
