@@ -3,5 +3,10 @@
     "key": "EHOME",
     "description": "Could not determine home directory",
     "message": "home directory unavailable, please set HOME, HOMEPATH or USERPROFILE"
+  },
+  {
+    "key": "EALIAS_NOT_FOUND",
+    "description": "Alias reference not found",
+    "message": "alias not found %s%s"
   }
 ]
