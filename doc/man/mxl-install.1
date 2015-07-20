@@ -1,6 +1,6 @@
-.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.5.30" "User Commands"
+.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.5.32" "User Commands"
 .SH "NAME"
-mxl-install
+mxl-install -- Install alias files.
 .SH "USAGE"
 
 .SP
@@ -9,12 +9,44 @@ mxl install [\-f] [\-f|\-\-force] <args> <@alias=filename>
 mxl i [\-f] [\-f|\-\-force] <args> <@alias=filename>
 .SH "DESCRIPTION"
 .PP
-Install alias files.
+Copy the files referenced by aliases into one or more target directories 
+.br
+and optionally set the filename for each destination file.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
 \fB\-f, \-\-force\fR: Force overwrite existing files.
 .EL
+.SH "EXAMPLES"
+.PP
+Copy the file referenced by the alias \fB@home\fR to the current working 
+.br
+directory as \fBtmux.conf\fR.
+
+  mxl i @home
+.PP
+Copy the \fB@vim\fR file as \fBeditor.tmux.conf\fR to the current working directory:
+
+  mxl i @vim=editor
+.PP
+Copy into an alternative directory overwriting if the file exists:
+
+  mxl i @vim \-c ~/project \-f
+.PP
+Copy multiple aliases into multiple directories:
+
+  mxl i @vim=vim @git=git \-c ~/dir1 \-c ~/dir2
+.PP
+Will result in the files:
+
+.SP
+  ~/dir1/vim.tmux.conf
+.br
+  ~/dir1/git.tmux.conf
+.br
+  ~/dir2/vim.tmux.conf
+.br
+  ~/dir2/git.tmux.conf
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

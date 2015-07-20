@@ -30,9 +30,48 @@ of operations on aliases the rc file is not written.
 
 ### Install
 
+Copy the files referenced by aliases into one or more target directories 
+and optionally set the filename for each destination file.
+
 #### Options
 
 * `force: -f | --force`: Force overwrite existing files.
+
+#### Examples
+
+Copy the file referenced by the alias `@home` to the current working 
+directory as `tmux.conf`.
+
+```
+mxl i @home
+```
+
+Copy the `@vim` file as `editor.tmux.conf` to the current working directory:
+
+```
+mxl i @vim=editor
+```
+
+Copy into an alternative directory overwriting if the file exists:
+
+```
+mxl i @vim -c ~/project -f
+```
+
+Copy multiple aliases into multiple directories:
+
+```
+mxl i @vim=vim @git=git -c ~/dir1 -c ~/dir2
+```
+
+Will result in the files:
+
+```
+~/dir1/vim.tmux.conf
+~/dir1/git.tmux.conf
+~/dir2/vim.tmux.conf
+~/dir2/git.tmux.conf
+```
 
 ### List
 
