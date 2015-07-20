@@ -23,7 +23,7 @@ commands=(
   'alias:Manage file aliases'
   'prune:Remove stale aliases'
   'index:Generate alias index'
-  'template:Manage file templates'
+  'install:Install alias files'
   'help:Show man pages'
 )
 

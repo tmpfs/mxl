@@ -64,8 +64,8 @@ Commands:
  run                        Source tmux configuration files.
  alias, as                  Manage file aliases.
  prune, pr                  Remove stale aliases.
- index, in                  Generate alias index.
- template, tpl              Manage file templates.
+ index                      Generate alias index.
+ install, i                 Install alias files.
  help                       Show help for commands.
 
 Options:

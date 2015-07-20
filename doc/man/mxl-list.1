@@ -1,4 +1,4 @@
-.TH "MXL-LIST" "1" "July 2015" "mxl-list 0.5.18" "User Commands"
+.TH "MXL-LIST" "1" "July 2015" "mxl-list 0.5.26" "User Commands"
 .SH "NAME"
 mxl-list -- List configuration files.
 .SH "USAGE"
@@ -14,6 +14,10 @@ List configuration files, preferring an index file \fBtmux.conf\fR by default. U
 the \fB\-a\fR option to list all configuration files in a given directory and \fB\-r\fR to
 .br
 perform a recursive search.
+.PP
+When the \fB\-a\fR and \fB\-r\fR options are combined the search is recursive, \fB\-r\fR takes 
+.br
+precedence.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

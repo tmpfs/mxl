@@ -17,8 +17,8 @@ of operations on aliases the rc file is not written.
 * `run: run <file> <dir> <@alias>`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `prune: prune, pr`: Remove stale aliases.
-* `generate: index, in <dir...>`: Generate alias index.
-* `template: template, tpl`: Manage file templates.
+* `generate: index <dir...>`: Generate alias index.
+* `install: install, i`: Install alias files.
 
 ## Options
 
@@ -27,15 +27,6 @@ of operations on aliases the rc file is not written.
 * `all: -a, --all`: Match all configuration files.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
-
-### Template
-
-List, copy, link, show and edit templates.
-
-#### Commands
-
-* `list: list, ls`: List template files.
-* `copy: copy, cp`: Copy template files.
 
 ### List
 
