@@ -19,6 +19,17 @@ To generate code coverage:
 npm run cover
 ```
 
+### Alias
+
+To rebuild the default rc file aliases from the files in [tpl](/conf/tpl) run:
+
+```
+npm run alias
+```
+
+This is automatically called on `postinstall` to ensure shipped aliases are 
+correct.
+
 ### Docs
 
 To build all documentation:

@@ -26,6 +26,7 @@ Table of Contents
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
+    * [Alias](#alias-1)
     * [Docs](#docs)
     * [Manual](#manual)
     * [Readme](#readme)
@@ -55,7 +56,7 @@ npm i -g mxl
 ```
 Usage: mxl <command> [-anrh] [--color|--no-color] [-a|--all]
            [-n|--noop] [-r|--recursive] [-h|--help] [--version]
-           [-c|--directory=<dir>] [-p|--pattern=<ptn...>] <args>
+           [-c|--directory=<dir...>] [-p|--pattern=<ptn...>] <args>
 
 Tmux launcher.
 
@@ -69,7 +70,7 @@ Commands:
  help                       Show help for commands.
 
 Options:
- -c, --directory=[dir]      Working directory used for tmux process.
+ -c, --directory=[dir ...]  Working directory used for tmux process.
  -p, --pattern=[ptn ...]    Filter files by regexp pattern(s).
  -a, --all                  Match all configuration files.
  -n, --noop                 Print matched files, do not call source-file.
@@ -251,6 +252,17 @@ To generate code coverage:
 ```
 npm run cover
 ```
+
+### Alias
+
+To rebuild the default rc file aliases from the files in [tpl](https://github.com/freeformsystems/mxl/blob/master/conf/tpl) run:
+
+```
+npm run alias
+```
+
+This is automatically called on `postinstall` to ensure shipped aliases are 
+correct.
 
 ### Docs
 
