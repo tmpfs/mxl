@@ -80,6 +80,9 @@ describe('mxl:', function() {
       var alias = new Alias(this.configure(), req)
         , file = path.join(
             process.cwd(), '..', '..', '..', 'target', 'mock-mxlrc.json');
+
+      expect(alias.getFile('missing-alias')).to.eql(undefined);
+
       alias.set('foo', 'bar', req);
       alias.write(file);
       expect(fs.existsSync(file)).to.eql(true);

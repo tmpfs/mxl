@@ -199,6 +199,16 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run using index file and alias (mixed)', function(done) {
+    var args = ['run', '--no-color', '../index', '@conf'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(2);
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should run with --session option (no command)', function(done) {
     var args = ['--no-color', '--noop', '--session', 'mock'];
     var def = program(require(config.pkg), config.name)
