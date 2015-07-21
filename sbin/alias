@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-var tpl = require('../lib/tpl')
-  , fs = require('fs')
+var fs = require('fs')
   , path = require('path')
   , utils = require('../lib/util')
   , file = utils.file

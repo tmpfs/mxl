@@ -21,6 +21,10 @@
     "vim": {
       "file": "/home/muji/git/mxl/conf/tpl/vim/tmux.conf",
       "key": "vim"
+    },
+    "git": {
+      "file": "/home/muji/git/mxl/conf/tpl/git/tmux.conf",
+      "key": "git"
     }
   }
 }
