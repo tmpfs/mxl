@@ -26,6 +26,15 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should list global aliases', function(done) {
+    var args = ['alias', '--global', '--no-color'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should update alias', function(done) {
     var args = ['alias', '--no-color', '--noop', '@foo=baz'];
     var def = program(require(config.pkg), config.name)

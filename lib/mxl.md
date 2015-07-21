@@ -133,7 +133,7 @@ file is created if it does not exist.
 
 #### Options
 
-* `global: -g, --global`: Operate on global aliases.
+* `global: --global`: Operate on global aliases.
 
 #### Automatic
 
