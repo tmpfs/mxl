@@ -23,5 +23,10 @@
     "key": "EFILE_EXISTS",
     "description": "File exists and cannot be overwritten",
     "message": "file %s exists, use -f to overwrite"
+  },
+  {
+    "key": "ETOO_FEW_ARGS",
+    "description": "Command expects arguments",
+    "message": "too few arguments: %s"
   }
 ]
