@@ -221,6 +221,29 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should run with --session option w/ command', function(done) {
+    var args = ['run', '--no-color', '--noop', '--session', 'mock'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.launch.list.length).to.eql(1);
+      expect(path.basename(req.launch.map.conf))
+        .to.eql('tmux.conf');
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should run using --each w/ --session', function(done) {
+    var args = [
+      'run', '--no-color', 'project', '-c', 'project', '--each',
+      '--session', 'mock', '--noop'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should run using pattern with each', function(done) {
     var args = [
       'run', '--no-color', 'project', '-c', 'project', '--each',
