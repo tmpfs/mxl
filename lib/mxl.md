@@ -131,6 +131,10 @@ Aliases are automatically added if they do not already exist the first time a
 call to `source-file` succeeds and are re-written to `~/.mxlrc.json`. The rc 
 file is created if it does not exist.
 
+#### Options
+
+* `global: -g, --global`: Operate on global aliases.
+
 #### Automatic
 
 The rules for alias names created automatically are:
