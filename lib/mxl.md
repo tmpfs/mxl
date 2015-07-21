@@ -37,7 +37,7 @@ and optionally set the filename for each destination file.
 
 * `force: -f | --force`: Force overwrite existing files.
 
-#### FILES
+#### Files
 
 To reference the alias file and use the basename of the alias file for the 
 destination just specify the alias: `@project`.
@@ -119,6 +119,8 @@ perform a recursive search.
 
 When the `-a` and `-r` options are combined the search is recursive, `-r` takes 
 precedence.
+
+The list command is an alias for `run --noop`.
 
 ### Alias
 
