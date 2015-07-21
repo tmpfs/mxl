@@ -8,7 +8,14 @@ describe('mxl:', function() {
 
   before(function(done) {
     process.chdir(process.env.MXL_TEST_TARGET);
-    done(); 
+
+    // mock stale alias (missing alias source file)
+    var args = ['alias', '--no-color', '@stale=non-existent'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
   })
 
   after(function(done) {
@@ -80,16 +87,29 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
-      console.dir(err)
       function fn() {
         throw err;
       }
       expect(fn).throws(Error);
-      //expect(fn).throws(/no such file or directory/i);
+      expect(fn).throws(/destination file conflict/i);
       done();
     })
     def.parse(args);
   });
 
+  it('should error on stale alias file (@stale)', function(done) {
+    var args = ['install', '--no-color', '@stale'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      expect(err.code).to.be.gt(0);
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/has stale file/i);
+      done();
+    })
+    def.parse(args);
+  });
 
 });
