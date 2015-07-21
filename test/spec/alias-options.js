@@ -58,7 +58,7 @@ describe('mxl:', function() {
   it('should add alias and save option (--session)', function(done) {
     var args = [
       'alias', '--no-color',
-      '@opt=./project/tmux.conf', '-s', 'mock', '-c', './project'];
+      '@opt=./project/tmux.conf', '-s', 'mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
@@ -67,9 +67,6 @@ describe('mxl:', function() {
         path.join(process.cwd(), 'project', constants.FILENAME));
       expect(req.rc.alias.opt.options).to.be.an('object');
       expect(req.rc.alias.opt.options.session).to.eql('mock');
-      //expect(req.launch.aliases.opt.cwd).to.be.an('array');
-      expect(req.rc.alias.opt.cwd).to.eql(
-        [path.join(process.cwd(), 'project')]);
       done();
     })
     def.parse(args);
@@ -80,8 +77,16 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');
-      expect(req.launch.aliases.opt.cwd).to.eql(
-        [path.join(process.cwd(), 'project')]);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should run alias with saved --session option and wd', function(done) {
+    var args = ['run', '--no-color', '@opt', '--noop', '-c', './project'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.rc.alias.opt.options.session).to.eql('mock');
       done();
     })
     def.parse(args);

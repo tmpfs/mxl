@@ -89,8 +89,14 @@ additional profiles by using the `.tmux.conf` suffix.
 
 ```conf
 # vim: set ft=conf:
-#if-shell "tmux find-window -N ${mxl_key} && test #{session_windows} -gt 1" "unlink-window -k -t ${mxl_key}" "select-pane"
-new-window -k -n ${mxl_name} -t ${mxl_key}
+#if-shell "tmux find-window -N ${mxl_key} && test #{session_windows} -gt 1" \
+  #"unlink-window -k -t ${mxl_key}" \
+  #"select-pane"
+
+if-shell "tmux find-window -N ${mxl_key} && test #{session_windows} -gt 1" \
+  "unlink-window -k -t ${mxl_key}" \
+  "select-pane"
+new-window -n ${mxl_name} -k -t ${mxl_key}
 send-keys -t: 'vim .' C-m
 split-window -h -t:
 send-keys -t: 'git status' C-m
