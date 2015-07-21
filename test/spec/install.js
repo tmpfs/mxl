@@ -45,6 +45,18 @@ describe('mxl:', function() {
     }
   );
 
+  it('should run install with system alias reference and --noop',
+    function(done) {
+      var args = ['install', '--no-color', '@home', '--noop'];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        expect(fs.existsSync('tmux.conf')).to.eql(false);
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
   it('should run install with system alias reference and default file name',
     function(done) {
       var args = ['install', '--no-color', '@home=tmux.conf'];
@@ -107,6 +119,26 @@ describe('mxl:', function() {
       }
       expect(fn).throws(Error);
       expect(fn).throws(/has stale file/i);
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should error on overwrite without --force', function(done) {
+
+    // create the file (cleaned after each spec)
+    fs.writeFileSync('tmux.conf', '# mock conf file');
+
+    var args = ['install', '--no-color', '@home'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      expect(err.code).to.be.gt(0);
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/exists/i);
+      expect(fn).throws(/overwrite/i);
       done();
     })
     def.parse(args);
