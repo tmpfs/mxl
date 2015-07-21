@@ -18,7 +18,6 @@ describe('mxl:', function() {
       })
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
-      expect(req.rc.alias.opt.key).to.eql('opt');
       expect(req.rc.alias.opt.file).to.eql(
         path.join(process.cwd(), 'project', constants.FILENAME));
       expect(req.rc.alias.opt.options).to.be.an('object');
@@ -33,10 +32,6 @@ describe('mxl:', function() {
     var args = ['run', '--no-color', '@opt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-
-      // TODO: fix exec key collision when executing same file against
-      // TODO: multiple targets
-
       expect(req.rc.alias.opt.options.each).to.eql(true);
       expect(req.launch.aliases.opt.cwd).to.be.an('array');
       done();
@@ -62,7 +57,6 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
-      expect(req.rc.alias.opt.key).to.eql('opt');
       expect(req.rc.alias.opt.file).to.eql(
         path.join(process.cwd(), 'project', constants.FILENAME));
       expect(req.rc.alias.opt.options).to.be.an('object');
