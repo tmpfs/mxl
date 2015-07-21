@@ -2,8 +2,10 @@ var path = require('path')
   , fs = require('fs')
   , info = console.info;
 
-process.env.MXL_RC_HOME = path.join(process.cwd(), 'target');
-process.chdir('test/fixtures/conf');
+process.env.MXL_RC_HOME = 
+process.env.MXL_TEST_TARGET = path.join(process.cwd(), 'target');
+process.env.MXL_TEST_BASE = path.join(process.cwd(), 'test/fixtures/conf');
+process.chdir(process.env.MXL_TEST_BASE);
 
 function clean() {
   var names = [

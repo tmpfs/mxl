@@ -51,7 +51,7 @@
     "postinstall": "npm run alias",
     "pretest": "npm run posttest && mkdir target",
     "posttest": "rm -rf target",
-    "test": "NODE_ENV=test mocha test/global.js test/spec",
+    "test": "NODE_ENV=test mocha test/global.js test/spec/install",
     "cover": "npm run pretest && NODE_ENV=test istanbul cover --root ./lib _mocha -- test/global.js test/spec; npm run posttest"
   },
   "mdp": {
