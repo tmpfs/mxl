@@ -221,7 +221,6 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-
   it('should run using pattern with each', function(done) {
     var args = [
       'run', '--no-color', 'project', '-c', 'project', '--each',
