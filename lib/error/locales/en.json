@@ -28,5 +28,10 @@
     "key": "ETOO_FEW_ARGS",
     "description": "Command expects arguments",
     "message": "too few arguments: %s"
+  },
+  {
+    "key": "EPATTERN_MATCH",
+    "description": "Patterns specified not none match",
+    "message": "no patterns match"
   }
 ]

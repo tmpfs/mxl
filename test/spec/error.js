@@ -90,8 +90,7 @@ describe('mxl:', function() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/pattern/i);
-      expect(fn).throws(/does not match/i);
+      expect(fn).throws(/no patterns match/i);
       done();
     })
     def.parse(args);
@@ -105,8 +104,7 @@ describe('mxl:', function() {
         throw err;
       }
       expect(fn).throws(Error);
-      expect(fn).throws(/pattern/i);
-      expect(fn).throws(/does not match/i);
+      expect(fn).throws(/no patterns match/i);
       done();
     })
     def.parse(args);
@@ -203,8 +201,7 @@ describe('mxl:', function() {
 
   it('should error using bad pattern with each', function(done) {
     var args = [
-      'run', '--no-color', 'project', '-c', 'project', '--each',
-      '-p', '+'];
+      'run', 'project', '-c', 'project', '--each', '-p', '+'];
     var def = program(require(config.pkg), config.name);
     def.program.on('error', function(err) {
       function fn() {
@@ -216,5 +213,21 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
+
+  it('should error using unknown pattern with each', function(done) {
+      var args = [
+        'run', '--noop', '-c', 'project', '--each', '-p', 'unknown'];
+      var def = program(require(config.pkg), config.name)
+    def.program.on('error', function(err) {
+      function fn() {
+        throw err;
+      }
+      expect(fn).throws(Error);
+      expect(fn).throws(/no patterns match/i);
+      done();
+    })
+      def.parse(args);
+    }
+  );
 
 });
