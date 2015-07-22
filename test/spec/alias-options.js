@@ -13,9 +13,9 @@ describe('mxl:', function() {
       'alias', '--no-color',
       '@opt=./project/tmux.conf', '-e', '-c', './project'];
     var def = program(require(config.pkg), config.name)
-      def.program.on('error', function(e) {
-        console.dir(e)
-      })
+      //def.program.on('error', function(e) {
+        //console.dir(e)
+      //})
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
       expect(req.rc.alias.opt.file).to.eql(
