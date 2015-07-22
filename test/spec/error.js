@@ -214,20 +214,35 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should error using unknown pattern with each', function(done) {
+  it('should error using unknown pattern with each',
+    function(done) {
       var args = [
         'run', '--noop', '-c', 'project', '--each', '-p', 'unknown'];
       var def = program(require(config.pkg), config.name)
-    def.program.on('error', function(err) {
-      function fn() {
-        throw err;
-      }
-      expect(fn).throws(Error);
-      expect(fn).throws(/no patterns match/i);
-      done();
-    })
+      def.program.on('error', function(err) {
+        function fn() {
+          throw err;
+        }
+        expect(fn).throws(Error);
+        expect(fn).throws(/no patterns match/i);
+        done();
+      })
       def.parse(args);
     }
   );
+
+  it('should error on add bad alias by reference', function(done) {
+    var args = ['alias', '--no-color', '@foo=@missing'];
+    var def = program(require(config.pkg), config.name)
+      def.program.on('error', function(err) {
+        function fn() {
+          throw err;
+        }
+        expect(fn).throws(Error);
+        expect(fn).throws(/bad alias reference/i);
+        done();
+      })
+    def.parse(args);
+  });
 
 });

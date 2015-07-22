@@ -29,6 +29,16 @@ of operations on aliases the rc file is not written.
 * `noop: -n | --noop`: Print matched files, do not call `source-file`.
 * `recursive: -r | --recursive`: Match files recursively.
 
+### Remove
+
+Removes user aliases by regular expression pattern match, global aliases may not 
+be deleted.
+
+All unparsed arguments and values given to `-p | --pattern` are compiled 
+to regular expressions and matched against the keys for the user aliases.
+
+Matchs are deleted and the aliases are re-written unless `--noop` is specified.
+
 ### Install
 
 Copy the files referenced by aliases into one or more target directories 
@@ -127,6 +137,10 @@ The list command is an alias for `run --noop`.
 
 Manage aliases using an @ notation.
 
+Global aliases are created in the default rc file when $0 is installed, they 
+are written to `.${0}rc.json` pointing to the files in `conf/tpl` and may 
+not be deleted.
+
 Aliases are automatically added if they do not already exist the first time a 
 call to `source-file` succeeds and are re-written to `~/.mxlrc.json`. The rc 
 file is created if it does not exist.
@@ -147,23 +161,16 @@ delimiter for concatenation is `/`.
 You may disable automatically adding aliases by modifying the `autoalias` 
 rc option.
 
-Note that if you run a file that kills the current window (`unlink-window` etc) 
-aliases will not be added automatically as the process will have been killed 
-before the success handler returns. To workaround this run from another window, 
-eg: `mxl ~/project`.
-
-#### Global
-
-Global aliases are created in the default rc file when $0 is installed. They 
-are stored in `node_modules/$0/conf` and may not be deleted.
-
-#### Launch
-
-You may pass an alias reference to the `run` command:
+Pass an alias to execute the file referenced by the alias:
 
 ```
 $0 @project
 ```
+
+Note that if you run a file that kills the current window (`unlink-window` etc) 
+aliases will not be added automatically as the process will have been killed 
+before the success handler returns. To workaround this run from another window, 
+eg: `mxl ~/project`.
 
 #### List
 
@@ -193,6 +200,15 @@ To add or update an alias manually assign to the alias:
 $0 alias @project=/usr/local/project
 ```
 
+When adding aliases you may pass the options:
+
+* `${opt_recursive_name}`
+* `${opt_all_name}`
+* `${opt_each_name}`
+* `${opt_pattern_name}`
+* `${opt_session_name}`
+* `${opt_dir_name}`
+
 #### Delete
 
 Assign the empty string to delete an alias.
@@ -200,6 +216,10 @@ Assign the empty string to delete an alias.
 ```
 $0 alias @project=
 ```
+
+#### See
+
+mxl-index(1), mxl-prune(1), mxl-rm(1)
 
 ### Prune
 

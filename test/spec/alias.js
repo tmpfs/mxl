@@ -2,6 +2,7 @@ var expect = require('chai').expect
   , fs = require('fs')
   , path = require('path')
   , config = require('../config')
+  , constants = require('../../lib/constants')
   , program = require('../../lib/mxl')
   , Alias = require('../../lib/alias');
 
@@ -12,6 +13,17 @@ describe('mxl:', function() {
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(path.join(process.cwd(), 'bar'));
+      done();
+    })
+    def.parse(args);
+  });
+
+  it('should add alias by reference', function(done) {
+    var args = ['alias', '--no-color', '@foo=@git'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      expect(req.rc.alias.foo.file).to.eql(
+        path.join(process.env.MXL_TPL_BASE, 'git', constants.FILENAME));
       done();
     })
     def.parse(args);
@@ -82,7 +94,6 @@ describe('mxl:', function() {
     })
     def.parse(args);
   });
-
 
   it('should add valid alias reference and run alias', function(done) {
     var args = ['alias', '--no-color', '@foo=./alt.tmux.conf'];
