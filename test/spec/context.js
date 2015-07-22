@@ -108,4 +108,27 @@ describe('mxl:', function() {
     }
   );
 
+  // file: mxl/conf/tpl/vim/tmux.conf
+  // cwd: test/fixtures/conf
+  it('should use default working directory when alias reference',
+    function(done) {
+      var args = ['run', '--noop', '@vim'];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        expect(req.launch.list.length).to.eql(1);
+
+        var file = req.launch.list[0];
+        expect(file).to.be.an('object');
+        expect(file.cwd).to.be.a('string');
+        expect(file.file).to.eql(
+          path.join(process.env.MXL_TPL_BASE, 'vim', FILENAME));
+        expect(file.cwd).to.eql(
+          path.join(process.env.MXL_TEST_BASE));
+
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
 });

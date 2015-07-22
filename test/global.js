@@ -8,6 +8,7 @@ process.env.MXL_TEST_TARGET = path.join(process.cwd(), 'target');
 process.env.MXL_TEST_BASE = path.join(process.cwd(), 'test/fixtures/conf');
 process.env.MXL_RC_FILE = path.join(
   process.env.MXL_RC_HOME, process.env.MXL_RC_NAME);
+process.env.MXL_TPL_BASE = path.join(process.cwd(), 'conf', 'tpl');
 
 process.chdir(process.env.MXL_TEST_BASE);
 
