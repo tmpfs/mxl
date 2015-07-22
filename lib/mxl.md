@@ -207,7 +207,12 @@ When adding aliases you may pass the options:
 * `${opt_each_name}`
 * `${opt_pattern_name}`
 * `${opt_session_name}`
-* `${opt_dir_name}`
+
+And they will be saved along with the alias (as an `options` object) and 
+used when the alias is executed. 
+
+You may alias specify the `${opt_dir_name}` and it is saved as an array of 
+working directories for the alias as the `cwd` field.
 
 #### Delete
 
