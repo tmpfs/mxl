@@ -1,12 +1,12 @@
-.TH "MXL-ALIAS" "1" "July 2015" "mxl-alias 0.5.38" "User Commands"
+.TH "MXL-ALIAS" "1" "July 2015" "mxl-alias 0.5.44" "User Commands"
 .SH "NAME"
 mxl-alias -- Manage file aliases.
 .SH "USAGE"
 
 .SP
-mxl alias <args> <@alias=file>
+mxl alias [\-\-global] <args> <@alias=file>
 .br
-mxl as <args> <@alias=file>
+mxl as [\-\-global] <args> <@alias=file>
 .SH "DESCRIPTION"
 .PP
 Manage aliases using an @ notation.
@@ -16,6 +16,11 @@ Aliases are automatically added if they do not already exist the first time a
 call to \fBsource\-file\fR succeeds and are re\-written to \fB~/.mxlrc.json\fR. The rc 
 .br
 file is created if it does not exist.
+.SH "OPTIONS"
+.BL
+.IP "\[ci]" 4
+\fB\-\-global\fR: Operate on global aliases.
+.EL
 .SH "AUTOMATIC"
 .PP
 The rules for alias names created automatically are:
