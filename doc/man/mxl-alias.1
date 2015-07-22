@@ -1,4 +1,4 @@
-.TH "MXL-ALIAS" "1" "July 2015" "mxl-alias 0.5.44" "User Commands"
+.TH "MXL-ALIAS" "1" "July 2015" "mxl-alias 0.5.46" "User Commands"
 .SH "NAME"
 mxl-alias -- Manage file aliases.
 .SH "USAGE"
@@ -46,6 +46,11 @@ aliases will not be added automatically as the process will have been killed
 before the success handler returns. To workaround this run from another window, 
 .br
 eg: \fBmxl ~/project\fR.
+.SH "GLOBAL"
+.PP
+Global aliases are created in the default rc file when mxl is installed. They 
+.br
+are stored in \fBnode_modules/mxl/conf\fR and may not be deleted.
 .SH "LAUNCH"
 .PP
 You may pass an alias reference to the \fBrun\fR command:
@@ -53,9 +58,17 @@ You may pass an alias reference to the \fBrun\fR command:
   mxl @project
 .SH "LIST"
 .PP
-List aliases:
+List user aliases:
 
   mxl alias
+.PP
+List user aliases and include global aliases:
+
+  mxl alias \-a
+.PP
+List global aliases:
+
+  mxl alias \-\-global
 .SH "ADD"
 .PP
 To add or update an alias manually assign to the alias:

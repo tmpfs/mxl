@@ -73,6 +73,17 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  // trigger code path on attempt to delete global alias
+  it('should ignore delete on global alias', function(done) {
+    var args = ['alias', '--no-color', '--noop', '@vim='];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
+  });
+
+
   it('should add valid alias reference and run alias', function(done) {
     var args = ['alias', '--no-color', '@foo=./alt.tmux.conf'];
     var def = program(require(config.pkg), config.name)

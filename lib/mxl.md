@@ -152,6 +152,11 @@ aliases will not be added automatically as the process will have been killed
 before the success handler returns. To workaround this run from another window, 
 eg: `mxl ~/project`.
 
+#### Global
+
+Global aliases are created in the default rc file when $0 is installed. They 
+are stored in `node_modules/$0/conf` and may not be deleted.
+
 #### Launch
 
 You may pass an alias reference to the `run` command:
@@ -162,10 +167,22 @@ $0 @project
 
 #### List
 
-List aliases:
+List user aliases:
 
 ```
 $0 alias
+```
+
+List user aliases and include global aliases:
+
+```
+$0 alias -a
+```
+
+List global aliases:
+
+```
+$0 alias --global
 ```
 
 #### Add
