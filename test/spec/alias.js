@@ -17,7 +17,7 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
-  it('should list aliases', function(done) {
+  it('should list user aliases', function(done) {
     var args = ['alias', '--no-color'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
@@ -26,8 +26,17 @@ describe('mxl:', function() {
     def.parse(args);
   });
 
+  it('should list all aliases', function(done) {
+    var args = ['alias', '--no-color', '--all'];
+    var def = program(require(config.pkg), config.name)
+    def.program.on('complete', function(req) {
+      done();
+    })
+    def.parse(args);
+  });
+
   it('should list global aliases', function(done) {
-    var args = ['alias', '--global', '--no-color'];
+    var args = ['alias', '--no-color', '--global'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
