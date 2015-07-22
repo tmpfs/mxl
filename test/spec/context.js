@@ -17,6 +17,8 @@ describe('mxl:', function() {
       var file = req.launch.list[0];
       expect(file).to.be.an('object');
       expect(file.cwd).to.be.a('string');
+      expect(file.file).to.eql(
+        path.join(process.env.MXL_TEST_BASE, FILENAME));
       expect(file.cwd).to.eql(process.env.MXL_TEST_BASE);
       done();
     })
@@ -32,6 +34,8 @@ describe('mxl:', function() {
       var file = req.launch.list[0];
       expect(file).to.be.an('object');
       expect(file.cwd).to.be.a('string');
+      expect(file.file).to.eql(
+        path.join(process.env.MXL_TEST_BASE, FILENAME));
       expect(file.cwd).to.eql(process.env.MXL_TEST_BASE);
       done();
     })
@@ -47,6 +51,8 @@ describe('mxl:', function() {
       var file = req.launch.list[0];
       expect(file).to.be.an('object');
       expect(file.cwd).to.be.a('string');
+      expect(file.file).to.eql(
+        path.join(process.env.MXL_TEST_BASE, FILENAME));
       expect(file.cwd).to.eql(process.env.MXL_TEST_BASE);
       done();
     })
@@ -62,6 +68,8 @@ describe('mxl:', function() {
       var file = req.launch.list[0];
       expect(file).to.be.an('object');
       expect(file.cwd).to.be.a('string');
+      expect(file.file).to.eql(
+        path.join(process.env.MXL_TEST_BASE, FILENAME));
       expect(file.cwd).to.eql(path.join(process.env.MXL_TEST_BASE, PROJECT));
 
       done();
