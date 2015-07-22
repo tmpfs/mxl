@@ -3,4 +3,5 @@
 --bail
 -t 300
 --reporter list 
+--check-leaks
 -A
