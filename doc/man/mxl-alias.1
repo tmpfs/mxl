@@ -4,14 +4,14 @@ mxl-alias -- Manage file aliases.
 .SH "USAGE"
 
 .SP
-mxl alias [\-\-global] <args> <@alias=file>
+mxl alias [\-ga] [\-g|\-\-global] [\-a|\-\-all] <args> <@alias=file>
 .br
-mxl as [\-\-global] <args> <@alias=file>
+mxl as [\-ga] [\-g|\-\-global] [\-a|\-\-all] <args> <@alias=file>
 .SH "DESCRIPTION"
 .PP
 Manage aliases using an @ notation.
 .PP
-Global aliases are created in the default rc file when mxl is installed, they 
+Global aliases are created in the default rc file when mxl(1) is installed, they 
 .br
 are written to \fB.mxlrc.json\fR pointing to the files in \fBconf/tpl\fR and may 
 .br
@@ -19,15 +19,42 @@ not be deleted.
 .PP
 Aliases are automatically added if they do not already exist the first time a 
 .br
-call to \fBsource\-file\fR succeeds and are re\-written to \fB~/.mxlrc.json\fR. The rc 
-.br
-file is created if it does not exist.
+call to \fBsource\-file\fR succeeds and are re\-written to \fB$HOME/.mxlrc.json\fR.
+.PP
+The rc file (\fB$HOME/.mxlrc.json\fR.) is created if it does not exist.
+.PP
+For more information see \fIAUTOMATIC\fR.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
-\fB\-\-global\fR: Operate on global aliases.
+\fB\-g, \-\-global\fR: List global aliases.
+.IP "\[ci]" 4
+\fB\-a, \-\-all\fR: List user and global aliases.
 .EL
+.SH "RUN"
+.PP
+Pass an alias to the default command (\fBrun\fR) to source the file 
+.br
+referenced by the alias:
+
+  mxl @project
+.PP
+The alias must exist. You can run global aliases immediately:
+
+  mxl @vim \-c ~/project
 .SH "AUTOMATIC"
+.PP
+Aliases are automatically created for the user provided:
+.BL
+.IP "\[ci]" 4
+The rc field \fBautoalias\fR is enabled (default).
+.IP "\[ci]" 4
+The file is not a system file (\fBsession.tmux.conf\fR etc).
+.IP "\[ci]" 4
+The file is not a global alias reference.
+.IP "\[ci]" 4
+An alias does not exist by the same id.
+.EL
 .PP
 The rules for alias names created automatically are:
 .BL
@@ -44,10 +71,6 @@ delimiter for concatenation is \fB/\fR.
 You may disable automatically adding aliases by modifying the \fBautoalias\fR 
 .br
 rc option.
-.PP
-Pass an alias to execute the file referenced by the alias:
-
-  mxl @project
 .PP
 Note that if you run a file that kills the current window (\fBunlink\-window\fR etc) 
 .br
@@ -68,28 +91,64 @@ List user aliases and include global aliases:
 .PP
 List global aliases:
 
-  mxl alias \-\-global
-.SH "ADD"
+  mxl alias \-g
+.SH "EDIT"
 .PP
 To add or update an alias manually assign to the alias:
 
   mxl alias @project=/usr/local/project
 .PP
+It is possible to assign the file from an alias by referencing an 
+.br
+existing alias in the assignment, for example:
+
+  mxl alias @project=@git
+.PP
 When adding aliases you may pass the options:
 .BL
 .IP "\[ci]" 4
-\fB\-r | \-\-recursive\fR
+\fB\-r, \-\-recursive\fR
 .IP "\[ci]" 4
 \fB\-a, \-\-all\fR
 .IP "\[ci]" 4
-\fB\-e | \-\-each\fR
+\fB\-e, \-\-each\fR
 .IP "\[ci]" 4
-\fB\-p | \-\-pattern [ptn ...]\fR
+\fB\-p, \-\-pattern [ptn ...]\fR
 .IP "\[ci]" 4
-\fB\-s | \-\-session <name>\fR
-.IP "\[ci]" 4
-\fB\-c | \-\-directory [dir ...]\fR
+\fB\-s, \-\-session <name>\fR
 .EL
+.PP
+And they will be saved along with the alias (as an \fBoptions\fR object) and 
+.br
+used when the alias is executed. 
+.PP
+You may also specify the \fB\-c, \-\-directory [dir ...]\fR and it is saved as an array of 
+.br
+working directories for the alias as the \fBcwd\fR field.
+.PP
+When associating options and working directories with an alias like this you can 
+.br
+ensure they are always used when executing the alias, they may not be overriden.
+.PP
+Consider the use case where you have an existing template that suffices and a 
+.br
+complex project consisting of modules that you wish to run the file against 
+.br
+using \fB\-\-each\fR, you might do this:
+
+  mxl @git \-e \-s project \-c ~/project
+.PP
+To iterate over the child directories of \fB~/project\fR and source the 
+.br
+\fB@git\fR file for each directory after creating a session named \fBproject\fR.
+.PP
+Save this configuration with:
+
+  mxl as @project=@git \-e \-s project \-c ~/project
+.PP
+Then run with the saved options and directory:
+
+  mxl @project
 .SH "DELETE"
 .PP
 Assign the empty string to delete an alias.

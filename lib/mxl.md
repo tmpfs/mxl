@@ -23,11 +23,11 @@ of operations on aliases the rc file is not written.
 
 ## Options
 
-* `dir: -c | --directory [dir ...]`: Working directory used for `tmux` process.
-* `pattern: -p | --pattern [ptn ...]`: Filter files by regexp pattern(s).
+* `dir: -c, --directory [dir ...]`: Working directory used for `tmux` process.
+* `pattern: -p, --pattern [ptn ...]`: Filter files by regexp pattern(s).
 * `all: -a, --all`: Match all configuration files.
-* `noop: -n | --noop`: Print matched files, do not call `source-file`.
-* `recursive: -r | --recursive`: Match files recursively.
+* `noop: -n, --noop`: Print matched files, do not call `source-file`.
+* `recursive: -r, --recursive`: Match files recursively.
 
 ### Remove
 
@@ -137,19 +137,45 @@ The list command is an alias for `run --noop`.
 
 Manage aliases using an @ notation.
 
-Global aliases are created in the default rc file when $0 is installed, they 
+Global aliases are created in the default rc file when $0(1) is installed, they 
 are written to `.${0}rc.json` pointing to the files in `conf/tpl` and may 
 not be deleted.
 
 Aliases are automatically added if they do not already exist the first time a 
-call to `source-file` succeeds and are re-written to `~/.mxlrc.json`. The rc 
-file is created if it does not exist.
+call to `source-file` succeeds and are re-written to `\$HOME/.mxlrc.json`.
+
+The rc file (`\$HOME/.mxlrc.json`.) is created if it does not exist.
+
+For more information see _AUTOMATIC_.
 
 #### Options
 
-* `global: --global`: Operate on global aliases.
+* `global: -g, --global`: List global aliases.
+* `all: -a, --all`: List user and global aliases.
+
+#### Run
+
+Pass an alias to the default command (`${cmd_run_long}`) to source the file 
+referenced by the alias:
+
+```
+$0 @project
+```
+
+The alias must exist. You can run global aliases immediately:
+
+```
+$0 @vim -c ~/project
+```
 
 #### Automatic
+
+Aliases are automatically created for the user provided:
+
+* The rc field `autoalias` is enabled (default).
+* The file is not a system file (`session.tmux.conf` etc).
+* The file is not a global alias reference.
+* An alias does not exist by the same id.
 
 The rules for alias names created automatically are:
 
@@ -160,12 +186,6 @@ delimiter for concatenation is `/`.
 
 You may disable automatically adding aliases by modifying the `autoalias` 
 rc option.
-
-Pass an alias to execute the file referenced by the alias:
-
-```
-$0 @project
-```
 
 Note that if you run a file that kills the current window (`unlink-window` etc) 
 aliases will not be added automatically as the process will have been killed 
@@ -189,15 +209,22 @@ $0 alias -a
 List global aliases:
 
 ```
-$0 alias --global
+$0 alias -g
 ```
 
-#### Add
+#### Edit
 
 To add or update an alias manually assign to the alias:
 
 ```
 $0 alias @project=/usr/local/project
+```
+
+It is possible to assign the file from an alias by referencing an 
+existing alias in the assignment, for example:
+
+```
+$0 alias @project=@git
 ```
 
 When adding aliases you may pass the options:
@@ -211,8 +238,34 @@ When adding aliases you may pass the options:
 And they will be saved along with the alias (as an `options` object) and 
 used when the alias is executed. 
 
-You may alias specify the `${opt_dir_name}` and it is saved as an array of 
+You may also specify the `${opt_dir_name}` and it is saved as an array of 
 working directories for the alias as the `cwd` field.
+
+When associating options and working directories with an alias like this you can 
+ensure they are always used when executing the alias, they may not be overriden.
+
+Consider the use case where you have an existing template that suffices and a 
+complex project consisting of modules that you wish to run the file against 
+using `${opt_each_long}`, you might do this:
+
+```
+mxl @git -e -s project -c ~/project
+```
+
+To iterate over the child directories of `~/project` and source the 
+`@git` file for each directory after creating a session named `project`.
+
+Save this configuration with:
+
+```
+mxl as @project=@git -e -s project -c ~/project
+```
+
+Then run with the saved options and directory:
+
+```
+mxl @project
+```
 
 #### Delete
 
@@ -247,8 +300,8 @@ See mxl-alias(1) for more information on aliases.
 
 #### Options
 
-* `each: -e | --each`: Iterate child directories and set `-c` for each directory.
-* `session: -s | --session <name>`: Create session before source file(s).
+* `each: -e, --each`: Iterate child directories and set `-c` for each directory.
+* `session: -s, --session <name>`: Create session before source file(s).
 
 #### Environment
 
