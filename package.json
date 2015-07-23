@@ -21,7 +21,7 @@
     "cli"
   ],
   "dependencies": {
-    "cli-argparse": "~1.0.3",
+    "cli-argparse": "~1.0.6",
     "cli-command": "~0.8.299",
     "cli-env": "~1.0.10",
     "cli-interface": "~1.0.19",

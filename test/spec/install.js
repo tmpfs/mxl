@@ -6,21 +6,16 @@ var expect = require('chai').expect
 
 describe('mxl:', function() {
 
-  before(function(done) {
+  beforeEach(function(done) {
     process.chdir(process.env.MXL_TEST_TARGET);
 
     // mock stale alias (missing alias source file)
-    var args = ['alias', '--no-color', '@stale=non-existent'];
+    var args = ['alias', '@stale=non-existent'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
     })
     def.parse(args);
-  })
-
-  after(function(done) {
-    process.chdir(process.env.MXL_TEST_BASE);
-    done(); 
   })
 
   afterEach(function(done) {
@@ -35,12 +30,13 @@ describe('mxl:', function() {
         fs.unlinkSync(file);
       }
     })
+    process.chdir(process.env.MXL_TEST_BASE);
     done();
   })
 
   it('should run install with system alias reference',
     function(done) {
-      var args = ['install', '--no-color', '@home'];
+      var args = ['install', '@home'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -52,7 +48,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and specific dir (-c)',
     function(done) {
-      var args = ['install', '--no-color', '@home', '-c', '.'];
+      var args = ['install', '@home', '-c', '.'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -64,7 +60,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and --noop',
     function(done) {
-      var args = ['install', '--no-color', '@home', '--noop'];
+      var args = ['install', '@home', '--noop'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(false);
@@ -76,7 +72,7 @@ describe('mxl:', function() {
 
   it('should run install with alias references',
     function(done) {
-      var args = ['install', '--no-color', '@vim=vim', '@git=git'];
+      var args = ['install', '@vim=vim', '@git=git'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('vim.tmux.conf')).to.eql(true);
@@ -90,7 +86,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and default file name',
     function(done) {
-      var args = ['install', '--no-color', '@home=tmux.conf'];
+      var args = ['install', '@home=tmux.conf'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -102,7 +98,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and custom file name',
     function(done) {
-      var args = ['install', '--no-color', '@home=home'];
+      var args = ['install', '@home=home'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -114,7 +110,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and custom name/extension',
     function(done) {
-      var args = ['install', '--no-color', '@home=home.tmux.conf'];
+      var args = ['install', '@home=home.tmux.conf'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -126,7 +122,7 @@ describe('mxl:', function() {
 
   it('should run install and prefer assignment over reference',
     function(done) {
-      var args = ['install', '--no-color', '@home=home.tmux.conf', '@home'];
+      var args = ['install', '@home=home.tmux.conf', '@home'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -138,7 +134,7 @@ describe('mxl:', function() {
 
   // errors
   it('should error on too few arguments', function(done) {
-    var args = ['install', '--no-color'];
+    var args = ['install'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
@@ -153,7 +149,7 @@ describe('mxl:', function() {
   });
 
   it('should error on unknown alias', function(done) {
-    var args = ['install', '--no-color', '@unknown=mock'];
+    var args = ['install', '@unknown=mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
@@ -168,7 +164,7 @@ describe('mxl:', function() {
   });
 
   it('should error on install name conflict', function(done) {
-    var args = ['install', '--no-color', '@vim', '@git'];
+    var args = ['install', '@vim', '@git'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
@@ -183,7 +179,7 @@ describe('mxl:', function() {
   });
 
   it('should error on stale alias file (@stale)', function(done) {
-    var args = ['install', '--no-color', '@stale'];
+    var args = ['install', '@stale'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
@@ -202,7 +198,7 @@ describe('mxl:', function() {
     // create the file (cleaned after each spec)
     fs.writeFileSync('tmux.conf', '# mock conf file');
 
-    var args = ['install', '--no-color', '@home'];
+    var args = ['install', '@home'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);

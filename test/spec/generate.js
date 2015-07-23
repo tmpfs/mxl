@@ -6,7 +6,7 @@ describe('mxl:', function() {
 
   it('should index directory', function(done) {
     var args = [
-      'index', '--no-color', '../conf', '../index', '../empty', '../'];
+      'index', '../conf', '../index', '../empty', '../'];
 
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
@@ -23,7 +23,7 @@ describe('mxl:', function() {
 
   it('should index directory w/ noop', function(done) {
     var args = [
-      'index', '--no-color', '--noop',
+      'index', '--noop',
       '../conf', '../index', '../empty'];
 
     var def = program(require(config.pkg), config.name)

@@ -6,7 +6,7 @@ var expect = require('chai').expect
 describe('mxl:', function() {
 
   it('should run index file (no command)', function(done) {
-    var args = ['--no-color', '--noop'];
+    var args = ['--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -18,7 +18,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --recursive option (no command)', function(done) {
-    var args = ['-r', '--no-color', '--noop'];
+    var args = ['-r', '--noop'];
     var def = program(require(config.pkg), config.name)
     // NOTE: different event
     def.program.on('run:complete', function(req) {
@@ -35,7 +35,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --recursive option (w/ command)', function(done) {
-    var args = ['run', '-r', '--no-color', '--noop'];
+    var args = ['run', '-r', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.be.gt(4);
@@ -51,7 +51,7 @@ describe('mxl:', function() {
   });
 
   it('should run index file (w/ command)', function(done) {
-    var args = ['run', '--no-color', '--noop'];
+    var args = ['run', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -63,7 +63,7 @@ describe('mxl:', function() {
   });
 
   it('should filter result (-p alt)', function(done) {
-    var args = ['--no-color', '-a', '-p', 'alt'];
+    var args = ['-a', '-p', 'alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -75,7 +75,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias (@conf/alt)', function(done) {
-    var args = ['--no-color', '@conf/alt'];
+    var args = ['@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.alias.length).to.eql(1);
@@ -87,7 +87,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias (@conf/alt) w/ run command', function(done) {
-    var args = ['run', '--no-color', '@conf/alt'];
+    var args = ['run', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.alias.length).to.eql(1);
@@ -100,7 +100,7 @@ describe('mxl:', function() {
 
   it('should run specific file', function(done) {
     var args = [
-      '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
+      '--noop', path.join(process.cwd(), 'tmux.conf')];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -113,7 +113,7 @@ describe('mxl:', function() {
 
   it('should run specific file (w/ command)', function(done) {
     var args = [
-      'run', '--no-color', '--noop', path.join(process.cwd(), 'tmux.conf')];
+      'run', '--noop', path.join(process.cwd(), 'tmux.conf')];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -125,7 +125,7 @@ describe('mxl:', function() {
   });
 
   it('should run files (w/ cwd)', function(done) {
-    var args = ['run', '--no-color', '--noop', '-c=.'];
+    var args = ['run', '--noop', '-c=.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -137,7 +137,7 @@ describe('mxl:', function() {
   });
 
   it('should run all files (-a)', function(done) {
-    var args = ['run', '-a', '--no-color', '--noop'];
+    var args = ['run', '-a', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
@@ -149,7 +149,7 @@ describe('mxl:', function() {
   });
 
   it('should run all files (-a) w/ directory arg', function(done) {
-    var args = ['run', '-a', '--no-color', '--noop', '.'];
+    var args = ['run', '-a', '--noop', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
@@ -162,7 +162,7 @@ describe('mxl:', function() {
 
   it('should run w/ specific absolute working directory', function(done) {
     var args = [
-      '--no-color', '--noop', '-c', process.cwd()];
+      '--noop', '-c', process.cwd()];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -174,7 +174,7 @@ describe('mxl:', function() {
   });
 
   it('should run empty file by pattern (no command)', function(done) {
-    var args = ['--no-color', '-a', '-p', 'empty'];
+    var args = ['-a', '-p', 'empty'];
     var def = program(require(config.pkg), config.name)
     // NOTE: different event!
     def.program.on('run:complete', function(req) {
@@ -187,7 +187,7 @@ describe('mxl:', function() {
   });
 
   it('should run using index file (no command)', function(done) {
-    var args = ['--no-color', '../index'];
+    var args = ['../index'];
     var def = program(require(config.pkg), config.name)
     // NOTE: different event!
     def.program.on('run:complete', function(req) {
@@ -200,7 +200,7 @@ describe('mxl:', function() {
   });
 
   it('should run using index file and alias (mixed)', function(done) {
-    var args = ['run', '--no-color', '../index', '@conf'];
+    var args = ['run', '../index', '@conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(2);
@@ -210,7 +210,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --session option (no command)', function(done) {
-    var args = ['--no-color', '--noop', '--session', 'mock'];
+    var args = ['--noop', '--session', 'mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('run:complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -222,7 +222,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --session option w/ command', function(done) {
-    var args = ['run', '--no-color', '--noop', '--session', 'mock'];
+    var args = ['run', '--noop', '--session', 'mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -235,7 +235,7 @@ describe('mxl:', function() {
 
   it('should run using --each w/ --session', function(done) {
     var args = [
-      'run', '--no-color', 'project', '-c', 'project', '--each',
+      'run', 'project', '-c', 'project', '--each',
       '--session', 'mock', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
@@ -246,7 +246,7 @@ describe('mxl:', function() {
 
   it('should run using pattern with each', function(done) {
     var args = [
-      'run', '--no-color', 'project', '-c', 'project', '--each',
+      'run', 'project', '-c', 'project', '--each',
       '-p', 'client', '-p', 'server'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {

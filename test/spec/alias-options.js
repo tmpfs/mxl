@@ -10,12 +10,9 @@ describe('mxl:', function() {
 
   it('should add alias and save option (--each)', function(done) {
     var args = [
-      'alias', '--no-color',
+      'alias',
       '@opt=./project/tmux.conf', '-e', '-c', './project'];
     var def = program(require(config.pkg), config.name)
-      //def.program.on('error', function(e) {
-        //console.dir(e)
-      //})
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt).to.be.an('object');
       expect(req.rc.alias.opt.file).to.eql(
@@ -29,7 +26,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --each option (@opt)', function(done) {
-    var args = ['run', '--no-color', '@opt'];
+    var args = ['run', '@opt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.each).to.eql(true);
@@ -40,7 +37,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved options and --noop (@opt)', function(done) {
-    var args = ['run', '--no-color', '@opt', '--noop'];
+    var args = ['run', '@opt', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.each).to.eql(true);
@@ -52,7 +49,7 @@ describe('mxl:', function() {
 
   it('should add alias and save option (--session)', function(done) {
     var args = [
-      'alias', '--no-color',
+      'alias',
       '@opt=./project/tmux.conf', '-s', 'mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
@@ -67,7 +64,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --session option (@opt)', function(done) {
-    var args = ['run', '--no-color', '@opt', '--noop'];
+    var args = ['run', '@opt', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');
@@ -77,7 +74,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --session option and wd', function(done) {
-    var args = ['run', '--no-color', '@opt', '--noop', '-c', './project'];
+    var args = ['run', '@opt', '--noop', '-c', './project'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');

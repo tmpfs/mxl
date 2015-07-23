@@ -9,7 +9,7 @@ var expect = require('chai').expect
 describe('mxl:', function() {
 
   it('should add alias', function(done) {
-    var args = ['alias', '--no-color', '@foo=bar'];
+    var args = ['alias', '@foo=bar'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(path.join(process.cwd(), 'bar'));
@@ -19,7 +19,7 @@ describe('mxl:', function() {
   });
 
   it('should add alias by reference', function(done) {
-    var args = ['alias', '--no-color', '@foo=@git'];
+    var args = ['alias', '@foo=@git'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(
@@ -30,7 +30,7 @@ describe('mxl:', function() {
   });
 
   it('should list user aliases', function(done) {
-    var args = ['alias', '--no-color'];
+    var args = ['alias'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -39,7 +39,7 @@ describe('mxl:', function() {
   });
 
   it('should list all aliases', function(done) {
-    var args = ['alias', '--no-color', '--all'];
+    var args = ['alias', '--all'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -48,7 +48,7 @@ describe('mxl:', function() {
   });
 
   it('should list global aliases', function(done) {
-    var args = ['alias', '--no-color', '--global'];
+    var args = ['alias', '--global'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -57,7 +57,7 @@ describe('mxl:', function() {
   });
 
   it('should update alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo=baz'];
+    var args = ['alias', '--noop', '@foo=baz'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(path.join(process.cwd(), 'baz'));
@@ -67,7 +67,7 @@ describe('mxl:', function() {
   });
 
   it('should get alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo'];
+    var args = ['alias', '--noop', '@foo'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -76,7 +76,7 @@ describe('mxl:', function() {
   });
 
   it('should delete alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@foo=', '../'];
+    var args = ['alias', '--noop', '@foo=', '../'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo).to.eql(undefined);
@@ -87,7 +87,7 @@ describe('mxl:', function() {
 
   // trigger code path on attempt to delete global alias
   it('should ignore delete on global alias', function(done) {
-    var args = ['alias', '--no-color', '--noop', '@vim='];
+    var args = ['alias', '--noop', '@vim='];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -96,7 +96,7 @@ describe('mxl:', function() {
   });
 
   it('should add valid alias reference and run alias', function(done) {
-    var args = ['alias', '--no-color', '@foo=./alt.tmux.conf'];
+    var args = ['alias', '@foo=./alt.tmux.conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(
@@ -114,7 +114,7 @@ describe('mxl:', function() {
   });
 
   it('should write alias file', function(done) {
-    var args = ['ls', '--no-color'];
+    var args = ['ls'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       var alias = new Alias(this.configure(), req)

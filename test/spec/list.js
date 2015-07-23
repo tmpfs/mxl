@@ -5,7 +5,7 @@ var expect = require('chai').expect
 describe('mxl:', function() {
 
   it('should list files', function(done) {
-    var args = ['ls', '--no-color'];
+    var args = ['ls'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -14,7 +14,7 @@ describe('mxl:', function() {
   });
 
   it('should list all files (-a)', function(done) {
-    var args = ['ls', '-a', '--no-color'];
+    var args = ['ls', '-a'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();
@@ -23,7 +23,7 @@ describe('mxl:', function() {
   });
 
   it('should list files in directory', function(done) {
-    var args = ['ls', '-a', '--no-color', '.'];
+    var args = ['ls', '-a', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf/alt']).to.be.a('string');
@@ -34,7 +34,7 @@ describe('mxl:', function() {
   });
 
   it('should list files in directory w/ --recursive', function(done) {
-    var args = ['ls', '-r', '--no-color', '.'];
+    var args = ['ls', '-r', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['deep/mock']).to.be.a('string');
@@ -44,7 +44,7 @@ describe('mxl:', function() {
   });
 
   it('should list files in directory w/ --recursive and --all', function(done) {
-    var args = ['ls', '-r', '-a', '--no-color', '.'];
+    var args = ['ls', '-r', '-a', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['deep/mock']).to.be.a('string');
@@ -54,7 +54,7 @@ describe('mxl:', function() {
   });
 
   it('should list files in multiple directories', function(done) {
-    var args = ['ls', '-a', '--no-color', '.', '../', '../empty'];
+    var args = ['ls', '-a', '.', '../', '../empty'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
