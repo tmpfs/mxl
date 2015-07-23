@@ -4,7 +4,6 @@ Table of Contents
 * [Tmux Launcher](#tmux-launcher)
   * [Install](#install)
   * [Usage](#usage)
-  * [Configuration](#configuration)
   * [Examples](#examples)
     * [List files](#list-files)
     * [Launch](#launch)
@@ -82,30 +81,6 @@ Options:
      --version              Print version and exit.
 
 Report bugs to https://github.com/freeformsystems/mxl/issues.
-```
-
-## Configuration
-
-Start `tmux` and define commands in a `tmux.conf` file within a project,  add 
-additional profiles by using the `.tmux.conf` suffix.
-
-```conf
-# vim: set ft=conf:
-
-# kills window when not running with --session
-if-shell "tmux find-window -N ${mxl_key} && test -z '${mxl_session}'" \
-  "unlink-window -k -t ${mxl_key}" \
-  "select-pane"
-
-# otherwise when a session is running this will replace
-# the first window by killing it
-new-window -k -n ${mxl_key} -t:${mxl_session}
-send-keys -t: 'vim .' C-m
-split-window -h -t:
-send-keys -t: 'git status -sb' C-m
-split-window -v -t:
-send-keys -t: 'npm run cover' C-m
-select-pane -L
 ```
 
 ## Examples

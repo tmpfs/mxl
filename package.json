@@ -66,23 +66,13 @@
       {
         "inc": [
           "introduction.md",
-          "install.md",
-          "usage.md"
+          "install.md"
         ]
       },
       {
+        "title": "Usage",
         "bin": "./bin/mxl -h",
         "type": "code"
-      },
-      {
-        "inc": [
-          "configuration.md"
-        ]
-      },
-      {
-        "inc": "../../tmux.conf",
-        "type": "code",
-        "language": "conf"
       },
       {
         "inc": [
