@@ -6,7 +6,7 @@ Tmux launcher.
 Finds files named either `tmux.conf` or with a `.tmux.conf` extension and 
 executes using `tmux source-file`.
 
-When no command is specified the `run` command is invoked.
+When no command is specified the `${cmd_run_long}` command is invoked.
 
 The `--noop` option applies to all commands except `ls` and `help`, in the case 
 of operations on aliases the rc file is not written.
@@ -131,7 +131,7 @@ perform a recursive search.
 When the `-a` and `-r` options are combined the search is recursive, `-r` takes 
 precedence.
 
-The list command is an alias for `run --noop`.
+The list command is an alias for `${cmd_run_long} --noop`.
 
 ### Alias
 
@@ -153,7 +153,7 @@ For more information see _AUTOMATIC_.
 * `global: -g, --global`: List global aliases.
 * `all: -a, --all`: List user and global aliases.
 
-#### Run
+#### Source
 
 Pass an alias to the default command (`${cmd_run_long}`) to source the file 
 referenced by the alias:
