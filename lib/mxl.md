@@ -37,6 +37,8 @@ A list is retrieved from `tmux` of whichever type is the target (session, window
 
 The `${cmd_kill_long}` command operates on windows by default.
 
+When no patterns are passed the effect is to close the current session, window or pane otherwise when matching multiple targets 
+
 #### Options
 
 * `kills: -S`: Kill sessions.
@@ -73,7 +75,6 @@ $0 ${cmd_kill_long} '^vim'
 
 Kill the sessions `cmus` and `mutt`:
 
-
 ```
 $0 ${cmd_kill_long} -S cmus mutt
 ```
@@ -81,7 +82,13 @@ $0 ${cmd_kill_long} -S cmus mutt
 Kill all other windows:
 
 ```
-$0 ${cmd_kill_long} -P @
+$0 ${cmd_kill_long} @
+```
+
+Kill all other sessions:
+
+```
+$0 ${cmd_kill_long} -S '$'
 ```
 
 Kill all other panes:
