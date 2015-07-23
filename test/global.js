@@ -18,7 +18,7 @@ before(function(done) {
   console.info = function(){};
 
   // set up default mock aliases
-  var args = ['alias', '@stale=non-existent', '@mockalias=./tmux.conf'];
+  var args = ['alias', '@stale=non-existent', '@mock=./tmux.conf'];
   var def = program(require('../package.json'), config.name)
   def.program.on('complete', function(req) {
     done();

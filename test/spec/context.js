@@ -131,4 +131,48 @@ describe('mxl:', function() {
     }
   );
 
+  // file: test/fixtures/conf/tmux.conf
+  // cwd: test/fixtures/conf
+  it('should use default working directory when user alias reference',
+    function(done) {
+      var args = ['source', '--noop', '@mock'];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        expect(req.launch.list.length).to.eql(1);
+
+        var file = req.launch.list[0];
+        expect(file).to.be.an('object');
+        expect(file.cwd).to.be.a('string');
+        expect(file.file).to.eql(
+          path.join(process.env.MXL_TEST_BASE, FILENAME));
+        expect(file.cwd).to.eql(
+          path.join(process.env.MXL_TEST_BASE));
+
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
+  // file: test/fixtures/conf/tmux.conf
+  // cwd: test/fixtures/conf
+  it('should use working directory option with user alias reference',
+    function(done) {
+      var args = ['source', '--noop', '@mock', '-c', PROJECT];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        expect(req.launch.list.length).to.eql(1);
+        var file = req.launch.list[0];
+        expect(file).to.be.an('object');
+        expect(file.cwd).to.be.a('string');
+        expect(file.file).to.eql(
+          path.join(process.env.MXL_TEST_BASE, FILENAME));
+        expect(file.cwd).to.eql(
+          path.join(process.env.MXL_TEST_BASE, PROJECT));
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
 });
