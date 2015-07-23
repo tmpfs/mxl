@@ -8,14 +8,7 @@ describe('mxl:', function() {
 
   beforeEach(function(done) {
     process.chdir(process.env.MXL_TEST_TARGET);
-
-    // mock stale alias (missing alias source file)
-    var args = ['alias', '@stale=non-existent'];
-    var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
-      done();
-    })
-    def.parse(args);
+    done();
   })
 
   afterEach(function(done) {

@@ -1,6 +1,8 @@
 var path = require('path')
   , fs = require('fs')
-  , info = console.info;
+  , info = console.info
+  , config = require('./config')
+  , program = require('../lib/mxl');
 
 process.env.MXL_RC_NAME = '.mxlrc.json';
 process.env.MXL_RC_HOME = 
@@ -12,38 +14,19 @@ process.env.MXL_TPL_BASE = path.join(process.cwd(), 'conf', 'tpl');
 
 process.chdir(process.env.MXL_TEST_BASE);
 
-function clean() {
-  var names = [
-    'fixtures-error',
-    'conf',
-    'conf-empty',
-    'conf-alt',
-    'index',
-    'foo'
-  ];
-  var file = path.join(process.env.HOME, '.mxlrc.json'), rc;
-  if(fs.existsSync(file)) {
-    try {
-      rc = require(file);
-    }catch(e) {}
-
-    if(rc && rc.alias) {
-      names.forEach(function(name) {
-        delete rc.alias[name] ;
-      }) 
-      fs.writeFileSync(file, JSON.stringify(rc, undefined, 2));
-    }
-  }
-}
-
 before(function(done) {
   console.info = function(){};
-  //clean();
-  done();
+
+  // set up default mock aliases
+  var args = ['alias', '@stale=non-existent', '@mockalias=./tmux.conf'];
+  var def = program(require('../package.json'), config.name)
+  def.program.on('complete', function(req) {
+    done();
+  })
+  def.parse(args);
 });
 
 after(function(done) {
   console.info = info;
-  //clean();
   done();
 });
