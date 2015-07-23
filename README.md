@@ -54,15 +54,16 @@ npm i -g mxl
 ## Usage
 
 ```
-Usage: mxl <command> [-anrh] [--color|--no-color] [-a|--all]
-           [-n|--noop] [-r|--recursive] [-h|--help] [--version]
-           [-c|--directory=<dir...>] [-p|--pattern=<ptn...>] <args>
+Usage: mxl <command> [-anrh] [-a|--all] [-n|--noop]
+           [-r|--recursive] [--color|--no-color] [-h|--help]
+           [--version] [-c|--directory=<dir...>]
+           [-p|--pattern=<ptn...>] <args>
 
 Tmux launcher.
 
 Commands:
  list, ls                   List configuration files.
- run                        Source tmux configuration files.
+ source, so                 Source tmux configuration files.
  alias, as                  Manage file aliases.
  rm                         Remove aliases by pattern match.
  prune, pr                  Remove stale aliases.

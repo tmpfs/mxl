@@ -26,7 +26,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --each option (@opt)', function(done) {
-    var args = ['run', '@opt'];
+    var args = ['source', '@opt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.each).to.eql(true);
@@ -37,7 +37,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved options and --noop (@opt)', function(done) {
-    var args = ['run', '@opt', '--noop'];
+    var args = ['source', '@opt', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.each).to.eql(true);
@@ -64,7 +64,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --session option (@opt)', function(done) {
-    var args = ['run', '@opt', '--noop'];
+    var args = ['source', '@opt', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');
@@ -74,7 +74,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias with saved --session option and wd', function(done) {
-    var args = ['run', '@opt', '--noop', '-c', './project'];
+    var args = ['source', '@opt', '--noop', '-c', './project'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.opt.options.session).to.eql('mock');

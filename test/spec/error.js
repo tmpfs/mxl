@@ -21,7 +21,7 @@ describe('mxl:', function() {
   });
 
   it('should error on missing source file w/ run command', function(done) {
-    var args = ['run', '../missing.tmux.conf'];
+    var args = ['source', '../missing.tmux.conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
@@ -67,7 +67,7 @@ describe('mxl:', function() {
 
   it('should error on bad commands w/ run command (duplicate session)',
     function(done) {
-      var args = ['run', '../error.tmux.conf'];
+      var args = ['source', '../error.tmux.conf'];
       var def = program(require(config.pkg), config.name)
       def.program.on('error', function(err) {
         expect(err.code).to.eql(1);
@@ -97,7 +97,7 @@ describe('mxl:', function() {
   });
 
   it('should error on pattern match w/ run command', function(done) {
-    var args = ['run', '-p', 'missing'];
+    var args = ['source', '-p', 'missing'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
@@ -125,7 +125,7 @@ describe('mxl:', function() {
   });
 
   it('should error on no files found w/ run command', function(done) {
-    var args = ['run', '../empty'];
+    var args = ['source', '../empty'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
@@ -153,7 +153,7 @@ describe('mxl:', function() {
   });
 
   it('should error on bad pattern regexp', function(done) {
-    var args = ['run', '-p', '+'];
+    var args = ['source', '-p', '+'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       function fn() {
@@ -201,7 +201,7 @@ describe('mxl:', function() {
 
   it('should error using bad pattern with each', function(done) {
     var args = [
-      'run', 'project', '-c', 'project', '--each', '-p', '+'];
+      'source', 'project', '-c', 'project', '--each', '-p', '+'];
     var def = program(require(config.pkg), config.name);
     def.program.on('error', function(err) {
       function fn() {
@@ -217,7 +217,7 @@ describe('mxl:', function() {
   it('should error using unknown pattern with each',
     function(done) {
       var args = [
-        'run', '--noop', '-c', 'project', '--each', '-p', 'unknown'];
+        'source', '--noop', '-c', 'project', '--each', '-p', 'unknown'];
       var def = program(require(config.pkg), config.name)
       def.program.on('error', function(err) {
         function fn() {

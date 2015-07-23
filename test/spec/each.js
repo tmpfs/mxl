@@ -7,7 +7,7 @@ describe('mxl:', function() {
 
   it('should run index file on directory child folders (--each)',
     function(done) {
-      var args = ['run', '--noop', '-c', 'project', '--each'];
+      var args = ['source', '--noop', '-c', 'project', '--each'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         var files = req.launch.find.files;
@@ -25,7 +25,7 @@ describe('mxl:', function() {
 
   it('should run index file on directory child folders w/ cwd (--each)',
     function(done) {
-      var args = ['run', '--noop', '--each'];
+      var args = ['source', '--noop', '--each'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         var files = req.launch.find.files;
@@ -41,7 +41,7 @@ describe('mxl:', function() {
 
   it('should run index file on directory child folders w/ pattern (--each)',
     function(done) {
-      var args = ['run', '--noop', '-c', 'project', '--each', '-p', 'db'];
+      var args = ['source', '--noop', '-c', 'project', '--each', '-p', 'db'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         var files = req.launch.find.files;

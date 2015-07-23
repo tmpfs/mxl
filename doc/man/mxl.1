@@ -1,12 +1,12 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.48" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.49" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
 
 .SP
-mxl <command> [\-anrh] [\-\-color|\-\-no\-color] [\-a|\-\-all] [\-n|\-\-noop]
+mxl <command> [\-anrh] [\-a|\-\-all] [\-n|\-\-noop] [\-r|\-\-recursive]
 .br
-    [\-r|\-\-recursive] [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir...>]
+    [\-\-color|\-\-no\-color] [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir...>]
 .br
     [\-p|\-\-pattern=<ptn...>] <args>
 .SH "DESCRIPTION"
@@ -25,7 +25,7 @@ of operations on aliases the rc file is not written.
 .IP "\[ci]" 4
 \fBlist, ls\fR: List configuration files.
 .IP "\[ci]" 4
-\fBrun\fR: Source tmux configuration files.
+\fBsource, so\fR: Source tmux configuration files.
 .IP "\[ci]" 4
 \fBalias, as\fR: Manage file aliases.
 .IP "\[ci]" 4

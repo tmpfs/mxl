@@ -35,7 +35,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --recursive option (w/ command)', function(done) {
-    var args = ['run', '-r', '--noop'];
+    var args = ['source', '-r', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.be.gt(4);
@@ -51,7 +51,7 @@ describe('mxl:', function() {
   });
 
   it('should run index file (w/ command)', function(done) {
-    var args = ['run', '--noop'];
+    var args = ['source', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -87,7 +87,7 @@ describe('mxl:', function() {
   });
 
   it('should run alias (@conf/alt) w/ run command', function(done) {
-    var args = ['run', '@conf/alt'];
+    var args = ['source', '@conf/alt'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.alias.length).to.eql(1);
@@ -113,7 +113,7 @@ describe('mxl:', function() {
 
   it('should run specific file (w/ command)', function(done) {
     var args = [
-      'run', '--noop', path.join(process.cwd(), 'tmux.conf')];
+      'source', '--noop', path.join(process.cwd(), 'tmux.conf')];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -125,7 +125,7 @@ describe('mxl:', function() {
   });
 
   it('should run files (w/ cwd)', function(done) {
-    var args = ['run', '--noop', '-c=.'];
+    var args = ['source', '--noop', '-c=.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -137,7 +137,7 @@ describe('mxl:', function() {
   });
 
   it('should run all files (-a)', function(done) {
-    var args = ['run', '-a', '--noop'];
+    var args = ['source', '-a', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
@@ -149,7 +149,7 @@ describe('mxl:', function() {
   });
 
   it('should run all files (-a) w/ directory arg', function(done) {
-    var args = ['run', '-a', '--noop', '.'];
+    var args = ['source', '-a', '--noop', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.map['conf']).to.be.a('string');
@@ -200,7 +200,7 @@ describe('mxl:', function() {
   });
 
   it('should run using index file and alias (mixed)', function(done) {
-    var args = ['run', '../index', '@conf'];
+    var args = ['source', '../index', '@conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(2);
@@ -222,7 +222,7 @@ describe('mxl:', function() {
   });
 
   it('should run with --session option w/ command', function(done) {
-    var args = ['run', '--noop', '--session', 'mock'];
+    var args = ['source', '--noop', '--session', 'mock'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -235,7 +235,7 @@ describe('mxl:', function() {
 
   it('should run using --each w/ --session', function(done) {
     var args = [
-      'run', 'project', '-c', 'project', '--each',
+      'source', 'project', '-c', 'project', '--each',
       '--session', 'mock', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
@@ -246,7 +246,7 @@ describe('mxl:', function() {
 
   it('should run using pattern with each', function(done) {
     var args = [
-      'run', 'project', '-c', 'project', '--each',
+      'source', 'project', '-c', 'project', '--each',
       '-p', 'client', '-p', 'server'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {

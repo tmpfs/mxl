@@ -11,7 +11,7 @@ describe('mxl:', function() {
   // file: test/fixtures/conf/tmux.conf
   // cwd: test/fixtures/conf
   it('should run with cwd (zero args)', function(done) {
-    var args = ['run', '--noop'];
+    var args = ['source', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -30,7 +30,7 @@ describe('mxl:', function() {
   // file: test/fixtures/conf/tmux.conf
   // cwd: test/fixtures/conf
   it('should run with explicit index file by dir  (zero args)', function(done) {
-    var args = ['run', '--noop', '.'];
+    var args = ['source', '--noop', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -50,7 +50,7 @@ describe('mxl:', function() {
   // file: test/fixtures/conf/tmux.conf
   // cwd: test/fixtures/conf
   it('should not duplicate exact path matches', function(done) {
-    var args = ['run', '--noop', '.', './', './tmux.conf'];
+    var args = ['source', '--noop', '.', './', './tmux.conf'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -68,7 +68,7 @@ describe('mxl:', function() {
   // file: test/fixtures/conf/tmux.conf
   // cwd: test/fixtures/conf/project
   it('should run index file with explicit working directory', function(done) {
-    var args = ['run', '--noop', '-c', PROJECT];
+    var args = ['source', '--noop', '-c', PROJECT];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.launch.list.length).to.eql(1);
@@ -89,7 +89,7 @@ describe('mxl:', function() {
   // cwd: test/fixtures/conf/project
   it('should use file parent directory on index file resolve from dir arg',
     function(done) {
-      var args = ['run', '--noop', PROJECT];
+      var args = ['source', '--noop', PROJECT];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(req.launch.list.length).to.eql(1);
@@ -110,9 +110,9 @@ describe('mxl:', function() {
 
   // file: mxl/conf/tpl/vim/tmux.conf
   // cwd: test/fixtures/conf
-  it('should use default working directory when alias reference',
+  it('should use default working directory when global alias reference',
     function(done) {
-      var args = ['run', '--noop', '@vim'];
+      var args = ['source', '--noop', '@vim'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(req.launch.list.length).to.eql(1);

@@ -101,7 +101,7 @@ describe('mxl:', function() {
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(
         path.join(process.cwd(), 'alt.tmux.conf'));
-      args = ['run', '--noop', '@foo'];
+      args = ['source', '--noop', '@foo'];
       def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(req.rc.alias.foo.file).to.eql(
