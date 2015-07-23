@@ -16,7 +16,7 @@ of operations on aliases the rc file is not written.
 * `list: list, ls`: List configuration files.
 * `run: source, so <file> <dir> <@alias>`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
-* `remove: rm <pattern...>`: Remove aliases by pattern match.
+* `remove: remove, rm <pattern...>`: Remove aliases by pattern match.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index <dir...>`: Generate alias index.
 * `install: install, i <@alias=filename>`: Install alias files.
@@ -37,7 +37,7 @@ be deleted.
 All unparsed arguments and values given to `-p | --pattern` are compiled 
 to regular expressions and matched against the keys for the user aliases.
 
-Matchs are deleted and the aliases are re-written unless `--noop` is specified.
+Matched alias keys are deleted and the aliases are re-written unless `--noop` is specified.
 
 ### Install
 

@@ -64,7 +64,7 @@ Commands:
  list, ls                   List configuration files.
  source, so                 Source tmux configuration files.
  alias, as                  Manage file aliases.
- rm                         Remove aliases by pattern match.
+ remove, rm                 Remove aliases by pattern match.
  prune, pr                  Remove stale aliases.
  index                      Generate alias index.
  install, i                 Install alias files.

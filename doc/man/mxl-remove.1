@@ -1,8 +1,11 @@
-.TH "MXL-RM" "1" "July 2015" "mxl-rm 0.5.49" "User Commands"
+.TH "MXL-REMOVE" "1" "July 2015" "mxl-remove 0.5.50" "User Commands"
 .SH "NAME"
-mxl-rm -- Remove aliases by pattern match.
+mxl-remove -- Remove aliases by pattern match.
 .SH "USAGE"
 
+.SP
+mxl remove <args> <pattern...>
+.br
 mxl rm <args> <pattern...>
 .SH "DESCRIPTION"
 .PP
@@ -14,7 +17,7 @@ All unparsed arguments and values given to \fB\-p | \-\-pattern\fR are compiled
 .br
 to regular expressions and matched against the keys for the user aliases.
 .PP
-Matchs are deleted and the aliases are re\-written unless \fB\-\-noop\fR is specified.
+Matched alias keys are deleted and the aliases are re\-written unless \fB\-\-noop\fR is specified.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
