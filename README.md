@@ -67,6 +67,7 @@ Commands:
  remove, rm                 Remove aliases by pattern match.
  prune, pr                  Remove stale aliases.
  index, idx                 Generate alias index.
+ kill, k                    Kill sessions, windows and panes.
  install, i                 Install alias files.
  help                       Show help for commands.
 
@@ -217,6 +218,9 @@ mxl index /usr/local/project
 See the [templates](https://github.com/freeformsystems/mxl/blob/master/conf/tpl) for example `tmux` configuration files.
 
 ## Developer
+
+Clone the repository, install deps (`npm i`) and symlink the executable in 
+`$PATH`.
 
 ### Test
 

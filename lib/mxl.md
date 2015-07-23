@@ -19,6 +19,7 @@ of operations on aliases the rc file is not written.
 * `remove: remove, rm <pattern...>`: Remove aliases by pattern match.
 * `prune: prune, pr`: Remove stale aliases.
 * `generate: index, idx <dir...>`: Generate alias index.
+* `kill: kill, k <pattern...>`: Kill sessions, windows and panes.
 * `install: install, i <@alias=filename>`: Install alias files.
 
 ## Options

@@ -25,6 +25,7 @@ commands=(
   'prune:Remove stale aliases'
   'index:Generate alias index'
   'install:Install alias files'
+  'kill:Kill sessions, windows and panes'
   'help:Show man pages'
 )
 
