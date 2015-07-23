@@ -11,15 +11,11 @@ mxl <command> [\-anrh] [\-a|\-\-all] [\-n|\-\-noop] [\-r|\-\-recursive]
     [\-p|\-\-pattern=<ptn...>] [\-s|\-\-session=<name>] <args>
 .SH "DESCRIPTION"
 .PP
-Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
-.br
-executes using \fBtmux source\-file\fR.
+Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and executes using \fBtmux source\-file\fR.
 .PP
 When no command is specified the \fBsource\fR command is invoked.
 .PP
-The \fB\-\-noop\fR option applies to all commands except \fBls\fR and \fBhelp\fR, in the case 
-.br
-of operations on aliases the rc file is not written.
+The \fB\-\-noop\fR option applies to all commands except \fBls\fR and \fBhelp\fR, in the case of operations on aliases the rc file is not written.
 .SH "COMMANDS"
 .BL
 .IP "\[ci]" 4
@@ -64,22 +60,39 @@ of operations on aliases the rc file is not written.
 .EL
 .SH "PATTERNS"
 .PP
-When the \fB\-p | \-\-pattern\fR option is specified it is applied to the results of 
-.br
-searching for configuration files except in the case of \fB\-e | \-\-each\fR when the 
-.br
-behaviour changes to match on the current working directory context, see 
-.br
-mxl\-run(1) for more information on \fB\-\-each\fR.
+When the \fB\-p | \-\-pattern\fR option is specified it is applied to the results of searching for configuration files except in the case of \fB\-e | \-\-each\fR when the behaviour changes to match on the current working directory context, see mxl\-run(1) for more information on \fB\-\-each\fR.
 .PP
-Patterns are compiled to regular expressions and are matched against the full 
-.br
-file system path.
+Patterns are compiled to regular expressions and are matched against the full file system path.
 .PP
 If any of the patterns match the file is included (logical OR).
+.SH "WORKFLOW"
+.PP
+Information on an efficient workflow, examples assume the \fBzsh\fR shell.
+.PP
+To remove the first few keystrokes for a session it is useful to start \fBtmux\fR at login:
+
+.SP
+  if [ \-z $TMUX ]; then
+.br
+    tmux
+.br
+  fi
+.PP
+Once \fBmxl\fR is installed you have a lot of power to create many sessions and windows very quickly so it is useful to be able to also kill sessions, windows and panes when necessary. Save a few more keystrokes with the following aliases:
+
+.SP
+  # tmux kill shortcuts
+.br
+  alias ks="mxl kill \-S"
+.br
+  alias kw="mxl kill \-W"
+.br
+  alias kp="mxl kill \-P"
+.PP
+See mxl\-kill(1).
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
 .SH "SEE ALSO"
 .PP
-tmux(1)
+tmux(1), mxl\-alias(1), mxl\-index(1), mxl\-install(1), mxl\-kill(1), mxl\-list(1), mxl\-prune(1), mxl\-remove(1), mxl\-source(1)

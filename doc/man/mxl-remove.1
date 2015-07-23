@@ -9,13 +9,9 @@ mxl remove <args> <pattern...>
 mxl rm <args> <pattern...>
 .SH "DESCRIPTION"
 .PP
-Removes user aliases by regular expression pattern match, global aliases may not 
-.br
-be deleted.
+Removes user aliases by regular expression pattern match, global aliases may not be deleted.
 .PP
-All unparsed arguments and values given to \fB\-p | \-\-pattern\fR are compiled 
-.br
-to regular expressions and matched against the keys for the user aliases.
+All unparsed arguments and values given to \fB\-p | \-\-pattern\fR are compiled to regular expressions and matched against the keys for the user aliases.
 .PP
 Matched alias keys are deleted and the aliases are re\-written unless \fB\-\-noop\fR is specified.
 .SH "BUGS"

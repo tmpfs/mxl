@@ -9,9 +9,7 @@ mxl install [\-f] [\-f|\-\-force] <args> <@alias=filename>
 mxl i [\-f] [\-f|\-\-force] <args> <@alias=filename>
 .SH "DESCRIPTION"
 .PP
-Copy the files referenced by aliases into one or more target directories 
-.br
-and optionally set the filename for each destination file.
+Copy the files referenced by aliases into one or more target directories and optionally set the filename for each destination file.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
@@ -19,9 +17,7 @@ and optionally set the filename for each destination file.
 .EL
 .SH "FILES"
 .PP
-To reference the alias file and use the basename of the alias file for the 
-.br
-destination just specify the alias: \fB@project\fR.
+To reference the alias file and use the basename of the alias file for the destination just specify the alias: \fB@project\fR.
 .PP
 To explicitly set the destination file name assign to the alias:
 
@@ -29,36 +25,24 @@ To explicitly set the destination file name assign to the alias:
 .PP
 Uses the file name \fBprofile.tmux.conf\fR \- the extension is added automatically.
 .PP
-Files are copied to all of the directories referenced by the \fB\-c\fR options or 
-.br
-the current working directory if none are specified.
+Files are copied to all of the directories referenced by the \fB\-c\fR options or the current working directory if none are specified.
 .PP
-Destination files may overlap, for example, if both aliases share the same file 
-.br
-name:
+Destination files may overlap, for example, if both aliases share the same file name:
 
   @git @vim
 .PP
-Would result in an error as the destination file names conflict. To resolve this 
-.br
-use explicit file names:
+Would result in an error as the destination file names conflict. To resolve this use explicit file names:
 
   @git=git\-profile @vim=vim\-profile
 .PP
-If an alias reference is stale (the file has been moved or deleted) then an 
-.br
-error is reported, you should invoke \fBprune\fR and try again checking against the 
-.br
-alias list: \fBmxl alias\fR.
+If an alias reference is stale (the file has been moved or deleted) then an error is reported, you should invoke \fBprune\fR and try again checking against the alias list: \fBmxl alias\fR.
 .PP
 See \fBmxl\-prune(1)\fR for more information.
 .PP
 If any of the destination files exist you must specify \fB\-\-force\fR to overwrite.
 .SH "EXAMPLES"
 .PP
-Copy the file referenced by the alias \fB@home\fR to the current working 
-.br
-directory as \fBtmux.conf\fR.
+Copy the file referenced by the alias \fB@home\fR to the current working directory as \fBtmux.conf\fR.
 
   mxl i @home
 .PP

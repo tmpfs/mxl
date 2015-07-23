@@ -11,15 +11,9 @@ mxl as [\-ga] [\-g|\-\-global] [\-a|\-\-all] <args> <@alias=file>
 .PP
 Manage aliases using an @ notation.
 .PP
-Global aliases are created in the default rc file when mxl(1) is installed, they 
-.br
-are written to \fB.mxlrc.json\fR pointing to the files in \fBconf/tpl\fR and may 
-.br
-not be deleted.
+Global aliases are created in the default rc file when mxl(1) is installed, they are written to \fB.mxlrc.json\fR pointing to the files in \fBconf/tpl\fR and may not be deleted.
 .PP
-Aliases are automatically added if they do not already exist the first time a 
-.br
-call to \fBsource\-file\fR succeeds and are re\-written to \fB$HOME/.mxlrc.json\fR.
+Aliases are automatically added if they do not already exist the first time a call to \fBsource\-file\fR succeeds and are re\-written to \fB$HOME/.mxlrc.json\fR.
 .PP
 The rc file (\fB$HOME/.mxlrc.json\fR.) is created if it does not exist.
 .PP
@@ -33,9 +27,7 @@ For more information see \fIAUTOMATIC\fR.
 .EL
 .SH "SOURCE"
 .PP
-Pass an alias to the default command (\fBsource\fR) to source the file 
-.br
-referenced by the alias:
+Pass an alias to the default command (\fBsource\fR) to source the file referenced by the alias:
 
   mxl @project
 .PP
@@ -61,24 +53,12 @@ The rules for alias names created automatically are:
 .IP "\[ci]" 4
 When the file is \fBtmux.conf\fR use the name of the parent directory.
 .IP "\[ci]" 4
-When the file has a \fB.tmux.conf\fR extension concatenate the parent directory 
-.br
-name with the name of the file after the extension has been removed. The 
-.br
-delimiter for concatenation is \fB/\fR.
+When the file has a \fB.tmux.conf\fR extension concatenate the parent directory name with the name of the file after the extension has been removed. The delimiter for concatenation is \fB/\fR.
 .EL
 .PP
-You may disable automatically adding aliases by modifying the \fBautoalias\fR 
-.br
-rc option.
+You may disable automatically adding aliases by modifying the \fBautoalias\fR rc option.
 .PP
-Note that if you run a file that kills the current window (\fBunlink\-window\fR etc) 
-.br
-aliases will not be added automatically as the process will have been killed 
-.br
-before the success handler returns. To workaround this run from another window, 
-.br
-eg: \fBmxl ~/project\fR.
+Note that if you run a file that kills the current window (\fBunlink\-window\fR etc) aliases will not be added automatically as the process will have been killed before the success handler returns. To workaround this run from another window, eg: \fBmxl ~/project\fR.
 .SH "LIST"
 .PP
 List user aliases:
@@ -98,9 +78,7 @@ To add or update an alias manually assign to the alias:
 
   mxl alias @project=/usr/local/project
 .PP
-It is possible to assign the file from an alias by referencing an 
-.br
-existing alias in the assignment, for example:
+It is possible to assign the file from an alias by referencing an existing alias in the assignment, for example:
 
   mxl alias @project=@git
 .PP
@@ -118,29 +96,17 @@ When adding aliases you may pass the options:
 \fB\-s, \-\-session [name]\fR
 .EL
 .PP
-And they will be saved along with the alias (as an \fBoptions\fR object) and 
-.br
-used when the alias is executed. 
+And they will be saved along with the alias (as an \fBoptions\fR object) and used when the alias is executed. 
 .PP
-You may also specify the \fB\-c, \-\-directory [dir ...]\fR and it is saved as an array of 
-.br
-working directories for the alias as the \fBcwd\fR field.
+You may also specify the \fB\-c, \-\-directory [dir ...]\fR and it is saved as an array of working directories for the alias as the \fBcwd\fR field.
 .PP
-When associating options and working directories with an alias like this you can 
-.br
-ensure they are always used when executing the alias, they may not be overriden.
+When associating options and working directories with an alias like this you can ensure they are always used when executing the alias, they may not be overriden.
 .PP
-Consider the use case where you have an existing template that suffices and a 
-.br
-complex project consisting of modules that you wish to run the file against 
-.br
-using \fB\-\-each\fR, you might do this:
+Consider the use case where you have an existing template that suffices and a complex project consisting of modules that you wish to run the file against using \fB\-\-each\fR, you might do this:
 
   mxl @git \-e \-s project \-c ~/project
 .PP
-To iterate over the child directories of \fB~/project\fR and source the 
-.br
-\fB@git\fR file for each directory after creating a session named \fBproject\fR.
+To iterate over the child directories of \fB~/project\fR and source the \fB@git\fR file for each directory after creating a session named \fBproject\fR.
 .PP
 Save this configuration with:
 
