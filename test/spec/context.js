@@ -155,7 +155,7 @@ describe('mxl:', function() {
   );
 
   // file: test/fixtures/conf/tmux.conf
-  // cwd: test/fixtures/conf
+  // cwd: test/fixtures/conf/project
   it('should use working directory option with user alias reference',
     function(done) {
       var args = ['source', '--noop', '@mock', '-c', PROJECT];
@@ -169,6 +169,31 @@ describe('mxl:', function() {
           path.join(process.env.MXL_TEST_BASE, FILENAME));
         expect(file.cwd).to.eql(
           path.join(process.env.MXL_TEST_BASE, PROJECT));
+        done();
+      })
+      def.parse(args);
+    }
+  );
+
+  // file: test/fixtures/conf/tmux.conf
+  // cwd: test/fixtures/conf
+  // cwd: test/fixtures/conf/project
+  it('should use multiple working directory options with user alias reference',
+    function(done) {
+      var args = ['source', '--noop', '@mock', '-c', PROJECT, '-c' ,'.'];
+      var def = program(require(config.pkg), config.name)
+      def.program.on('complete', function(req) {
+        var map = req.launch.results.map
+          , conf = path.join(process.env.MXL_TEST_BASE, FILENAME)
+          , dir1 = process.env.MXL_TEST_BASE
+          , dir2 = path.join(process.env.MXL_TEST_BASE, PROJECT);
+        expect(map).to.be.an('object');
+        expect(map[dir1]).to.be.an('array');
+        expect(map[dir2]).to.be.an('array');
+        expect(map[dir1][0].file).to.eql(conf);
+        expect(map[dir2][0].file).to.eql(conf);
+        expect(map[dir1][0].cwd).to.eql(dir1);
+        expect(map[dir2][0].cwd).to.eql(dir2);
         done();
       })
       def.parse(args);

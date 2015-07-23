@@ -1,5 +1,8 @@
 ## Developer
 
+Clone the repository, install deps (`npm i`) and symlink the executable in 
+`$PATH`.
+
 ### Test
 
 To run the test suite:
