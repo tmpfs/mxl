@@ -8,7 +8,7 @@ mxl <command> [\-anrh] [\-a|\-\-all] [\-n|\-\-noop] [\-r|\-\-recursive]
 .br
     [\-\-color|\-\-no\-color] [\-h|\-\-help] [\-\-version] [\-c|\-\-directory=<dir...>]
 .br
-    [\-p|\-\-pattern=<ptn...>] <args>
+    [\-p|\-\-pattern=<ptn...>] [\-s|\-\-session=<name>] <args>
 .SH "DESCRIPTION"
 .PP
 Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension and 
@@ -44,13 +44,15 @@ of operations on aliases the rc file is not written.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
-\fB\-c, \-\-directory=[dir ...]\fR: Working directory used for \fBtmux\fR process.
+\fB\-c, \-\-directory=[dir ...]\fR: Working directory contexts.
 .IP "\[ci]" 4
 \fB\-p, \-\-pattern=[ptn ...]\fR: Filter files by regexp pattern(s).
 .IP "\[ci]" 4
 \fB\-a, \-\-all\fR: Match all configuration files.
 .IP "\[ci]" 4
 \fB\-n, \-\-noop\fR: Print matched files, do not call \fBsource\-file\fR.
+.IP "\[ci]" 4
+\fB\-s, \-\-session=[name]\fR: Create session before source file(s).
 .IP "\[ci]" 4
 \fB\-r, \-\-recursive\fR: Match files recursively.
 .IP "\[ci]" 4

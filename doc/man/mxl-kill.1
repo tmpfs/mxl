@@ -1,15 +1,28 @@
 .TH "MXL-KILL" "1" "July 2015" "mxl-kill 0.5.54" "User Commands"
 .SH "NAME"
-mxl-kill
+mxl-kill -- Kill sessions, windows and panes.
 .SH "USAGE"
 
 .SP
-mxl kill <args> <pattern...>
+mxl kill [\-s|\-\-session=<name>] [\-w|\-\-window=<name>]
 .br
-mxl k <args> <pattern...>
+    [\-p|\-\-pattern=<ptn...>] <args> <pattern...>
+.br
+mxl k [\-s|\-\-session=<name>] [\-w|\-\-window=<name>]
+.br
+    [\-p|\-\-pattern=<ptn...>] <args> <pattern...>
 .SH "DESCRIPTION"
 .PP
-Kill sessions, windows and panes.
+Destroy sessions, windows and panes using regular expression patterns.
+.SH "OPTIONS"
+.BL
+.IP "\[ci]" 4
+\fB\-s, \-\-session=[name]\fR: Search sessions when no value is given otherwise kill session with \fIname\fR.
+.IP "\[ci]" 4
+\fB\-w, \-\-window=[name]\fR: Search window when no value is given otherwise kill window with \fIname\fR.
+.IP "\[ci]" 4
+\fB\-p, \-\-pattern=[ptn ...]\fR: Filter search by regexp pattern(s).
+.EL
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

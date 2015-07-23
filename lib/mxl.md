@@ -14,7 +14,7 @@ of operations on aliases the rc file is not written.
 ## Commands
 
 * `list: list, ls`: List configuration files.
-* `run: source, so <file> <dir> <@alias>`: Source tmux configuration files.
+* `run: source, so`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
 * `remove: remove, rm <pattern...>`: Remove aliases by pattern match.
 * `prune: prune, pr`: Remove stale aliases.
@@ -24,11 +24,22 @@ of operations on aliases the rc file is not written.
 
 ## Options
 
-* `dir: -c, --directory [dir ...]`: Working directory used for `tmux` process.
+* `dir: -c, --directory [dir ...]`: Working directory contexts.
 * `pattern: -p, --pattern [ptn ...]`: Filter files by regexp pattern(s).
 * `all: -a, --all`: Match all configuration files.
 * `noop: -n, --noop`: Print matched files, do not call `source-file`.
+* `session: -s, --session [name]`: Create session before source file(s).
 * `recursive: -r, --recursive`: Match files recursively.
+
+### Kill
+
+Destroy sessions, windows and panes using regular expression patterns.
+
+#### Options
+
+* `session: -s, --session [name]`: Search sessions when no value is given otherwise kill session with _name_.
+* `window: -w, --window [name]`: Search window when no value is given otherwise kill window with _name_.
+* `pattern: -p, --pattern [ptn ...]`: Filter search by regexp pattern(s).
 
 ### Remove
 
@@ -294,15 +305,16 @@ mxl-alias(1)
 Invokes `tmux source-file` with the configuration files found by evaluating 
 the arguments, use the `--noop` option to inspect what would be executed.
 
-Arguments can be directories, files, alias references and file pattern matching 
-expressions.
+Arguments can be directories, files, and aliases which are resolved to 
+configuration files. Every file found is executed against each working directory 
+context, specified using the `${opt_dir_name}` option; when not specified the 
+current working directory is used. 
 
 See mxl-alias(1) for more information on aliases.
 
 #### Options
 
 * `each: -e, --each`: Iterate child directories and set `-c` for each directory.
-* `session: -s, --session <name>`: Create session before source file(s).
 
 #### Environment
 
@@ -310,8 +322,8 @@ Before calls to `source-file` the following environment variables are set
 using `set-environment -g`:
 
 * `mxl_key`: An identifier for a session or window.
-* `mxl_file`: The path to the configuration file.
-* `mxl_filename`: The name of the configuration file.
+* `mxl_name`: The name for the window or session.
+* `mxl_session`: The name of a session.
 * `mxl_cwd`: The working directory for the `tmux` process.
 * `mxl_cwdname`: The name of the working directory.
 

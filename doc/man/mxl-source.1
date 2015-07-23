@@ -4,30 +4,28 @@ mxl-source -- Source tmux configuration files.
 .SH "USAGE"
 
 .SP
-mxl source [\-e] [\-e|\-\-each] [\-s|\-\-session=<name>] <args> <file> <dir>
+mxl source [\-e] [\-e|\-\-each] <args>
 .br
-    <@alias>
-.br
-mxl so [\-e] [\-e|\-\-each] [\-s|\-\-session=<name>] <args> <file> <dir>
-.br
-    <@alias>
+mxl so [\-e] [\-e|\-\-each] <args>
 .SH "DESCRIPTION"
 .PP
 Invokes \fBtmux source\-file\fR with the configuration files found by evaluating 
 .br
 the arguments, use the \fB\-\-noop\fR option to inspect what would be executed.
 .PP
-Arguments can be directories, files, alias references and file pattern matching 
+Arguments can be directories, files, and aliases which are resolved to 
 .br
-expressions.
+configuration files. Every file found is executed against each working directory 
+.br
+context, specified using the \fB\-c, \-\-directory [dir ...]\fR option; when not specified the 
+.br
+current working directory is used. 
 .PP
 See mxl\-alias(1) for more information on aliases.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
 \fB\-e, \-\-each\fR: Iterate child directories and set \fB\-c\fR for each directory.
-.IP "\[ci]" 4
-\fB\-s, \-\-session=<name>\fR: Create session before source file(s).
 .EL
 .SH "EACH"
 .PP
@@ -74,9 +72,9 @@ using \fBset\-environment \-g\fR:
 .IP "\[ci]" 4
 \fBmxl_key\fR: An identifier for a session or window.
 .IP "\[ci]" 4
-\fBmxl_file\fR: The path to the configuration file.
+\fBmxl_name\fR: The name for the window or session.
 .IP "\[ci]" 4
-\fBmxl_filename\fR: The name of the configuration file.
+\fBmxl_session\fR: The name of a session.
 .IP "\[ci]" 4
 \fBmxl_cwd\fR: The working directory for the \fBtmux\fR process.
 .IP "\[ci]" 4

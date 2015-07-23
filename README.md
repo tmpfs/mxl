@@ -56,7 +56,7 @@ npm i -g mxl
 Usage: mxl <command> [-anrh] [-a|--all] [-n|--noop]
            [-r|--recursive] [--color|--no-color] [-h|--help]
            [--version] [-c|--directory=<dir...>]
-           [-p|--pattern=<ptn...>] <args>
+           [-p|--pattern=<ptn...>] [-s|--session=<name>] <args>
 
 Tmux launcher.
 
@@ -72,10 +72,11 @@ Commands:
  help                       Show help for commands.
 
 Options:
- -c, --directory=[dir ...]  Working directory used for tmux process.
+ -c, --directory=[dir ...]  Working directory contexts.
  -p, --pattern=[ptn ...]    Filter files by regexp pattern(s).
  -a, --all                  Match all configuration files.
  -n, --noop                 Print matched files, do not call source-file.
+ -s, --session=[name]       Create session before source file(s).
  -r, --recursive            Match files recursively.
  -h, --help                 Print help and exit.
      --[no]-color           Enable or disable terminal colors.
