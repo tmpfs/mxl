@@ -37,9 +37,9 @@ Destroy sessions, windows and panes using regular expression patterns.
 
 #### Options
 
-* `session: -s, --session [name]`: Search sessions when no value is given otherwise kill session with _name_.
-* `window: -w, --window [name]`: Search window when no value is given otherwise kill window with _name_.
-* `pattern: -p, --pattern [ptn ...]`: Filter search by regexp pattern(s).
+* `kills: -S`: Kill sessions.
+* `killw: -W`: Kill windows (default).
+* `killp: -P`: Kill panes.
 
 ### Remove
 

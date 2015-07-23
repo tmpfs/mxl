@@ -4,24 +4,20 @@ mxl-kill -- Kill sessions, windows and panes.
 .SH "USAGE"
 
 .SP
-mxl kill [\-s|\-\-session=<name>] [\-w|\-\-window=<name>]
+mxl kill [\-SWP] [\-S] [\-W] [\-P] <args> <pattern...>
 .br
-    [\-p|\-\-pattern=<ptn...>] <args> <pattern...>
-.br
-mxl k [\-s|\-\-session=<name>] [\-w|\-\-window=<name>]
-.br
-    [\-p|\-\-pattern=<ptn...>] <args> <pattern...>
+mxl k [\-SWP] [\-S] [\-W] [\-P] <args> <pattern...>
 .SH "DESCRIPTION"
 .PP
 Destroy sessions, windows and panes using regular expression patterns.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
-\fB\-s, \-\-session=[name]\fR: Search sessions when no value is given otherwise kill session with \fIname\fR.
+\fB\-S\fR: Kill sessions.
 .IP "\[ci]" 4
-\fB\-w, \-\-window=[name]\fR: Search window when no value is given otherwise kill window with \fIname\fR.
+\fB\-W\fR: Kill windows (default).
 .IP "\[ci]" 4
-\fB\-p, \-\-pattern=[ptn ...]\fR: Filter search by regexp pattern(s).
+\fB\-P\fR: Kill panes.
 .EL
 .SH "BUGS"
 .PP
