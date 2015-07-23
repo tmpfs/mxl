@@ -66,7 +66,7 @@ Commands:
  alias, as                  Manage file aliases.
  remove, rm                 Remove aliases by pattern match.
  prune, pr                  Remove stale aliases.
- index                      Generate alias index.
+ index, idx                 Generate alias index.
  install, i                 Install alias files.
  help                       Show help for commands.
 
