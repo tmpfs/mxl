@@ -1,4 +1,4 @@
-.TH "MXL-KILL" "1" "July 2015" "mxl-kill 0.5.55" "User Commands"
+.TH "MXL-KILL" "1" "July 2015" "mxl-kill 0.5.56" "User Commands"
 .SH "NAME"
 mxl-kill -- Kill sessions, windows and panes.
 .SH "USAGE"
@@ -14,6 +14,8 @@ Destroy sessions, windows and panes using regular expression patterns.
 A list is retrieved from \fBtmux\fR of whichever type is the target (session, window or pane) for each item in the list all patterns are matched against all fields, if any pattern matches any field the target is included, use the \fB\-\-noop\fR option to see matches.
 .PP
 The \fBkill\fR command operates on windows by default.
+.PP
+When no patterns are passed the effect is to close the current session, window or pane otherwise when matching multiple targets 
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
@@ -64,7 +66,11 @@ Kill the sessions \fBcmus\fR and \fBmutt\fR:
 .PP
 Kill all other windows:
 
-  mxl kill \-P @
+  mxl kill @
+.PP
+Kill all other sessions:
+
+  mxl kill \-S '$'
 .PP
 Kill all other panes:
 
