@@ -12,6 +12,12 @@ npm test
 
 Note that the working directory for test execution is set to [fixtures/conf](/test/fixtures/conf).
 
+Run an individual test spec with `TEST_SPEC`:
+
+```
+TEST_SPEC=test/spec/context npm test
+```
+
 ### Cover
 
 To generate code coverage:
