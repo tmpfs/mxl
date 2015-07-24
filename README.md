@@ -50,6 +50,7 @@ Commands:
  kill, k                    Kill sessions, windows and panes.
  install, i                 Install alias files.
  reshuffle, rs              Reshuffle window indices to be sequential.
+ quit                       Kill the tmux server.
  help                       Show help for commands.
 
 Options:
