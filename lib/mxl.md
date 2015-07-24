@@ -51,7 +51,9 @@ The `${cmd_kill_long}` command operates on windows by default.
 
 When no patterns are passed the effect is to close the current session, window or pane. If patterns are specified and they match the current target, the current target is excluded and a warning is printed.
 
-If an attempt is made to kill the current session (`$0 ${cmd_kill_long} -S`) and the current session is the scratch session, the request is refused with an error.
+If an attempt is made to kill the current session (`$0 ${cmd_kill_long} -S`) and the current session is the scratch session or the session is the only session, the request is refused with an error.
+
+To kill the last session use the `${cmd_quit_long}` command.
 
 #### Options
 
@@ -102,7 +104,7 @@ $0 ${cmd_kill_long} @
 Kill all other sessions:
 
 ```
-$0 ${cmd_kill_long} -S '$'
+$0 ${cmd_kill_long} -S '.*'
 ```
 
 Kill all other panes:
@@ -468,6 +470,8 @@ alias kwo="mxl kill -W '@'"
 alias kpo="mxl kill -P '%'"
 # reshuffle window indices
 alias wrs="mxl rs"
+# kill tmux server
+alias tks="mxl quit"
 ```
 
 The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.

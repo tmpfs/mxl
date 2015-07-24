@@ -1,4 +1,4 @@
-.TH "MXL-KILL" "1" "July 2015" "mxl-kill 0.5.61" "User Commands"
+.TH "MXL-KILL" "1" "July 2015" "mxl-kill 0.5.62" "User Commands"
 .SH "NAME"
 mxl-kill -- Kill sessions, windows and panes.
 .SH "USAGE"
@@ -17,7 +17,9 @@ The \fBkill\fR command operates on windows by default.
 .PP
 When no patterns are passed the effect is to close the current session, window or pane. If patterns are specified and they match the current target, the current target is excluded and a warning is printed.
 .PP
-If an attempt is made to kill the current session (\fBmxl kill \-S\fR) and the current session is the scratch session, the request is refused with an error.
+If an attempt is made to kill the current session (\fBmxl kill \-S\fR) and the current session is the scratch session or the session is the only session, the request is refused with an error.
+.PP
+To kill the last session use the \fBquit\fR command.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
@@ -72,7 +74,7 @@ Kill all other windows:
 .PP
 Kill all other sessions:
 
-  mxl kill \-S '$'
+  mxl kill \-S '.*'
 .PP
 Kill all other panes:
 
