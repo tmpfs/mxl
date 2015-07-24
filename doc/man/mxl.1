@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.56" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.58" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -16,6 +16,8 @@ Finds files named either \fBtmux.conf\fR or with a \fB.tmux.conf\fR extension an
 When no command is specified the \fBsource\fR command is invoked.
 .PP
 The \fB\-\-noop\fR option applies to all commands except \fBls\fR and \fBhelp\fR, in the case of operations on aliases the rc file is not written.
+.PP
+If the \fB$TMUX\fR variable is not set an attempt is made to spawn \fBtmux\fR to start an initial server, see \fIWORKFLOW\fR.
 .SH "COMMANDS"
 .BL
 .IP "\[ci]" 4
@@ -69,7 +71,7 @@ If any of the patterns match the file is included (logical OR).
 .PP
 Information on an efficient workflow, examples assume the \fBzsh\fR shell.
 .PP
-To remove the first few keystrokes for a session it is useful to start \fBtmux\fR at login:
+To remove the first few keystrokes for a session start \fBtmux\fR at login:
 
 .SP
   if [ \-z $TMUX ]; then
@@ -88,6 +90,46 @@ Once \fBmxl\fR is installed you have a lot of power to create many sessions and 
   alias kw="mxl kill \-W"
 .br
   alias kp="mxl kill \-P"
+.PP
+The concept of a \fBscratch\fR session exists as the default session and as the session to re\-attach to when killing the current session. Typically you would define this in \fB$HOME/tmux.conf\fR and configure the sessions, windows and panes you want for the \fBscratch\fR session.
+.PP
+The session name given to the scratch session is \fB/launch\fR by default but you may change this with the \fB$mxl_scratch\fR environment variable, but do not start the session name with \fB\-\fR.
+.PP
+A global alias is available with my preference named \fB@scratch\fR, install it:
+
+  cd ~ && mxl i @scratch
+.PP
+And modify to suit your needs.
+.PP
+Once you have run the scratch session:
+
+  mxl .
+.PP
+You will have a user alias named \fB@<username>\fR, eg: \fB@muji\fR; you can list user aliases with \fBmxl as\fR to check.
+.PP
+Now you can update your shell rc file to run \fBmxl\fR directly with the user profile:
+
+.SP
+  if [ \-z $TMUX ]; then
+.br
+    mxl @muji
+.br
+  fi
+.PP
+When \fB$TMUX\fR is not set \fBmxl\fR will attempt to spawn it to start a server, so the above command will spawn \fBtmux\fR, wait a while for the server to start and then execute the arguments.
+.PP
+Specify more aliases to start other active projects at login:
+
+.SP
+  if [ \-z $TMUX ]; then
+.br
+    mxl @muji @mxl @rlx
+.br
+  fi
+.PP
+Note it is important to test that \fB$TMUX\fR is \fInot\fR set to prevent nested session attempts when splitting windows and panes.
+.PP
+When modifying the shell login rc file it is best to kill the server (\fB:kill\-server\fR) and terminal emulator and start fresh.
 .PP
 See mxl\-kill(1).
 .SH "BUGS"

@@ -9,6 +9,8 @@ When no command is specified the `${cmd_run_long}` command is invoked.
 
 The `--noop` option applies to all commands except `ls` and `help`, in the case of operations on aliases the rc file is not written.
 
+If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start an initial server, see _WORKFLOW_.
+
 ## Commands
 
 * `list: list, ls`: List configuration files.
@@ -433,7 +435,7 @@ If any of the patterns match the file is included (logical OR).
 
 Information on an efficient workflow, examples assume the `zsh` shell.
 
-To remove the first few keystrokes for a session it is useful to start `tmux` at login:
+To remove the first few keystrokes for a session start `tmux` at login:
 
 ```
 if [ -z $TMUX ]; then
@@ -449,6 +451,48 @@ alias ks="mxl kill -S"
 alias kw="mxl kill -W"
 alias kp="mxl kill -P"
 ```
+
+The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.
+
+The session name given to the scratch session is `/launch` by default but you may change this with the `\$mxl_scratch` environment variable, but _do not_ start the session name with `-`.
+
+A global alias is available with my preference named `@scratch`, install it:
+
+```
+cd ~ && $0 i @scratch
+```
+
+And modify to suit your needs.
+
+Once you have run the scratch session:
+
+```
+$0 .
+```
+
+You will have a user alias named `@<username>`, eg: `@muji`; you can list user aliases with `$0 as` to check.
+
+Now you can update your shell rc file to run `$0` directly with the user profile:
+
+```
+if [ -z $TMUX ]; then
+  mxl @muji
+fi
+```
+
+When `\$TMUX` is not set `$0` will attempt to spawn it to start a server, so the above command will spawn `tmux`, wait a while for the server to start and then execute the arguments.
+
+Specify more aliases to start other active projects at login:
+
+```
+if [ -z $TMUX ]; then
+  mxl @muji @mxl @rlx
+fi
+```
+
+Note it is important to test that `\$TMUX` is _not_ set to prevent nested session attempts when splitting windows and panes.
+
+When modifying the shell login rc file it is best to kill the server (`:kill-server`) and terminal emulator and start fresh.
 
 See mxl-kill(1).
 
