@@ -11,6 +11,10 @@
     "default": "vim"
   },
   "alias": {
+    "blank": {
+      "file": "/home/muji/git/mxl/conf/tpl/blank/tmux.conf",
+      "key": "blank"
+    },
     "cover": {
       "file": "/home/muji/git/mxl/conf/tpl/cover/tmux.conf",
       "key": "cover"
