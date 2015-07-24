@@ -44,7 +44,9 @@ A list is retrieved from `tmux` of whichever type is the target (session, window
 
 The `${cmd_kill_long}` command operates on windows by default.
 
-When no patterns are passed the effect is to close the current session, window or pane otherwise when matching multiple targets 
+When no patterns are passed the effect is to close the current session, window or pane. If patterns are specified and they match the current target, the current target is excluded and a warning is printed.
+
+If an attempt is made to kill the current session (`$0 ${cmd_kill_long} -S`) and the current session is the scratch session, the request is refused with an error.
 
 #### Options
 
