@@ -29,7 +29,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference',
     function(done) {
-      var args = ['install', '@home'];
+      var args = ['install', '@scratch'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -41,7 +41,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and specific dir (-c)',
     function(done) {
-      var args = ['install', '@home', '-c', '.'];
+      var args = ['install', '@scratch', '-c', '.'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -53,7 +53,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and --noop',
     function(done) {
-      var args = ['install', '@home', '--noop'];
+      var args = ['install', '@scratch', '--noop'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(false);
@@ -79,7 +79,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and default file name',
     function(done) {
-      var args = ['install', '@home=tmux.conf'];
+      var args = ['install', '@scratch=tmux.conf'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('tmux.conf')).to.eql(true);
@@ -91,7 +91,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and custom file name',
     function(done) {
-      var args = ['install', '@home=home'];
+      var args = ['install', '@scratch=home'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -103,7 +103,7 @@ describe('mxl:', function() {
 
   it('should run install with system alias reference and custom name/extension',
     function(done) {
-      var args = ['install', '@home=home.tmux.conf'];
+      var args = ['install', '@scratch=home.tmux.conf'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -115,7 +115,7 @@ describe('mxl:', function() {
 
   it('should run install and prefer assignment over reference',
     function(done) {
-      var args = ['install', '@home=home.tmux.conf', '@home'];
+      var args = ['install', '@scratch=home.tmux.conf', '@scratch'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(fs.existsSync('home.tmux.conf')).to.eql(true);
@@ -191,7 +191,7 @@ describe('mxl:', function() {
     // create the file (cleaned after each spec)
     fs.writeFileSync('tmux.conf', '# mock conf file');
 
-    var args = ['install', '@home'];
+    var args = ['install', '@scratch'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);
