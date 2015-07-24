@@ -447,10 +447,14 @@ fi
 Once `$0` is installed you have a lot of power to create many sessions and windows very quickly so it is useful to be able to also kill sessions, windows and panes when necessary. Save a few more keystrokes with the following aliases:
 
 ```
-# tmux kill shortcuts
+# kill self (session, window, pane)
 alias ks="mxl kill -S"
 alias kw="mxl kill -W"
 alias kp="mxl kill -P"
+# kill all others (session, window, pane)
+alias kso="mxl kill -S '$'"
+alias kwo="mxl kill -W '@'"
+alias kpo="mxl kill -P '%'"
 ```
 
 The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.

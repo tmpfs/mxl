@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.58" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.59" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -85,13 +85,21 @@ To remove the first few keystrokes for a session start \fBtmux\fR at login:
 Once \fBmxl\fR is installed you have a lot of power to create many sessions and windows very quickly so it is useful to be able to also kill sessions, windows and panes when necessary. Save a few more keystrokes with the following aliases:
 
 .SP
-  # tmux kill shortcuts
+  # kill self (session, window, pane)
 .br
   alias ks="mxl kill \-S"
 .br
   alias kw="mxl kill \-W"
 .br
   alias kp="mxl kill \-P"
+.br
+  # kill all others (session, window, pane)
+.br
+  alias kso="mxl kill \-S '$'"
+.br
+  alias kwo="mxl kill \-W '@'"
+.br
+  alias kpo="mxl kill \-P '%'"
 .PP
 The concept of a \fBscratch\fR session exists as the default session and as the session to re\-attach to when killing the current session. Typically you would define this in \fB$HOME/tmux.conf\fR and configure the sessions, windows and panes you want for the \fBscratch\fR session.
 .PP
