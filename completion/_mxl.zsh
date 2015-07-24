@@ -28,6 +28,7 @@ commands=(
   'kill:Kill sessions, windows and panes'
   'reshuffle:Reshuffle window indices to be sequential'
   'help:Show man pages'
+  'quit:Kill the tmux server'
 )
 
 _arguments -C -- \

@@ -22,6 +22,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `kill: kill, k <pattern...>`: Kill sessions, windows and panes.
 * `install: install, i <@alias=filename>`: Install alias files.
 * `reshuffle: reshuffle, rs`: Reshuffle window indices to be sequential.
+* `quit: quit`: Kill the `tmux` server.
 
 ## Options
 
@@ -31,6 +32,10 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `noop: -n, --noop`: Print matched files, do not call `source-file`.
 * `session: -s, --session [name]`: Create session before source file(s).
 * `recursive: -r, --recursive`: Match files recursively.
+
+### Quit
+
+Alias for `:kill-server`.
 
 ### Reshuffle
 
