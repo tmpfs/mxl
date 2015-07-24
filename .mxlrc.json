@@ -4,7 +4,7 @@
   "ignores": "^(\\.git|node_modules)$",
   "env": {
     "scratch": "launch",
-    "email": "mail",
+    "mail": "mail",
     "music": "music"
   },
   "template": {
