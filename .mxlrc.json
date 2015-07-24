@@ -2,6 +2,11 @@
   "autoalias": true,
   "timeout": 25,
   "ignores": "^(\\.git|node_modules)$",
+  "env": {
+    "scratch": "launch",
+    "email": "mail",
+    "music": "music"
+  },
   "template": {
     "default": "vim"
   },
