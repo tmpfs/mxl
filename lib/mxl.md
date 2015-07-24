@@ -21,6 +21,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `generate: index, idx <dir...>`: Generate alias index.
 * `kill: kill, k <pattern...>`: Kill sessions, windows and panes.
 * `install: install, i <@alias=filename>`: Install alias files.
+* `reshuffle: reshuffle, rs`: Reshuffle window indices to be sequential.
 
 ## Options
 

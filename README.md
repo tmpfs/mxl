@@ -49,6 +49,7 @@ Commands:
  index, idx                 Generate alias index.
  kill, k                    Kill sessions, windows and panes.
  install, i                 Install alias files.
+ reshuffle, rs              Reshuffle window indices to be sequential.
  help                       Show help for commands.
 
 Options:
