@@ -1,7 +1,6 @@
 ## Developer
 
-Clone the repository, install deps (`npm i`) and symlink the executable in 
-`$PATH`.
+Clone the repository, install deps (`npm i`) and symlink the executable in `$PATH`.
 
 ### Test
 
@@ -11,8 +10,7 @@ To run the test suite:
 npm test
 ```
 
-Note that the working directory for test execution is set to 
-[fixtures/conf](/test/fixtures/conf).
+Note that the working directory for test execution is set to [fixtures/conf](/test/fixtures/conf).
 
 ### Cover
 
@@ -30,8 +28,7 @@ To rebuild the default rc file aliases from the files in [tpl](/conf/tpl) run:
 npm run alias
 ```
 
-This is automatically called on `postinstall` to ensure shipped aliases are 
-correct.
+This is automatically called on `postinstall` to ensure shipped aliases are correct.
 
 ### Docs
 

@@ -11,25 +11,25 @@
     "default": "vim"
   },
   "alias": {
-    "home": {
-      "file": "/home/muji/git/mxl/conf/tpl/home/tmux.conf",
-      "key": "home"
-    },
-    "vim": {
-      "file": "/home/muji/git/mxl/conf/tpl/vim/tmux.conf",
-      "key": "vim"
+    "cover": {
+      "file": "/home/muji/git/mxl/conf/tpl/cover/tmux.conf",
+      "key": "cover"
     },
     "git": {
       "file": "/home/muji/git/mxl/conf/tpl/git/tmux.conf",
       "key": "git"
     },
-    "cover": {
-      "file": "/home/muji/git/mxl/conf/tpl/cover/tmux.conf",
-      "key": "cover"
+    "scratch": {
+      "file": "/home/muji/git/mxl/conf/tpl/scratch/tmux.conf",
+      "key": "scratch"
     },
     "test": {
       "file": "/home/muji/git/mxl/conf/tpl/test/tmux.conf",
       "key": "test"
+    },
+    "vim": {
+      "file": "/home/muji/git/mxl/conf/tpl/vim/tmux.conf",
+      "key": "vim"
     }
   }
 }

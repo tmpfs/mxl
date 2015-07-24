@@ -76,8 +76,7 @@
       },
       {
         "inc": [
-          "examples.md",
-          "alias.md",
+          "quickstart.md",
           "configuration-examples.md"
         ]
       },

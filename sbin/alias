@@ -31,7 +31,7 @@ finder(function onFind(err, results) {
     return error(err);
   }
   var id;
-  rc.alias = rc.alias || {};
+  rc.alias = {};
 
   results.forEach(function(info) {
     id = key(info.file);
