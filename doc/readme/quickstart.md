@@ -31,4 +31,4 @@ Or from any directory with:
 mxl @<username>
 ```
 
-Now go read the man pages (`mxl help`)!
+Now go read the man pages!
