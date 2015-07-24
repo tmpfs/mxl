@@ -32,6 +32,10 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `session: -s, --session [name]`: Create session before source file(s).
 * `recursive: -r, --recursive`: Match files recursively.
 
+### Reshuffle
+
+Alias for `:move-window -r`.
+
 ### Kill
 
 Destroy sessions, windows and panes using regular expression patterns.
@@ -452,9 +456,11 @@ alias ks="mxl kill -S"
 alias kw="mxl kill -W"
 alias kp="mxl kill -P"
 # kill all others (session, window, pane)
-alias kso="mxl kill -S '$'"
+alias kso="mxl kill -S '.*'"
 alias kwo="mxl kill -W '@'"
 alias kpo="mxl kill -P '%'"
+# reshuffle window indices
+alias wrs="mxl rs"
 ```
 
 The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.

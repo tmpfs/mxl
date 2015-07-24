@@ -26,6 +26,7 @@ commands=(
   'index:Generate alias index'
   'install:Install alias files'
   'kill:Kill sessions, windows and panes'
+  'reshuffle:Reshuffle window indices to be sequential'
   'help:Show man pages'
 )
 
@@ -35,4 +36,3 @@ _arguments -C -- \
 
 _describe -t commands "mxl commands" commands && return 0;
 _files && return 0;
-

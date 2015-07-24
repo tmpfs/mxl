@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.59" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.60" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -95,11 +95,15 @@ Once \fBmxl\fR is installed you have a lot of power to create many sessions and 
 .br
   # kill all others (session, window, pane)
 .br
-  alias kso="mxl kill \-S '$'"
+  alias kso="mxl kill \-S '.*'"
 .br
   alias kwo="mxl kill \-W '@'"
 .br
   alias kpo="mxl kill \-P '%'"
+.br
+  # reshuffle window indices
+.br
+  alias wrs="mxl rs"
 .PP
 The concept of a \fBscratch\fR session exists as the default session and as the session to re\-attach to when killing the current session. Typically you would define this in \fB$HOME/tmux.conf\fR and configure the sessions, windows and panes you want for the \fBscratch\fR session.
 .PP
