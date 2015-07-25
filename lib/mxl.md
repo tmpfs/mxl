@@ -34,6 +34,12 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `session: -s, --session [name]`: Create session before source file(s).
 * `recursive: -r, --recursive`: Match files recursively.
 
+### Attach
+
+Attach to the session specified by `<name>`, if name is not specified this command will attempt to attach to the scratch session.
+
+If name is specified and no matching session is 
+
 ### Quit
 
 Alias for `:kill-server`.
