@@ -446,7 +446,7 @@ mxl-alias(1)
 
 ## Patterns
 
-When the `-p | --pattern` option is specified it is applied to the results of searching for configuration files except in the case of `-e | --each` when the behaviour changes to match on the current working directory context, see mxl-run(1) for more information on `--each`.
+When the `-p | --pattern` option is specified it is applied to the results of searching for configuration files except in the case of `-e | --each` when the behaviour changes to match on the current working directory context, see mxl-source(1) for more information on `--each`.
 
 Patterns are compiled to regular expressions and are matched against the full file system path.
 
@@ -513,11 +513,11 @@ fi
 
 When `\$TMUX` is not set `$0` will attempt to spawn it to start a server, so the above command will spawn `tmux`, wait a while for the server to start and then execute the arguments.
 
-Specify more aliases to start other active projects at login:
+Specify more aliases to source other files at login:
 
 ```
 if [ -z $TMUX ]; then
-  mxl @muji @mxl @rlx
+  mxl @binding @muji
 fi
 ```
 
@@ -526,6 +526,33 @@ Note it is important to test that `\$TMUX` is _not_ set to prevent nested sessio
 When modifying the shell login rc file it is best to kill the server (`:kill-server`) and terminal emulator and start fresh.
 
 See mxl-kill(1).
+
+## Environment
+
+The variables declared in the `env` section of rc file(s) are always exposed as global environment variables.
+
+When a call to `:source-file` is made additional file context environment variables are set, these variables are unset after each call, see mxl-source(1) for information on context environment variables.
+
+Exposed variables are always prefixed with `mxl_`, eg: `mxl_scratch` represents the name of the scratch session.
+
+Global variables may be configured in the user rc file, for example:
+
+```
+{
+  "env": {
+    "scratch": "/launch",
+    "mail": "mail",
+    "music": "music",
+    "irc": "irc"
+  }
+}
+```
+
+Modify the session names to suit your needs, or override them with environment variables:
+
+```
+export mxl_scratch=/scratch
+```
 
 ## See
 

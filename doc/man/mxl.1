@@ -68,7 +68,7 @@ If the \fB$TMUX\fR variable is not set an attempt is made to spawn \fBtmux\fR to
 .EL
 .SH "PATTERNS"
 .PP
-When the \fB\-p | \-\-pattern\fR option is specified it is applied to the results of searching for configuration files except in the case of \fB\-e | \-\-each\fR when the behaviour changes to match on the current working directory context, see mxl\-run(1) for more information on \fB\-\-each\fR.
+When the \fB\-p | \-\-pattern\fR option is specified it is applied to the results of searching for configuration files except in the case of \fB\-e | \-\-each\fR when the behaviour changes to match on the current working directory context, see mxl\-source(1) for more information on \fB\-\-each\fR.
 .PP
 Patterns are compiled to regular expressions and are matched against the full file system path.
 .PP
@@ -144,12 +144,12 @@ Now you can update your shell rc file to run \fBmxl\fR directly with the user pr
 .PP
 When \fB$TMUX\fR is not set \fBmxl\fR will attempt to spawn it to start a server, so the above command will spawn \fBtmux\fR, wait a while for the server to start and then execute the arguments.
 .PP
-Specify more aliases to start other active projects at login:
+Specify more aliases to source other files at login:
 
 .SP
   if [ \-z $TMUX ]; then
 .br
-    mxl @muji @mxl @rlx
+    mxl @binding @muji
 .br
   fi
 .PP
@@ -158,6 +158,36 @@ Note it is important to test that \fB$TMUX\fR is \fInot\fR set to prevent nested
 When modifying the shell login rc file it is best to kill the server (\fB:kill\-server\fR) and terminal emulator and start fresh.
 .PP
 See mxl\-kill(1).
+.SH "ENVIRONMENT"
+.PP
+The variables declared in the \fBenv\fR section of rc file(s) are always exposed as global environment variables.
+.PP
+When a call to \fB:source\-file\fR is made additional file context environment variables are set, these variables are unset after each call, see mxl\-source(1) for information on context environment variables.
+.PP
+Exposed variables are always prefixed with \fBmxl_\fR, eg: \fBmxl_scratch\fR represents the name of the scratch session.
+.PP
+Global variables may be configured in the user rc file, for example:
+
+.SP
+  {
+.br
+    "env": {
+.br
+      "scratch": "/launch",
+.br
+      "mail": "mail",
+.br
+      "music": "music",
+.br
+      "irc": "irc"
+.br
+    }
+.br
+  }
+.PP
+Modify the session names to suit your needs, or override them with environment variables:
+
+  export mxl_scratch=/scratch
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
