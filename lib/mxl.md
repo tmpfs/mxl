@@ -38,7 +38,30 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 
 Attach to the session specified by `<name>`, if name is not specified this command will attempt to attach to the scratch session.
 
-If name is specified and no matching session is found a message is displayed using `:display-message`.
+An error is reported if the _name_ matches the current attached session or if the target session does not exist.
+
+#### Hints
+
+In the case where it appears that the name would match multiple sessions, session hints are printed so that you can further refine the name, for example:
+
+```
+$0 att m
+```
+
+Could yield:
+
+```
+(2) + mail: 1 windows
+(3) + music: 1 windows
+```
+
+Expand the command to choose a session:
+
+```
+$0 att mu
+```
+
+Would select the `music` session as `tmux` will match the session name with fnmatch(3).
 
 ### Quit
 

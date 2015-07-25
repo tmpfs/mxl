@@ -13,7 +13,25 @@ mxl a <args> <name>
 .PP
 Attach to the session specified by \fB<name>\fR, if name is not specified this command will attempt to attach to the scratch session.
 .PP
-If name is specified and no matching session is found a message is displayed using \fB:display\-message\fR.
+An error is reported if the \fIname\fR matches the current attached session or if the target session does not exist.
+.SH "HINTS"
+.PP
+In the case where it appears that the name would match multiple sessions, session hints are printed so that you can further refine the name, for example:
+
+  mxl att m
+.PP
+Could yield:
+
+.SP
+  (2) + mail: 1 windows
+.br
+  (3) + music: 1 windows
+.PP
+Expand the command to choose a session:
+
+  mxl att mu
+.PP
+Would select the \fBmusic\fR session as \fBtmux\fR will match the session name with fnmatch(3).
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
