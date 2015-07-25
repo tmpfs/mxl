@@ -38,7 +38,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 
 Attach to the session specified by `<name>`, if name is not specified this command will attempt to attach to the scratch session.
 
-If name is specified and no matching session is 
+If name is specified and no matching session is found a message is displayed using `:display-message`.
 
 ### Quit
 
