@@ -19,11 +19,11 @@ describe('mxl:', function() {
   });
 
   it('should add alias by reference', function(done) {
-    var args = ['alias', '@foo=@git'];
+    var args = ['alias', '@foo=@scm'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       expect(req.rc.alias.foo.file).to.eql(
-        path.join(process.env.MXL_TPL_BASE, 'git', constants.FILENAME));
+        path.join(process.env.MXL_TPL_BASE, 'scm', constants.FILENAME));
       done();
     })
     def.parse(args);
@@ -87,7 +87,7 @@ describe('mxl:', function() {
 
   // trigger code path on attempt to delete global alias
   it('should ignore delete on global alias', function(done) {
-    var args = ['alias', '--noop', '@vim='];
+    var args = ['alias', '--noop', '@edit='];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
       done();

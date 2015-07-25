@@ -65,11 +65,11 @@ describe('mxl:', function() {
 
   it('should run install with alias references',
     function(done) {
-      var args = ['install', '@vim=vim', '@git=git'];
+      var args = ['install', '@editor=edit', '@scm=scm'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
-        expect(fs.existsSync('vim.tmux.conf')).to.eql(true);
-        expect(fs.existsSync('git.tmux.conf')).to.eql(true);
+        expect(fs.existsSync('edit.tmux.conf')).to.eql(true);
+        expect(fs.existsSync('scm.tmux.conf')).to.eql(true);
         done();
       })
       def.parse(args);
@@ -157,7 +157,7 @@ describe('mxl:', function() {
   });
 
   it('should error on install name conflict', function(done) {
-    var args = ['install', '@vim', '@git'];
+    var args = ['install', '@editor', '@scm'];
     var def = program(require(config.pkg), config.name)
     def.program.on('error', function(err) {
       expect(err.code).to.be.gt(0);

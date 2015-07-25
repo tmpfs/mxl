@@ -178,13 +178,13 @@ Files are copied to all of the directories referenced by the `-c` options or the
 Destination files may overlap, for example, if both aliases share the same file name:
 
 ```
-@git @vim
+@scm @editor
 ```
 
 Would result in an error as the destination file names conflict. To resolve this use explicit file names:
 
 ```
-@git=git-profile @vim=vim-profile
+@scm=scm-profile @edit=edit-profile
 ```
 
 If an alias reference is stale (the file has been moved or deleted) then an error is reported, you should invoke `prune` and try again checking against the alias list: `$0 alias`.
@@ -195,37 +195,37 @@ If any of the destination files exist you must specify `--force` to overwrite.
 
 #### Examples
 
-Copy the file referenced by the alias `@home` to the current working directory as `tmux.conf`.
+Copy the file referenced by the alias `@scratch` to the current working directory as `tmux.conf`.
 
 ```
-mxl i @home
+mxl i @scratch
 ```
 
-Copy the `@vim` file as `editor.tmux.conf` to the current working directory:
+Copy the `@editor` file as `edit.tmux.conf` to the current working directory:
 
 ```
-mxl i @vim=editor
+mxl i @editor=edit
 ```
 
 Copy into an alternative directory overwriting if the file exists:
 
 ```
-mxl i @vim -c ~/project -f
+mxl i @editor -c ~/project -f
 ```
 
 Copy multiple aliases into multiple directories:
 
 ```
-mxl i @vim=vim @git=git -c ~/dir1 -c ~/dir2
+mxl i @editor=edit @scm=scm -c ~/dir1 -c ~/dir2
 ```
 
 Will result in the files:
 
 ```
-~/dir1/vim.tmux.conf
-~/dir1/git.tmux.conf
-~/dir2/vim.tmux.conf
-~/dir2/git.tmux.conf
+~/dir1/edit.tmux.conf
+~/dir1/scm.tmux.conf
+~/dir2/edit.tmux.conf
+~/dir2/scm.tmux.conf
 ```
 
 ### List
@@ -264,7 +264,7 @@ $0 @project
 The alias must exist. You can run global aliases immediately:
 
 ```
-$0 @vim -c ~/project
+$0 @editor -c ~/project
 ```
 
 #### Automatic
@@ -316,7 +316,7 @@ $0 alias @project=/usr/local/project
 It is possible to assign the file from an alias by referencing an existing alias in the assignment, for example:
 
 ```
-$0 alias @project=@git
+$0 alias @project=@scm
 ```
 
 When adding aliases you may pass the options:
@@ -336,15 +336,15 @@ When associating options and working directories with an alias like this you can
 Consider the use case where you have an existing template that suffices and a complex project consisting of modules that you wish to run the file against using `${opt_each_long}`, you might do this:
 
 ```
-mxl @git -e -s project -c ~/project
+mxl @scm -e -s project -c ~/project
 ```
 
-To iterate over the child directories of `~/project` and source the `@git` file for each directory after creating a session named `project`.
+To iterate over the child directories of `~/project` and source the `@scm` file for each directory after creating a session named `project`.
 
 Save this configuration with:
 
 ```
-mxl as @project=@git -e -s project -c ~/project
+mxl as @project=@scm -e -s project -c ~/project
 ```
 
 Then run with the saved options and directory:

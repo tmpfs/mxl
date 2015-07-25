@@ -3,6 +3,7 @@
   "timeout": 25,
   "ignores": "^(\\.git|node_modules)$",
   "env": {
+    "editor": "vim",
     "scratch": "/launch",
     "mail": "mail",
     "music": "music",
@@ -24,9 +25,13 @@
       "file": "/home/muji/git/mxl/conf/tpl/cover/tmux.conf",
       "key": "cover"
     },
-    "git": {
-      "file": "/home/muji/git/mxl/conf/tpl/git/tmux.conf",
-      "key": "git"
+    "editor": {
+      "file": "/home/muji/git/mxl/conf/tpl/editor/tmux.conf",
+      "key": "editor"
+    },
+    "scm": {
+      "file": "/home/muji/git/mxl/conf/tpl/scm/tmux.conf",
+      "key": "scm"
     },
     "scratch": {
       "file": "/home/muji/git/mxl/conf/tpl/scratch/tmux.conf",
@@ -35,10 +40,6 @@
     "test": {
       "file": "/home/muji/git/mxl/conf/tpl/test/tmux.conf",
       "key": "test"
-    },
-    "vim": {
-      "file": "/home/muji/git/mxl/conf/tpl/vim/tmux.conf",
-      "key": "vim"
     }
   }
 }

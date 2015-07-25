@@ -112,7 +112,7 @@ describe('mxl:', function() {
   // cwd: test/fixtures/conf
   it('should use default working directory when global alias reference',
     function(done) {
-      var args = ['source', '--noop', '@vim'];
+      var args = ['source', '--noop', '@editor'];
       var def = program(require(config.pkg), config.name)
       def.program.on('complete', function(req) {
         expect(req.launch.list.length).to.eql(1);
@@ -121,7 +121,7 @@ describe('mxl:', function() {
         expect(file).to.be.an('object');
         expect(file.cwd).to.be.a('string');
         expect(file.file).to.eql(
-          path.join(process.env.MXL_TPL_BASE, 'vim', FILENAME));
+          path.join(process.env.MXL_TPL_BASE, 'editor', FILENAME));
         expect(file.cwd).to.eql(
           path.join(process.env.MXL_TEST_BASE));
 

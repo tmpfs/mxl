@@ -33,7 +33,7 @@ Pass an alias to the default command (\fBsource\fR) to source the file reference
 .PP
 The alias must exist. You can run global aliases immediately:
 
-  mxl @vim \-c ~/project
+  mxl @editor \-c ~/project
 .SH "AUTOMATIC"
 .PP
 Aliases are automatically created for the user provided:
@@ -80,7 +80,7 @@ To add or update an alias manually assign to the alias:
 .PP
 It is possible to assign the file from an alias by referencing an existing alias in the assignment, for example:
 
-  mxl alias @project=@git
+  mxl alias @project=@scm
 .PP
 When adding aliases you may pass the options:
 .BL
@@ -104,13 +104,13 @@ When associating options and working directories with an alias like this you can
 .PP
 Consider the use case where you have an existing template that suffices and a complex project consisting of modules that you wish to run the file against using \fB\-\-each\fR, you might do this:
 
-  mxl @git \-e \-s project \-c ~/project
+  mxl @scm \-e \-s project \-c ~/project
 .PP
-To iterate over the child directories of \fB~/project\fR and source the \fB@git\fR file for each directory after creating a session named \fBproject\fR.
+To iterate over the child directories of \fB~/project\fR and source the \fB@scm\fR file for each directory after creating a session named \fBproject\fR.
 .PP
 Save this configuration with:
 
-  mxl as @project=@git \-e \-s project \-c ~/project
+  mxl as @project=@scm \-e \-s project \-c ~/project
 .PP
 Then run with the saved options and directory:
 

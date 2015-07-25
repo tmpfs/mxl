@@ -29,11 +29,11 @@ Files are copied to all of the directories referenced by the \fB\-c\fR options o
 .PP
 Destination files may overlap, for example, if both aliases share the same file name:
 
-  @git @vim
+  @scm @editor
 .PP
 Would result in an error as the destination file names conflict. To resolve this use explicit file names:
 
-  @git=git\-profile @vim=vim\-profile
+  @scm=scm\-profile @edit=edit\-profile
 .PP
 If an alias reference is stale (the file has been moved or deleted) then an error is reported, you should invoke \fBprune\fR and try again checking against the alias list: \fBmxl alias\fR.
 .PP
@@ -42,32 +42,32 @@ See \fBmxl\-prune(1)\fR for more information.
 If any of the destination files exist you must specify \fB\-\-force\fR to overwrite.
 .SH "EXAMPLES"
 .PP
-Copy the file referenced by the alias \fB@home\fR to the current working directory as \fBtmux.conf\fR.
+Copy the file referenced by the alias \fB@scratch\fR to the current working directory as \fBtmux.conf\fR.
 
-  mxl i @home
+  mxl i @scratch
 .PP
-Copy the \fB@vim\fR file as \fBeditor.tmux.conf\fR to the current working directory:
+Copy the \fB@editor\fR file as \fBedit.tmux.conf\fR to the current working directory:
 
-  mxl i @vim=editor
+  mxl i @editor=edit
 .PP
 Copy into an alternative directory overwriting if the file exists:
 
-  mxl i @vim \-c ~/project \-f
+  mxl i @editor \-c ~/project \-f
 .PP
 Copy multiple aliases into multiple directories:
 
-  mxl i @vim=vim @git=git \-c ~/dir1 \-c ~/dir2
+  mxl i @editor=edit @scm=scm \-c ~/dir1 \-c ~/dir2
 .PP
 Will result in the files:
 
 .SP
-  ~/dir1/vim.tmux.conf
+  ~/dir1/edit.tmux.conf
 .br
-  ~/dir1/git.tmux.conf
+  ~/dir1/scm.tmux.conf
 .br
-  ~/dir2/vim.tmux.conf
+  ~/dir2/edit.tmux.conf
 .br
-  ~/dir2/git.tmux.conf
+  ~/dir2/scm.tmux.conf
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
