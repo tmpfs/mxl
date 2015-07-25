@@ -38,6 +38,8 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 
 Attach to the session specified by `<name>`, if name is not specified this command will attempt to attach to the scratch session.
 
+If no matches are found and the _name_ compiles to a regular expression and the resulting pattern matches exactly one session it becomes the target session.
+
 An error is reported if the _name_ matches the current attached session or if the target session does not exist.
 
 #### Hints
