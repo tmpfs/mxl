@@ -11,6 +11,10 @@
     "default": "vim"
   },
   "alias": {
+    "binding": {
+      "file": "/home/muji/git/mxl/conf/tpl/binding/tmux.conf",
+      "key": "binding"
+    },
     "blank": {
       "file": "/home/muji/git/mxl/conf/tpl/blank/tmux.conf",
       "key": "blank"
