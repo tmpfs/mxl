@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.63" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.5.65" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -188,6 +188,8 @@ Global variables may be configured in the user rc file, for example:
 Modify the session names to suit your needs, or override them with environment variables:
 
   export mxl_scratch=/scratch
+.PP
+The \fBmxl_editor\fR environment variable is used if already set otherwise \fBEDITOR\fR, if the \fBenv\fR section contains an \fBeditor\fR field it overrides the \fBmxl_editor\fR variable.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

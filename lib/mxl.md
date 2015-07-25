@@ -579,6 +579,8 @@ Modify the session names to suit your needs, or override them with environment v
 export mxl_scratch=/scratch
 ```
 
+The `mxl_editor` environment variable is used if already set otherwise `EDITOR`, if the `env` section contains an `editor` field it overrides the `mxl_editor` variable.
+
 ## See
 
 tmux(1), ${see_all}
