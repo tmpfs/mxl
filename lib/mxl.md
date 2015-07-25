@@ -479,6 +479,8 @@ alias kpo="mxl kill -P '%'"
 alias wrs="mxl rs"
 # kill tmux server
 alias tks="mxl quit"
+# attach to scratch (zero args) or specific session
+alias att="mxl attach"
 ```
 
 The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.

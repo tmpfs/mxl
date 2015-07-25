@@ -112,6 +112,10 @@ Once \fBmxl\fR is installed you have a lot of power to create many sessions and 
   # kill tmux server
 .br
   alias tks="mxl quit"
+.br
+  # attach to scratch (zero args) or specific session
+.br
+  alias att="mxl attach"
 .PP
 The concept of a \fBscratch\fR session exists as the default session and as the session to re\-attach to when killing the current session. Typically you would define this in \fB$HOME/tmux.conf\fR and configure the sessions, windows and panes you want for the \fBscratch\fR session.
 .PP
