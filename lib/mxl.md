@@ -581,6 +581,10 @@ export mxl_scratch=/scratch
 
 The `mxl_editor` environment variable is used if already set otherwise `EDITOR`, if the `env` section contains an `editor` field it overrides the `mxl_editor` variable.
 
+## Completion
+
+The zsh completion file `_$0.zsh` is available in `completion`, copy the file to a directory in `fpath` or modify `fpath`.
+
 ## See
 
 tmux(1), ${see_all}

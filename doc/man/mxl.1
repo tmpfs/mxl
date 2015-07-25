@@ -1,4 +1,4 @@
-.TH "MXL" "1" "July 2015" "mxl 0.5.65" "User Commands"
+.TH "MXL" "1" "July 2015" "mxl 0.6.0" "User Commands"
 .SH "NAME"
 mxl -- Tmux launcher.
 .SH "USAGE"
@@ -158,6 +158,9 @@ Note it is important to test that \fB$TMUX\fR is \fInot\fR set to prevent nested
 When modifying the shell login rc file it is best to kill the server (\fB:kill\-server\fR) and terminal emulator and start fresh.
 .PP
 See mxl\-kill(1).
+.SH "COMPLETION"
+.PP
+The zsh completion file \fB_mxl.zsh\fR is available in \fBcompletion\fR, copy the file to a directory in \fBfpath\fR or modify \fBfpath\fR.
 .SH "ENVIRONMENT"
 .PP
 The variables declared in the \fBenv\fR section of rc file(s) are always exposed as global environment variables.
