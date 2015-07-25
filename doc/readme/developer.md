@@ -4,6 +4,8 @@ Clone the repository, install deps (`npm i`) and symlink the executable in `$PAT
 
 Install [vim-tmux][] if possible, it's very useful.
 
+When `NODE_ENV` is set to `devel` error stack traces are printed and man pages may be generated dynamically (`NODE_ENV=devel mxl help`).
+
 ### Test
 
 To run the test suite:

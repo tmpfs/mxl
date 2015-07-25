@@ -159,6 +159,8 @@ When modifying the shell login rc file it is best to kill the server (\fB:kill\-
 .SH "PREAMBLE"
 .PP
 Templates that operate on sessions or windows will include a preamble that tries to ensure the session or window starts with a clean execution. To do so it uses the \fBmxl_key\fR and \fBmxl_session\fR variables, you can hard code values here if you prefer but this helps to allow the file to be shared across projects easily.
+.PP
+Install the \fB@blank\fR template to create a file with just the preamble.
 .SH "BINDING"
 .PP
 The \fB@binding\fR template is designed to be available as a map of key bindings useful to the default scratch session; attach to scratch, check email, pause music etc. Install and modify to match your requirements.
