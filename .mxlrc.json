@@ -3,9 +3,10 @@
   "timeout": 25,
   "ignores": "^(\\.git|node_modules)$",
   "env": {
-    "scratch": "launch",
+    "scratch": "/launch",
     "mail": "mail",
-    "music": "music"
+    "music": "music",
+    "irc": "irc"
   },
   "template": {
     "default": "vim"
