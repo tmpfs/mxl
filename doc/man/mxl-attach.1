@@ -1,6 +1,6 @@
 .TH "MXL-ATTACH" "1" "July 2015" "mxl-attach 0.5.63" "User Commands"
 .SH "NAME"
-mxl-attach
+mxl-attach -- Attach to a session.
 .SH "USAGE"
 
 .SP
@@ -11,7 +11,9 @@ mxl att <args> <name>
 mxl a <args> <name>
 .SH "DESCRIPTION"
 .PP
-Attach to a session.
+Attach to the session specified by \fB<name>\fR, if name is not specified this command will attempt to attach to the scratch session.
+.PP
+If name is specified and no matching session is 
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

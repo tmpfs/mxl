@@ -41,6 +41,7 @@ Usage: mxl <command> [-anrh] [-a|--all] [-n|--noop]
 Tmux launcher.
 
 Commands:
+ attach, att, a             Attach to a session.
  list, ls                   List configuration files.
  source, so                 Source tmux configuration files.
  alias, as                  Manage file aliases.
