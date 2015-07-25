@@ -3,3 +3,4 @@
 [mdp]: https://github.com/freeformsystems/mdp
 [manpage]: https://github.com/freeformsystems/cli-manpage
 [nvm]: https://github.com/creationix/nvm
+[vim-tmux]: https://github.com/tmux-plugins/vim-tmux

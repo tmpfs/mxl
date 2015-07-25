@@ -2,6 +2,8 @@
 
 Clone the repository, install deps (`npm i`) and symlink the executable in `$PATH`.
 
+Install [vim-tmux][] if possible, it's very useful.
+
 ### Test
 
 To run the test suite:
