@@ -125,7 +125,7 @@ A global alias is available with my preference named \fB@scratch\fR, install it:
 
   cd ~ && mxl i @scratch
 .PP
-And modify to suit your needs.
+And modify \fBtmux.conf\fR to suit your needs.
 .PP
 Once you have run the scratch session:
 
@@ -156,8 +156,9 @@ Specify more aliases to source other files at login:
 Note it is important to test that \fB$TMUX\fR is \fInot\fR set to prevent nested session attempts when splitting windows and panes.
 .PP
 When modifying the shell login rc file it is best to kill the server (\fB:kill\-server\fR) and terminal emulator and start fresh.
+.SH "BINDING"
 .PP
-See mxl\-kill(1).
+The \fB@binding\fR template is designed to be available as a map of key bindings useful to the default scratch session; check email, pause music etc. Install and modify to match your requirements.
 .SH "COMPLETION"
 .PP
 The zsh completion file \fB_mxl.zsh\fR is available in \fBcompletion\fR, copy the file to a directory in \fBfpath\fR or modify \fBfpath\fR.

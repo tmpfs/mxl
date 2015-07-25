@@ -518,7 +518,7 @@ A global alias is available with my preference named `@scratch`, install it:
 cd ~ && $0 i @scratch
 ```
 
-And modify to suit your needs.
+And modify `tmux.conf` to suit your needs.
 
 Once you have run the scratch session:
 
@@ -550,7 +550,13 @@ Note it is important to test that `\$TMUX` is _not_ set to prevent nested sessio
 
 When modifying the shell login rc file it is best to kill the server (`:kill-server`) and terminal emulator and start fresh.
 
-See mxl-kill(1).
+## Binding
+
+The `@binding` template is designed to be available as a map of key bindings useful to the default scratch session; check email, pause music etc. Install and modify to match your requirements.
+
+## Completion
+
+The zsh completion file `_$0.zsh` is available in `completion`, copy the file to a directory in `fpath` or modify `fpath`.
 
 ## Environment
 
@@ -580,10 +586,6 @@ export mxl_scratch=/scratch
 ```
 
 The `mxl_editor` environment variable is used if already set otherwise `EDITOR`, if the `env` section contains an `editor` field it overrides the `mxl_editor` variable.
-
-## Completion
-
-The zsh completion file `_$0.zsh` is available in `completion`, copy the file to a directory in `fpath` or modify `fpath`.
 
 ## See
 
