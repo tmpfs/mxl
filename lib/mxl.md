@@ -13,6 +13,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 
 ## Commands
 
+* `attach: attach, att, a <name>`: Attach to a session.
 * `list: list, ls`: List configuration files.
 * `run: source, so`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
