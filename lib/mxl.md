@@ -550,9 +550,13 @@ Note it is important to test that `\$TMUX` is _not_ set to prevent nested sessio
 
 When modifying the shell login rc file it is best to kill the server (`:kill-server`) and terminal emulator and start fresh.
 
+## Preamble
+
+Templates that operate on sessions or windows will include a preamble that tries to ensure the session or window starts with a clean execution. To do so it uses the `mxl_key` and `mxl_session` variables, you can hard code values here if you prefer but this helps to allow the file to be shared across projects easily.
+
 ## Binding
 
-The `@binding` template is designed to be available as a map of key bindings useful to the default scratch session; check email, pause music etc. Install and modify to match your requirements.
+The `@binding` template is designed to be available as a map of key bindings useful to the default scratch session; attach to scratch, check email, pause music etc. Install and modify to match your requirements.
 
 ## Completion
 

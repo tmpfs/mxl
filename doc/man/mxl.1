@@ -156,9 +156,12 @@ Specify more aliases to source other files at login:
 Note it is important to test that \fB$TMUX\fR is \fInot\fR set to prevent nested session attempts when splitting windows and panes.
 .PP
 When modifying the shell login rc file it is best to kill the server (\fB:kill\-server\fR) and terminal emulator and start fresh.
+.SH "PREAMBLE"
+.PP
+Templates that operate on sessions or windows will include a preamble that tries to ensure the session or window starts with a clean execution. To do so it uses the \fBmxl_key\fR and \fBmxl_session\fR variables, you can hard code values here if you prefer but this helps to allow the file to be shared across projects easily.
 .SH "BINDING"
 .PP
-The \fB@binding\fR template is designed to be available as a map of key bindings useful to the default scratch session; check email, pause music etc. Install and modify to match your requirements.
+The \fB@binding\fR template is designed to be available as a map of key bindings useful to the default scratch session; attach to scratch, check email, pause music etc. Install and modify to match your requirements.
 .SH "COMPLETION"
 .PP
 The zsh completion file \fB_mxl.zsh\fR is available in \fBcompletion\fR, copy the file to a directory in \fBfpath\fR or modify \fBfpath\fR.
