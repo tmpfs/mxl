@@ -42,6 +42,7 @@ Tmux launcher.
 
 Commands:
  attach, att, a             Attach to a session.
+ exec, ex                   Execute a command in a pane.
  list, ls                   List configuration files.
  source, so                 Source tmux configuration files.
  alias, as                  Manage file aliases.

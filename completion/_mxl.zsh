@@ -19,6 +19,7 @@
 local -a commands
 commands=(
   'attach:Attach to a session'
+  'exec:Execute a command in a pane'
   'ls:List configuration files'
   'source:Source tmux configuration files'
   'alias:Manage file aliases'

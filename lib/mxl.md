@@ -14,6 +14,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 ## Commands
 
 * `attach: attach, att, a <name>`: Attach to a session.
+* `exec: exec, ex <cmd>`: Execute a command in a pane.
 * `list: list, ls`: List configuration files.
 * `run: source, so`: Source tmux configuration files.
 * `alias: alias, as <@alias=file>`: Manage file aliases.
@@ -33,6 +34,12 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `noop: -n, --noop`: Print matched files, do not call `source-file`.
 * `session: -s, --session [name]`: Create session before source file(s).
 * `recursive: -r, --recursive`: Match files recursively.
+
+### Exec
+
+Execute a command in a new pane and kill the pane if the command succeeds, otherwise the pane remains open to inspect errors.
+
+Focus is _not_ given to the new pane for the command.
 
 ### Attach
 
