@@ -2,4 +2,4 @@ Sources tmux profiles by invoking `source-file` helping to keep your tmux config
 
 This document is a brief introduction and guide, see `mxl help` and `mxl help <cmd>` for the man pages.
 
-Requires [node][] and [npm][].
+Requires [node][] and [tmux][].
