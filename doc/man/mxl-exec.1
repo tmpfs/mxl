@@ -4,14 +4,19 @@ mxl-exec -- Execute a command in a pane.
 .SH "USAGE"
 
 .SP
-mxl exec <args> <cmd>
+mxl exec [\-z] [\-z|\-\-fullscreen] <args> <cmd>
 .br
-mxl ex <args> <cmd>
+mxl ex [\-z] [\-z|\-\-fullscreen] <args> <cmd>
 .SH "DESCRIPTION"
 .PP
 Execute a command in a new pane and kill the pane if the command succeeds, otherwise the pane remains open to inspect errors.
 .PP
-Focus is \fInot\fR given to the new pane for the command.
+Focus is \fInot\fR given to the new pane for the command unless the \fB\-\-fullscreen\fR option is given.
+.SH "OPTIONS"
+.BL
+.IP "\[ci]" 4
+\fB\-z, \-\-fullscreen\fR: Display pane full screen.
+.EL
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.

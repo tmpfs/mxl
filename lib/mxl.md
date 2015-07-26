@@ -39,7 +39,27 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 
 Execute a command in a new pane and kill the pane if the command succeeds, otherwise the pane remains open to inspect errors.
 
-Focus is _not_ given to the new pane for the command.
+Focus is _not_ given to the new pane for the command unless the `${opt_fullscreen_long}` option is given.
+
+All unparsed arguments are treated as the command to execute.
+
+#### Options
+
+* `fullscreen: -z, --fullscreen`: Display pane full screen.
+
+#### Examples
+
+Run tests for a project and close pane on success:
+
+```
+$0 ex npm test
+```
+
+Show a man page fullscreen:
+
+```
+$0 ex man tmux
+```
 
 ### Attach
 
