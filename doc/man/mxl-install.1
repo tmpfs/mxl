@@ -1,4 +1,4 @@
-.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.6.1" "User Commands"
+.TH "MXL-INSTALL" "1" "July 2015" "mxl-install 0.6.2" "User Commands"
 .SH "NAME"
 mxl-install -- Install alias files.
 .SH "USAGE"
@@ -49,6 +49,10 @@ If any of the destination files exist you must specify \fB\-\-force\fR to overwr
 Copy the file referenced by the alias \fB@scratch\fR to the current working directory as \fBtmux.conf\fR.
 
   mxl i @scratch
+.PP
+Overwrite the previous file with a soft symbolic link:
+
+  mxl i @scratch \-lf
 .PP
 Copy the \fB@editor\fR file as \fBedit.tmux.conf\fR to the current working directory:
 
