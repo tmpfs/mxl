@@ -602,6 +602,8 @@ export mxl_scratch=/scratch
 
 The `mxl_editor` environment variable is used if already set otherwise `EDITOR`, if the `env` section contains an `editor` field it overrides the `mxl_editor` variable.
 
+Use the `mxl_tpl` variable to set the base path that should be used for files that source other files, by default this is configured to be the installation template directory (`conf/tpl`) and is used to ensure that files may source other files correctly when templates are installed as a symbolic link.
+
 ## See
 
 tmux(1), ${see_all}
