@@ -28,7 +28,7 @@ commands=(
   'index:Generate alias index'
   'kill:Kill sessions, windows and panes'
   'install:Install alias files'
-  'reshuffle:Reshuffle window indices to be sequential'
+  'view:View and edit configuration files'
   'quit:Kill the tmux server'
   'help:Show man pages'
 )

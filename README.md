@@ -51,7 +51,7 @@ Commands:
  index, idx                 Generate alias index.
  kill, k                    Kill sessions, windows and panes.
  install, i                 Install alias files.
- reshuffle, rs              Reshuffle window indices to be sequential.
+ view, vi                   View and edit configuration files.
  quit                       Kill the tmux server.
  help                       Show help for commands.
 

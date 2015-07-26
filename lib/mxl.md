@@ -23,7 +23,7 @@ If the `\$TMUX` variable is not set an attempt is made to spawn `tmux` to start 
 * `generate: index, idx <dir...>`: Generate alias index.
 * `kill: kill, k <pattern...>`: Kill sessions, windows and panes.
 * `install: install, i <@alias=filename>`: Install alias files.
-* `reshuffle: reshuffle, rs`: Reshuffle window indices to be sequential.
+* `view: view, vi`: View and edit configuration files.
 * `quit: quit`: Kill the `tmux` server.
 
 ## Options
@@ -96,9 +96,9 @@ Would select the `music` session as `tmux` will match the session name with fnma
 
 Alias for `:kill-server`.
 
-### Reshuffle
+### View
 
-Alias for `:move-window -r`.
+Print the contents for configuration files or open in _EDITOR_.
 
 ### Kill
 
