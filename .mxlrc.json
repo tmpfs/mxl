@@ -29,6 +29,18 @@
       "file": "/home/muji/git/mxl/conf/tpl/editor/tmux.conf",
       "key": "editor"
     },
+    "irc": {
+      "file": "/home/muji/git/mxl/conf/tpl/irc/tmux.conf",
+      "key": "irc"
+    },
+    "mail": {
+      "file": "/home/muji/git/mxl/conf/tpl/mail/tmux.conf",
+      "key": "mail"
+    },
+    "music": {
+      "file": "/home/muji/git/mxl/conf/tpl/music/tmux.conf",
+      "key": "music"
+    },
     "scm": {
       "file": "/home/muji/git/mxl/conf/tpl/scm/tmux.conf",
       "key": "scm"
