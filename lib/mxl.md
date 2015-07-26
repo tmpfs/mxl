@@ -41,13 +41,28 @@ Execute a command in a new pane and kill the pane if the command succeeds, other
 
 Focus is _not_ given to the new pane for the command unless the `${opt_fullscreen_long}` option is given.
 
-All unparsed arguments are treated as the command to execute.
+#### Arguments
+
+All unparsed arguments are treated as the command to execute, space characters are escaped with a backslash such that the command:
+
+```
+printf 'foo bar'
+```
+
+Will yield the command `printf foo\\ bar` and print the string `foo bar`, however the unquoted `printf foo bar` will print `foo` and exit without an error.
 
 #### Options
 
 * `fullscreen: -z, --fullscreen`: Display pane full screen.
 
 #### Examples
+
+Compare behaviour:
+
+```
+$0 ex true 
+$0 ex false 
+```
 
 Run tests for a project and close pane on success:
 
@@ -59,6 +74,12 @@ Show a man page fullscreen and exit on quit (`q`):
 
 ```
 $0 ex -z man tmux
+```
+
+Test quote behaviour:
+
+```
+$0 ex printf 'foo bar' '&&' false
 ```
 
 ### Attach

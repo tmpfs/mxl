@@ -1,4 +1,4 @@
-.TH "MXL-EXEC" "1" "July 2015" "mxl-exec 0.6.5" "User Commands"
+.TH "MXL-EXEC" "1" "July 2015" "mxl-exec 0.6.6" "User Commands"
 .SH "NAME"
 mxl-exec -- Execute a command in a pane.
 .SH "USAGE"
@@ -12,14 +12,26 @@ mxl ex [\-z] [\-z|\-\-fullscreen] <args> <cmd>
 Execute a command in a new pane and kill the pane if the command succeeds, otherwise the pane remains open to inspect errors.
 .PP
 Focus is \fInot\fR given to the new pane for the command unless the \fB\-\-fullscreen\fR option is given.
-.PP
-All unparsed arguments are treated as the command to execute.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
 \fB\-z, \-\-fullscreen\fR: Display pane full screen.
 .EL
+.SH "ARGUMENTS"
+.PP
+All unparsed arguments are treated as the command to execute, space characters are escaped with a backslash such that the command:
+
+  printf 'foo bar'
+.PP
+Will yield the command \fBprintf foo\\ bar\fR and print the string \fBfoo bar\fR, however the unquoted \fBprintf foo bar\fR will print \fBfoo\fR and exit without an error.
 .SH "EXAMPLES"
+.PP
+Compare behaviour:
+
+.SP
+  mxl ex true 
+.br
+  mxl ex false
 .PP
 Run tests for a project and close pane on success:
 
@@ -28,6 +40,10 @@ Run tests for a project and close pane on success:
 Show a man page fullscreen and exit on quit (\fBq\fR):
 
   mxl ex \-z man tmux
+.PP
+Test quote behaviour:
+
+  mxl ex printf 'foo bar' '&&' false
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
