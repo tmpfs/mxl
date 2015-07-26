@@ -4,6 +4,8 @@ var path = require('path')
   , config = require('./config')
   , program = require('../lib/mxl');
 
+//throw new Error('mock error');
+
 process.env.MXL_RC_NAME = '.mxlrc.json';
 process.env.MXL_RC_HOME = 
 process.env.MXL_TEST_TARGET = path.join(process.cwd(), 'target');
