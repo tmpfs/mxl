@@ -157,9 +157,12 @@ Matched alias keys are deleted and the aliases are re-written unless `--noop` is
 
 Copy the files referenced by aliases into one or more target directories and optionally set the filename for each destination file.
 
+If the `${opt_symlink_long}` option if given installation will create a soft symbolic link rather than copy the file, use this option when you are certain you do not need to make project specific changes.
+
 #### Options
 
 * `force: -f | --force`: Force overwrite existing files.
+* `symlink: -l | --link`: Create soft symbolic link.
 
 #### Files
 
@@ -199,6 +202,12 @@ Copy the file referenced by the alias `@scratch` to the current working director
 
 ```
 mxl i @scratch
+```
+
+Overwrite the previous file with a soft symbolic link:
+
+```
+mxl i @scratch -lf
 ```
 
 Copy the `@editor` file as `edit.tmux.conf` to the current working directory:

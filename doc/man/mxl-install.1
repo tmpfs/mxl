@@ -4,16 +4,20 @@ mxl-install -- Install alias files.
 .SH "USAGE"
 
 .SP
-mxl install [\-f] [\-f|\-\-force] <args> <@alias=filename>
+mxl install [\-fl] [\-f|\-\-force] [\-l|\-\-link] <args> <@alias=filename>
 .br
-mxl i [\-f] [\-f|\-\-force] <args> <@alias=filename>
+mxl i [\-fl] [\-f|\-\-force] [\-l|\-\-link] <args> <@alias=filename>
 .SH "DESCRIPTION"
 .PP
 Copy the files referenced by aliases into one or more target directories and optionally set the filename for each destination file.
+.PP
+If the \fB\-\-link\fR option if given installation will create a soft symbolic link rather than copy the file, use this option when you are certain you do not need to make project specific changes.
 .SH "OPTIONS"
 .BL
 .IP "\[ci]" 4
 \fB\-f, \-\-force\fR: Force overwrite existing files.
+.IP "\[ci]" 4
+\fB\-l, \-\-link\fR: Create soft symbolic link.
 .EL
 .SH "FILES"
 .PP
