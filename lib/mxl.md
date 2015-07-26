@@ -55,10 +55,10 @@ Run tests for a project and close pane on success:
 $0 ex npm test
 ```
 
-Show a man page fullscreen:
+Show a man page fullscreen and exit on quit (`q`):
 
 ```
-$0 ex man tmux
+$0 ex -z man tmux
 ```
 
 ### Attach
@@ -542,6 +542,12 @@ alias wrs="mxl rs"
 alias tks="mxl quit"
 # attach to scratch (zero args) or specific session
 alias att="mxl attach"
+# exec command in unfocused visible pane
+alias mxe="mxl exec"
+# exec command in fullscreen pane
+alias mxf="mxl exec -z"
+# exec man(1) in fullscreen pane
+alias mxm="mxl exec -z man"
 ```
 
 The concept of a `scratch` session exists as the default session and as the session to re-attach to when killing the current session. Typically you would define this in `\$HOME/tmux.conf` and configure the sessions, windows and panes you want for the `scratch` session.
