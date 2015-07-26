@@ -98,7 +98,11 @@ Alias for `:kill-server`.
 
 ### View
 
-Print the contents for configuration files or open in _EDITOR_.
+Open the configuration files referenced by `<args>` in _EDITOR_.
+
+This allows quickly editing files via alias reference (`$0 vi @scratch @binding`) or using any configuration file list (`$0 vi -r`).
+
+The _EDITOR_ is resolved by testing for `\$mxl_editor` and then `\$EDITOR` and finally using `vi` if neither are set.
 
 ### Kill
 
@@ -536,8 +540,6 @@ alias kp="mxl kill -P"
 alias kso="mxl kill -S '.*'"
 alias kwo="mxl kill -W '@'"
 alias kpo="mxl kill -P '%'"
-# reshuffle window indices
-alias wrs="mxl rs"
 # kill tmux server
 alias tks="mxl quit"
 # attach to scratch (zero args) or specific session

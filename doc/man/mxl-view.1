@@ -9,7 +9,11 @@ mxl view <args>
 mxl vi <args>
 .SH "DESCRIPTION"
 .PP
-Print the contents for configuration files or open in \fIEDITOR\fR.
+Open the configuration files referenced by \fB<args>\fR in \fIEDITOR\fR.
+.PP
+This allows quickly editing files via alias reference (\fBmxl vi @scratch @binding\fR) or using any configuration file list (\fBmxl vi \-r\fR).
+.PP
+The \fIEDITOR\fR is resolved by testing for \fB$mxl_editor\fR and then \fB$EDITOR\fR and finally using \fBvi\fR if neither are set.
 .SH "BUGS"
 .PP
 Report bugs to https://github.com/freeformsystems/mxl/issues.
