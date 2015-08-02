@@ -33,6 +33,8 @@ finder(function onFind(err, results) {
   var id;
   rc.alias = {};
 
+  //console.dir(results)
+
   results.forEach(function(info) {
     id = key(info.file);
     rc.alias[id] = {
