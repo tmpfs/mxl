@@ -25,9 +25,9 @@
       "file": "/home/muji/git/mxl/conf/tpl/cover/tmux.conf",
       "key": "cover"
     },
-    "editor/git": {
-      "file": "/home/muji/git/mxl/conf/tpl/editor/git.tmux.conf",
-      "key": "editor/git"
+    "editor/scm": {
+      "file": "/home/muji/git/mxl/conf/tpl/editor/scm.tmux.conf",
+      "key": "editor/scm"
     },
     "editor": {
       "file": "/home/muji/git/mxl/conf/tpl/editor/tmux.conf",
