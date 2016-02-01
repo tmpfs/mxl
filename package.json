@@ -42,6 +42,7 @@
     "mocha": "~2.2.5"
   },
   "scripts": {
+    "lint": "jshint . && jscs .",
     "docs": "npm run manual && npm run readme",
     "clean": "rm -rf coverage target",
     "clean-man": "rm -fv ./doc/man/*.1",
