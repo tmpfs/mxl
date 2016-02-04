@@ -7,7 +7,7 @@ describe('mxl:', function() {
   it('should list files', function(done) {
     var args = ['ls'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('complete', function(/*req*/) {
       done();
     })
     def.parse(args);
@@ -16,7 +16,7 @@ describe('mxl:', function() {
   it('should list all files (-a)', function(done) {
     var args = ['ls', '-a'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('complete', function(/*req*/) {
       done();
     })
     def.parse(args);
@@ -57,7 +57,7 @@ describe('mxl:', function() {
     var args = ['ls', '-a', '.', '../', '../empty'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.launch.map['conf']).to.be.a('string');
+      expect(req.launch.map.conf).to.be.a('string');
       expect(req.launch.map['conf/empty']).to.be.a('string');
       expect(req.launch.map['conf/alt']).to.be.a('string');
       expect(req.launch.map['conf/mock']).to.be.a('string');

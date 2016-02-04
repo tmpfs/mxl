@@ -140,7 +140,7 @@ describe('mxl:', function() {
     var args = ['source', '-a', '--noop'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.launch.map['conf']).to.be.a('string');
+      expect(req.launch.map.conf).to.be.a('string');
       expect(req.launch.map['conf/alt']).to.be.a('string');
       expect(req.launch.map['conf/mock']).to.be.a('string');
       done();
@@ -152,7 +152,7 @@ describe('mxl:', function() {
     var args = ['source', '-a', '--noop', '.'];
     var def = program(require(config.pkg), config.name)
     def.program.on('complete', function(req) {
-      expect(req.launch.map['conf']).to.be.a('string');
+      expect(req.launch.map.conf).to.be.a('string');
       expect(req.launch.map['conf/alt']).to.be.a('string');
       expect(req.launch.map['conf/mock']).to.be.a('string');
       done();
@@ -238,7 +238,7 @@ describe('mxl:', function() {
       'source', 'project', '-c', 'project', '--each',
       '--session', 'mock', '--noop'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('complete', function(/*req*/) {
       done();
     })
     def.parse(args);
@@ -249,7 +249,7 @@ describe('mxl:', function() {
       'source', 'project', '-c', 'project', '--each',
       '-p', 'client', '-p', 'server'];
     var def = program(require(config.pkg), config.name)
-    def.program.on('complete', function(req) {
+    def.program.on('complete', function(/*req*/) {
       done();
     })
     def.parse(args);
